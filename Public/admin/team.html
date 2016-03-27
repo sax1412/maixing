@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>麦星后台管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <script>
+
+        function add() {
+            $('#form').css('display', 'block');
+        }
+        function form_close() {
+            $('#form').css('display', 'none');
+            $('#insert').text('提交');
+        }
+        function edit(id) {
+            this_id = id;
+            $.ajax({
+                url: '/admin/team/team_find',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    "id": id
+                },
+                success: function (r) {
+                    $('#form').css('display', 'block');
+                    $('#intro').val(r.msg.intro);
+                    $('#insert').text('保存');
+                }
+            })
+        }
+        function save(id) {
+            var intro = $('#intro').val();
+            var show = $('#show').val();
+            $.ajax({
+                url: '/admin/team/team_save',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    "id": id,
+                    "intro": intro,
+                    "show":show
+                },
+                success: function (r) {
+                    if (r.code == 200) {
+                        oTable.fnReloadAjax();
+                        $('#form').css('display', 'none');
+                        $('#insert').text('提交');
+                    } else {
+                        alert(r.msg);
+                    }
+                }
+            })
+        }
+        function insert() {
+            var button = $('#insert').text();
+            var intro = $('#intro').val();
+            var show = $('#show').val();
+            if (button == '保存') {
+                save(this_id);
+            } else {
+                $.ajax({
+                    url: '/admin/team/team_add',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        "intro": intro,
+                        "show":show
+                    },
+                    success: function (r) {
+                        if (r.code == 200) {
+                            $('#form').css('display', 'none');
+                            //oTable.fnReloadAjax('http://localhost:60/admin/home/banner_list');
+                            oTable.fnReloadAjax(); //使用默认
+                        } else {
+                            alert(r.msg);
+                        }
+                    }
+                })
+            }
+        }
+        function width() {
+            $('#example').css('width', '100%');
+        }
+    </script>
+</head>
+<style>
+    #add:hover {
+        cursor: pointer !important;
+    }
+
+    .visible-lg {
+        text-align: center
+    }
+
+    .float {
+        float: left
+    }
+
+    .top {
+        margin-top: -15px;
+    }
+
+    .top1 {
+        margin-top: 15px;
+    }
+
+    .position {
+        padding-left: 10px;
+    }
+
+    #example tr td {
+        text-align: center
+    }
+</style>
+<body>
+<div class="site-holder">
+    <nav class="navbar" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><i class="fa fa-list btn-nav-toggle-responsive text-white"></i> <span
+                    class="logo">麦<strong>星</strong>网 <i class="fa fa-bookmark"></i></span></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav user-menu navbar-right ">
+
+                <li><a href="#" class="user dropdown-toggle" data-toggle="dropdown"><span class="username"
+                                                                                          style="font-size: 18px;font-weight: 600">&nbsp;管理员:<span id="username"
+                                                                                                    style="font-size: 18px;font-weight: 600"></span>&nbsp;</span></a>
+                    <ul class="dropdown-menu" style="border:0;width: 30px !important;">
+                        <li><a href="/Public/admin/login.html" class="text-danger"><i class="fa fa-lock"></i> 退出登录</a>
+                        </li>
+                    </ul>
+            </ul>
+        </div>
+    </nav>
+    <div class="box-holder">
+        <div class="left-sidebar">
+            <div class="sidebar-holder">
+                <ul class="nav  nav-list">
+                    <li class="nav-toggle">
+                        <button class="btn  btn-nav-toggle text-primary" onclick="width()"><i
+                                class="fa fa-angle-double-left toggle-left"></i>
+                        </button>
+                    </li>
+                    <li class="submeu">
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                                class="hidden-minibar">  首页管理 <span class="badge bg-primary pull-right">1</span></a>
+                        <ul>
+                            <li><a href="index.html" data-original-title="Basic"><i
+                                    class="fa fa-table"></i><span> 内容管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                                class="hidden-minibar"> 团队管理 <span class="badge bg-primary pull-right">2</span></a>
+                        <ul>
+                            <li><a href="team.html" data-original-title="Basic"><i
+                                    class="fa fa-table"></i><span>  团队简介</span></a>
+                            </li>
+                            <li><a href="member.html" data-original-title="Editable"><i
+                                    class="fa fa-table"></i><span>  人员管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                                class="hidden-minibar">  新闻管理 <span class="badge bg-primary pull-right">1</span></a>
+                        <ul>
+                            <li><a href="news.html" data-original-title="Basic"><i
+                                    class="fa fa-table"></i><span>  内容管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                                class="hidden-minibar">  关于我们 <span class="badge bg-primary pull-right">2</span></a>
+                        <ul>
+                            <li><a href="abort.html" data-original-title="Basic"><i
+                                    class="fa fa-table"></i><span>  麦星寄语</span></a>
+                            </li>
+                            <li><a href="menu.html" data-original-title="Editable"><i
+                                    class="fa fa-table"></i><span>  菜单管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                                class="hidden-minibar"> 联系我们 <span class="badge bg-primary pull-right">1</span></a>
+                        <ul>
+                            <li><a href="contact.html" data-original-title="Basic"><i
+                                    class="fa fa-table"></i><span> 内容管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-mod-12">
+                    <h4 class="page-header"><i class="fa fa fa-dashboard"></i> 团队 》团队简介</h4>
+                </div>
+            </div>
+            <div class="row" id="form" style="width: 97%;margin-bottom: 30px; margin-left: 1%;display: none;">
+                <form class="form-horizontal" role="form"
+                      style="border:1px #fff solid; border-radius: 3px;-webkit-box-shadow: 0 0 6px #333;">
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="intro" class="col-sm-1 control-label">团队介绍</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="intro" name="intro"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="show" class="col-sm-1 control-label">展示</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="show" name="show">
+                                <option>是</option>
+                                <option>否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-1 col-sm-8">
+                            <div id="insert" class="btn btn-success" onclick="insert()">提交</div>
+                            <div class="btn btn-default" onclick="form_close()">取消</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row" style="margin-top: -20px;">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <table style="margin-top: 10px;" class="table table-bordered table-condensed table-hover"
+                                   id="example">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <input style="text-align: center" type='checkbox' id="checkAll"/>
+                                    </th>
+                                    <th class="visible-lg" style="width: 6%">编号</th>
+                                    <th class="visible-lg" style="width: 10%">管理员</th>
+                                    <th class="visible-lg" style="width: 5%">展示</th>
+                                    <th class="visible-lg" style="width: 52%">团队介绍</th>
+                                    <th class="visible-lg" style="width: 11%">时间</th>
+                                    <th class="visible-lg" style="width: 14%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<input type="text" id="backgroundImageUrl"/>-->
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-2.0.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script src="js/fnReloadAjax.js"></script>
+<script src="js/core_team.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/jquery.accordion.js"></script>
+<script src="js/skylo.js"></script>
+</body>
+
+</html>

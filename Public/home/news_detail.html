@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>麦星</title>
+    <link rel="stylesheet" type="text/css" href="/Public/home/css/bootstrap.min.css">
+    <script type="text/javascript" src="/Public/home/js/jquery-2.0.min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/bootstrap.min.js"></script>
+</head>
+<style>
+    ul li {
+        float: left;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    ul li a {
+        color: #000;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    ul li a:hover {
+        color: #9b761d
+    }
+</style>
+<script>
+    $(function () {
+        var r = window.location.search;
+        r = r.substring(r.indexOf("?")+4,r.length);
+        var id = r;
+        $.ajax({
+            "url": '/home/index/news_detail',
+            "data": {
+                "id": id
+            },
+            "dataType": 'json',
+            success: function (r) {
+                var content1='<pre>'+r.msg.content1+'</pre>';
+                var content2='<pre>'+r.msg.content2+'</pre>';
+                var content3='<pre>'+r.msg.content3+'</pre>';
+                $('#title').text(r.msg.title);
+                $('#time').text(r.msg.time);
+                $('#from').text(r.msg.from);
+                $('#auth').text(r.msg.auth);
+                $('#img1').attr('src','../..'+r.msg.img1);
+                $('#content1').html(content1);
+                $('#img2').attr('src','../..'+r.msg.img2);
+                $('#content2').html(content2);
+                $('#img3').attr('src','../..'+r.msg.img3);
+                $('#content3').html(content3);
+            }
+        });
+    });
+</script>
+<style>
+    pre {
+        background-color: #ffffff;
+        border: 0;
+        font-size: 16px;
+        text-align: center;
+        font-family: 'Microsoft YaHei', sans-serif
+    }
+    #from1{margin-left: -5%}
+    #auth1{margin-left: -2%}
+</style>
+<body>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 10px;">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="/Public/home/images/banner1.jpg" style=" width:100%;" alt="First slide">
+        </div>
+        <div class="item">
+            <img src="/Public/home/images/banner1.jpg" style="width:100%;" alt="Second slide">
+        </div>
+        <div class="item">
+            <img src="/Public/home/images/banner1.jpg" style="width:100%;" alt="Third slide">
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2" style="font-size: 20px; font-weight: 600" id="title"></div>
+    </div>
+    <div class="row" style="font-size: 12px;color: #999;margin-top: 10px;">
+        <div class="col-lg-2 col-lg-offset-2" id="time"></div>
+        <div class="col-lg-1 " id="from1">来源：<span id="from"></span></div>
+        <div class="col-lg-2 "id="auth1">作者：<span id="auth"></span></div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 col-lg-offset-2">
+            <img style="width: 100%" id="img1" src=""/>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 col-lg-offset-2 " id="content1">
+
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 col-lg-offset-2">
+            <img style="width: 100%" id="img2" src=""/>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 col-lg-offset-2" id="content2">
+
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 col-lg-offset-2">
+            <img style="width: 100%" id="img3" src=""/>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 col-lg-offset-2" id="content3">
+
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 50px;width:100%;background-color: #525c75">
+    <div class="row">
+        <div class="col-lg-12"
+             style="color: #ffffff;text-align: center;font-weight: 600;margin-top: 20px;margin-bottom: 20px;">
+            麦星投诉&nbsp;&nbsp;&nbsp;&nbsp;版权所有©&nbsp;&nbsp;&nbsp;&nbsp;联系我们&nbsp;&nbsp;|&nbsp;&nbsp;法律说明
+        </div>
+    </div>
+</div>
+</body>
+</html>
