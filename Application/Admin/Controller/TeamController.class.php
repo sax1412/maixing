@@ -16,6 +16,7 @@ class TeamController extends Controller
     {
         $intro = I('intro');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($intro) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -28,6 +29,11 @@ class TeamController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $title = M('Team');
             $res = $title->data($data)->add();
@@ -85,6 +91,7 @@ class TeamController extends Controller
         $id = I('id');
         $intro=I('intro');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($intro) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -97,6 +104,11 @@ class TeamController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $res = D('Team')->where(['id'=>$id])->save($data);
             if ($res) {

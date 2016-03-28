@@ -59,6 +59,7 @@
             var auth = $('#auth').val();
             var from = $('#from').val();
             var link = $('#link').val();
+            var zn_en = $('#zn_en').val();
             $.ajax({
                 url: '/admin/news/news_save',
                 type: 'POST',
@@ -75,7 +76,8 @@
                     "img3":img3,
                     "auth":auth,
                     "from":from,
-                    "link":link
+                    "link":link,
+                    "zn_en":zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -101,6 +103,7 @@
             var auth = $('#auth').val();
             var from = $('#from').val();
             var link = $('#link').val();
+            var zn_en = $('#zn_en').val();
             if (button == '保存') {
                 save(this_id);
             } else {
@@ -119,7 +122,8 @@
                         "img3":img3,
                         "auth":auth,
                         "from":from,
-                        "link":link
+                        "link":link,
+                        "zn_en":zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -334,17 +338,23 @@
                             <input type="text" class="form-control" id="auth" name="auth">
                         </div>
                         <label for="from" class="col-sm-1 control-label">来源</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <input type="text" class="form-control" id="from" name="from">
                         </div>
 
                     </div>
                     <div class="form-group" style="margin-top: 20px;">
                         <label for="link" class="col-sm-1 control-label">来源链接</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-7">
                             <input type="text" class="form-control" id="link" name="link">
                         </div>
-
+                        <label class="col-sm-1 control-label">版式</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="zn_en">
+                                <option>中文</option>
+                                <option>英文</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-1 col-sm-8">

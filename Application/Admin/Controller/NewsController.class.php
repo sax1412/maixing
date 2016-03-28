@@ -25,11 +25,17 @@ class NewsController extends Controller
         $auth = I('auth');
         $from = I('from');
         $link = I('link');
+        $zn_en = I('zn_en');
         if ($title && $intro && $content1 && $auth && $from && $link) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
                 $data['admin'] = $_SESSION['auth'];
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $data['title'] = $title;
             $data['content1'] = $content1;
@@ -105,11 +111,17 @@ class NewsController extends Controller
         $auth = I('auth');
         $from = I('from');
         $link = I('link');
+        $zn_en = I('zn_en');
         if ($title && $intro && $content1 && $auth && $from && $link) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
                 $data['admin'] = $_SESSION['auth'];
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $data['title'] = $title;
             $data['content1'] = $content1;

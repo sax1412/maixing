@@ -12,19 +12,30 @@ class IndexController extends Controller
 
     public function home()
     {
-        $list = D('Title')->where(['show' => 1])->find();
-        //$list['content']="<pre>".$list['content']."</pre>";
+        $status = I('status');
+        if ($status == 1) {
+            $list = D('Title')->where(['show' => 1, 'zn_en' => 0])->find();
+        } else {
+            $list = D('Title')->where(['show' => 1])->find();
+        }
         json_out_msg($list);
     }
 
     public function city()
     {
-        $list = D('Contact')->select();
+        $status = I('status');
+        if ($status) {
+            $list = D('Contact')->where(['zn_en' => 0])->select();
+        } else {
+            $list = D('Contact')->select();
+        }
+
         json_out_msg($list);
     }
 
     public function news()
     {
+        $status = I('status');
         $word = I('word');
         $map['title'] = ['like', '%' . $word . '%'];
         $map['content'] = ['like', '%' . $word . '%'];
@@ -38,7 +49,12 @@ class IndexController extends Controller
                 $v['time'] = date('Y/m/d', $v['time']);
             }
         } else {
-            $list = D('News')->select();
+            if ($status) {
+                $list = D('News')->where(['zn_en' => 0])->select();
+            } else {
+                $list = D('News')->select();
+            }
+
             $list = array_values($list);
             foreach ($list as &$v) {
                 $v['time'] = date('Y/m/d', $v['time']);
@@ -65,34 +81,64 @@ class IndexController extends Controller
 
     public function team()
     {
-        $list = D('Team')->where(['show' => 1])->find();
+        $status = I('status');
+        if ($status) {
+            $list = D('Team')->where(['show' => 1, 'zn_en' => 0])->find();
+        } else {
+            $list = D('Team')->where(['show' => 1])->find();
+        }
+
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
     }
 
     public function member()
     {
-        $list = D('Member')->where(['show' => 1])->select();
+        $status = I('status');
+        if ($status) {
+            $list = D('Member')->where(['show' => 1, 'zn_en' => 0])->select();
+        } else {
+            $list = D('Member')->where(['show' => 1])->select();
+        }
+
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
     }
 
     public function abort()
     {
-        $list = D('Abort')->where(['show' => 1])->find();
+        $status = I('status');
+        if ($status) {
+            $list = D('Abort')->where(['show' => 1, 'zn_en' => 0])->find();
+        } else {
+            $list = D('Abort')->where(['show' => 1])->find();
+        }
+
         json_out_msg($list);
     }
 
     public function menu()
     {
-        $list = D('Menu')->where(['show' => 1])->select();
+        $status = I('status');
+        if ($status) {
+            $list = D('Menu')->where(['show' => 1, 'zn_en' => 0])->select();
+        } else {
+            $list = D('Menu')->where(['show' => 1])->select();
+        }
+
         json_out_msg($list);
     }
 
     public function menu_detail()
     {
+        $status = I('status');
         $id = I('id');
-        $res = D('Menu')->where(['id' => $id])->find();
+        if ($status == 1) {
+            $res = D('Menu')->where(['id' => $id, 'zn_en' => 0])->find();
+        } else {
+            $res = D('Menu')->where(['id' => $id])->find();
+        }
+
         if ($res) {
             $content = $res['content'];
             $content = explode('*', $content);

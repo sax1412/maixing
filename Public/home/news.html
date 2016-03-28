@@ -53,19 +53,39 @@
         if (aQuery.indexOf("news") > 0) {
             $("#news").css('color', '#9b761d');
         }
-        $.ajax({
-            "url": '/home/index/news',
-            "dataType": 'json',
-            success: function (r) {
-                var len = r.msg.length;
-                for (var i = 0; i < len; i++) {
-                    $('#news_list').append("<div class='col-lg-1 col-lg-offset-1'>" + r.msg[i].time + "</div>" +
-                    "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
-                    "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].content1 + "</div>" +
-                    "<hr class='col-lg-10 col-lg-offset-1'>");
+        if(aQuery.indexOf("status")>0){
+            $.ajax({
+                "url": '/home/index/news',
+                "dataType": 'json',
+                "data":{
+                    "status":1
+                },
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1'>" + r.msg[i].time + "</div>" +
+                        "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
+                        "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].content1 + "</div>" +
+                        "<hr class='col-lg-10 col-lg-offset-1'>");
+                    }
                 }
-            }
-        });
+            });
+        }else{
+            $.ajax({
+                "url": '/home/index/news',
+                "dataType": 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1'>" + r.msg[i].time + "</div>" +
+                        "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
+                        "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].content1 + "</div>" +
+                        "<hr class='col-lg-10 col-lg-offset-1'>");
+                    }
+                }
+            });
+        }
+
         $('#search').click(function () {
             $('#news_list').empty();
             var name = $('input[name=name]').val();
@@ -109,7 +129,7 @@
             <img style="padding-top: 5px;" src="/Public/home/images/logo.jpg">
         </div>
         <div class="col-lg-5 col-lg-offset-3">
-            <div class="col-lg-4 col-lg-offset-7"><a href="index.html" style="text-decoration: none;color: #000">首页</a>&nbsp;&nbsp;中文&nbsp;|&nbsp;English
+            <div class="col-lg-4 col-lg-offset-7"><a href="index.html" style="text-decoration: none;color: #000">首页</a>&nbsp;&nbsp;<a href="news.html" style="text-decoration: none; color: #000">中文</a>&nbsp;|&nbsp;<a href="news.html?status=1" style="text-decoration: none; color: #000">English</a>
             </div>
             <ul style="list-style: none;">
                 <li><a href="abort.html" style="text-decoration: none;" id="abort">关于我们</a></li>
@@ -131,13 +151,13 @@
     <!-- 轮播（Carousel）项目 -->
     <div class="carousel-inner">
         <div class="item active">
-            <img src="/Public/home/images/banner1.jpg" style=" width:100%;" alt="First slide">
+            <img src="/Public/home/images/banner1.jpg" style=" width:100%;height: 300px;" alt="First slide">
         </div>
         <div class="item">
-            <img src="/Public/home/images/banner1.jpg" style="width:100%;" alt="Second slide">
+            <img src="/Public/home/images/banner1.jpg" style="width:100%;height: 300px;" alt="Second slide">
         </div>
         <div class="item">
-            <img src="/Public/home/images/banner1.jpg" style="width:100%;" alt="Third slide">
+            <img src="/Public/home/images/banner1.jpg" style="width:100%;height: 300px;" alt="Third slide">
         </div>
     </div>
 </div>

@@ -48,6 +48,7 @@
             var english = $('#english').val();
             var position = $('#position').val();
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             $.ajax({
                 url: '/admin/member/member_save',
                 type: 'POST',
@@ -59,7 +60,8 @@
                     "position": position,
                     "english": english,
                     "intro": intro,
-                    "show":show
+                    "show":show,
+                    "zn_en":zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -80,6 +82,7 @@
             var english = $('#english').val();
             var position = $('#position').val();
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             if (button == '保存') {
                 save(this_id);
             } else {
@@ -93,7 +96,8 @@
                         "position": position,
                         "english": english,
                         "intro": intro,
-                        "show":show
+                        "show":show,
+                        "zn_en":zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -266,12 +270,19 @@
                     <div class="form-group">
                         <label for="position" class="col-sm-1 control-label">肖像</label>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <input id="lefile" type="file" name="upload" style="display:none">
                             <input id="img" class="form-control" style="width: 80% !important; float: left"
                                    type="text" placeholder="图片像素为160*160">
                             <a class="btn btn-success" style="float: left"
                                onclick="$('input[id=lefile]').click();">上传</a>
+                        </div>
+                        <label for="show" class="col-sm-1 control-label">版式</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="zn_en">
+                                <option>中文</option>
+                                <option>英文</option>
+                            </select>
                         </div>
                         <label for="show" class="col-sm-1 control-label">展示</label>
                         <div class="col-sm-2">

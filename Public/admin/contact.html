@@ -51,6 +51,7 @@
             var tel = $('#tel').val();
             var add = $('#add').val();
             var city = $('#city').val();
+            var zn_en = $('#zn_en').val();
             $.ajax({
                 url: '/admin/contact/contact_save',
                 type: 'POST',
@@ -63,7 +64,8 @@
                     "email": email,
                     "tel": tel,
                     "city":city,
-                    "add":add
+                    "add":add,
+                    "zn_en":zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -85,6 +87,7 @@
             var tel = $('#tel').val();
             var city = $('#city').val();
             var add = $('#add').val();
+            var zn_en = $('#zn_en').val();
             if (button == '保存') {
                 save(this_id);
             } else {
@@ -99,7 +102,8 @@
                         "email": email,
                         "tel": tel,
                         "city":city,
-                        "add":add
+                        "add":add,
+                        "zn_en":zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -278,12 +282,19 @@
                     <div class="form-group">
                         <label for="img" class="col-sm-1 control-label">地图</label>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <input id="lefile" type="file" name="upload" style="display:none">
-                            <input id="img" class="form-control" style="width: 85% !important; float: left"
+                            <input id="img" class="form-control" style="width: 75% !important; float: left"
                                    type="text">
                             <a class="btn btn-success" style="float: left"
                                onclick="$('input[id=lefile]').click();">上传</a>
+                        </div>
+                        <label class="col-sm-1 control-label">版式</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="zn_en">
+                                <option>中文</option>
+                                <option>英文</option>
+                            </select>
                         </div>
                         <label for="img" class="col-sm-1 control-label">城市</label>
                         <div class="col-sm-2">

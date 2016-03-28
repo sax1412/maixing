@@ -18,6 +18,7 @@ class HomeController extends Controller
         $note = I('note');
         $content = I('content');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($title && $note && $content) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -32,6 +33,11 @@ class HomeController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $title = M('Title');
             $res = $title->data($data)->add();
@@ -93,6 +99,7 @@ class HomeController extends Controller
         $note = I('note');
         $content = I('content');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($title && $note && $content) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -107,6 +114,11 @@ class HomeController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $res = D('Title')->where(['id' => $id])->save($data);
             if ($res) {

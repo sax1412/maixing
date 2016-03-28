@@ -20,6 +20,7 @@ class MemberController extends Controller
         $img = I('img');
         $intro = I('intro');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($name && $english && $position && $img && $intro) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -36,6 +37,11 @@ class MemberController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $title = M('Member');
             $res = $title->data($data)->add();
@@ -99,6 +105,7 @@ class MemberController extends Controller
         $img = I('img');
         $intro = I('intro');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($name && $english && $position && $img && $intro) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -115,6 +122,11 @@ class MemberController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $res = D('Member')->where(['id' => $id])->save($data);
             if ($res) {

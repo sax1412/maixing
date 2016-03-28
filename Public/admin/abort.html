@@ -41,6 +41,7 @@
         function save(id) {
             var content = $('#content').val();
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             $.ajax({
                 url: '/admin/abort/abort_save',
                 type: 'POST',
@@ -48,7 +49,8 @@
                 data: {
                     "id": id,
                     "content": content,
-                    "show":show
+                    "show":show,
+                    "zn_en":zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -65,6 +67,7 @@
             var button = $('#insert').text();
             var content = $('#content').val();
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             if (button == '保存') {
                 save(this_id);
             } else {
@@ -74,7 +77,8 @@
                     dataType: 'json',
                     data: {
                         "content": content,
-                        "show":show
+                        "show":show,
+                        "zn_en":zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -226,6 +230,13 @@
                             </div>
                     </div>
                     <div class="form-group">
+                        <label for="show" class="col-sm-1 control-label">版式</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="zn_en">
+                                <option>中文</option>
+                                <option>英文</option>
+                            </select>
+                        </div>
                         <label for="show" class="col-sm-1 control-label">展示</label>
                         <div class="col-sm-2">
                             <select class="form-control" id="show" name="show">

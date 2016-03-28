@@ -45,6 +45,7 @@
             var note = $('#note').val();
             var content = $('#content').val();
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             $.ajax({
                 url: '/admin/home/banner_save',
                 type: 'POST',
@@ -54,7 +55,8 @@
                     "title": title,
                     "note": note,
                     "content": content,
-                    "show":show
+                    "show":show,
+                    "zn_en":zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -73,6 +75,7 @@
             var note = $('#note').val();
             var content = $('#content').val();
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             if (button == '保存') {
                 save(this_id);
             } else {
@@ -84,7 +87,8 @@
                         "title": title,
                         "note": note,
                         "content": content,
-                        "show":show
+                        "show":show,
+                        "zn_en":zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -248,12 +252,19 @@
                     </div>
                     <div class="form-group">
                         <label for="note" class="col-sm-1 control-label">尾句</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-4">
                             <input type="text" class="form-control" id="note" name="note">
+                        </div>
+                        <label for="show" class="col-sm-1 control-label">版式</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="zn_en">
+                                <option>中文</option>
+                                <option>英文</option>
+                            </select>
                         </div>
                         <label for="show" class="col-sm-1 control-label">展示</label>
                         <div class="col-sm-2">
-                            <select class="form-control" id="show" name="show">
+                            <select class="form-control" id="show">
                                 <option>是</option>
                                 <option>否</option>
                             </select>

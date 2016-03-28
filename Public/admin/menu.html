@@ -59,6 +59,7 @@
             var content = [];
             var en = [];
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             for (var i = 0; i < lenth; i++) {
                 title.push($('#title' + i).val());
                 content.push($('#content' + i).val());
@@ -75,7 +76,8 @@
                     "title": title,
                     "content": content,
                     "en": en,
-                    "show": show
+                    "show": show,
+                    "zn_en":zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -97,6 +99,7 @@
             var content = [];
             var en = [];
             var show = $('#show').val();
+            var zn_en = $('#zn_en').val();
             for (var i = 0; i < lenth; i++) {
                 title.push($('#title' + i).val());
                 content.push($('#content' + i).val());
@@ -115,7 +118,8 @@
                         "english":english,
                         "content": content,
                         "en": en,
-                        "show": show
+                        "show": show,
+                        "zn_en":zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -291,6 +295,13 @@
 
                     </div>
                     <div class="form-group">
+                        <label for="show" class="col-sm-1 control-label">版式</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="zn_en">
+                                <option>中文</option>
+                                <option>英文</option>
+                            </select>
+                        </div>
                         <label for="show" class="col-sm-1 control-label">展示</label>
 
                         <div class="col-sm-2">

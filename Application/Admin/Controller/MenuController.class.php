@@ -20,6 +20,7 @@ class MenuController extends Controller
         $content = I('content');
         $en = I('en');
         $show = I('show');
+        $zn_en = I('zn_en');
         $len = count($title);
         $str = "";
         if ($menu && $english ) {
@@ -39,6 +40,11 @@ class MenuController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $table = M('Menu');
             $res = $table->data($data)->add();
@@ -111,6 +117,7 @@ class MenuController extends Controller
         $content = I('content');
         $en = I('en');
         $show = I('show');
+        $zn_en = I('zn_en');
         $len = count($title);
         $str = "";
         if ($title && $english) {
@@ -130,6 +137,11 @@ class MenuController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $res = D('Menu')->where(['id' => $id])->save($data);
             if ($res) {

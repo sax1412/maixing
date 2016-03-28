@@ -21,11 +21,17 @@ class ContactController extends Controller
         $email = I('email');
         $city = I('city');
         $add = I('add');
+        $zn_en = I('zn_en');
         if ($company && $tel && $fax && $img && $email && $add && $city) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
                 $data['admin'] = $_SESSION['auth'];
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $data['company'] = $company;
             $data['tel'] = $tel;
@@ -93,11 +99,17 @@ class ContactController extends Controller
         $email = I('email');
         $city = I('city');
         $add = I('add');
+        $zn_en = I('zn_en');
         if ($company && $tel && $fax && $img && $email && $add &&$city) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
                 $data['admin'] = $_SESSION['auth'];
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $data['company'] = $company;
             $data['tel'] = $tel;

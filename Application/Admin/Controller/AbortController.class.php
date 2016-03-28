@@ -16,6 +16,7 @@ class AbortController extends Controller
     {
         $content = I('content');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($content) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -28,6 +29,11 @@ class AbortController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $title = M('Abort');
             $res = $title->data($data)->add();
@@ -87,6 +93,7 @@ class AbortController extends Controller
         $id = I('id');
         $content = I('content');
         $show = I('show');
+        $zn_en = I('zn_en');
         if ($content) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
@@ -99,6 +106,11 @@ class AbortController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($zn_en == '中文') {
+                $data['zn_en'] = 1;
+            } else {
+                $data['zn_en'] = 0;
             }
             $res = D('Abort')->where(['id' => $id])->save($data);
             if ($res) {
