@@ -48,7 +48,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "http://localhost:60/admin/abort/abort_list",
+        "sAjaxSource": "/admin/abort/abort_list",
         "bAutoWidth": false,
         'bPaginate': true,
         "bDestory": true,
@@ -117,7 +117,7 @@ function initTable() {
 function _deleteFun(id) {
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "http://localhost:60/admin/abort/abort_delete",
+            url: "/admin/abort/abort_delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',

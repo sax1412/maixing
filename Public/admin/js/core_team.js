@@ -48,7 +48,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "http://localhost:60/admin/team/team_list",
+        "sAjaxSource": "/admin/team/team_list",
         'bPaginate': true,
         "bDestory": true,
         "bRetrieve": true,
@@ -116,7 +116,7 @@ function initTable() {
 function _deleteFun(id) {
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "http://localhost:60/admin/team/team_delete",
+            url: "/admin/team/team_delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',

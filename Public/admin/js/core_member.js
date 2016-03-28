@@ -57,7 +57,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "http://localhost:60/admin/member/member_list",
+        "sAjaxSource": "/admin/member/member_list",
         'bPaginate': true,
         "bDestory": true,
         "bRetrieve": true,
@@ -129,7 +129,7 @@ function initTable() {
 function _deleteFun(id) {
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "http://localhost:60/admin/member/member_delete",
+            url: "/admin/member/member_delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',

@@ -48,7 +48,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "http://localhost:60/admin/menu/menu_list",
+        "sAjaxSource": "/admin/menu/menu_list",
         "bAutoWidth": false,
         'bPaginate': true,
         "bDestory": true,
@@ -129,7 +129,7 @@ function initTable() {
 function _deleteFun(id) {
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "http://localhost:60/admin/menu/menu_delete",
+            url: "/admin/menu/menu_delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',

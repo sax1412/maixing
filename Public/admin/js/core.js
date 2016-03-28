@@ -48,7 +48,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "http://localhost:60/admin/home/banner_list",
+        "sAjaxSource": "/admin/home/banner_list",
         "bAutoWidth": false,
         'bPaginate': true,
         "bDestory": true,
@@ -141,7 +141,7 @@ function initTable() {
 function _deleteFun(id) {
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "http://localhost:60/admin/home/banner_delete",
+            url: "/admin/home/banner_delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',

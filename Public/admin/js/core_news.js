@@ -169,7 +169,7 @@ function initTable() {
 function _deleteFun(id) {
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "http://localhost:60/admin/news/news_delete",
+            url: "/admin/news/news_delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',
