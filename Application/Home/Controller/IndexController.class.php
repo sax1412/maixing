@@ -94,13 +94,8 @@ class IndexController extends Controller
 
     public function member()
     {
-        $status = I('status');
-        if ($status) {
-            $list = D('Member')->where(['show' => 1, 'zn_en' => 0])->select();
-        } else {
-            $list = D('Member')->where(['show' => 1, 'zn_en' => 1])->select();
-        }
-
+        //$status = I('status');
+        $list = D('Member')->where(['show' => 1])->select();
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
     }
