@@ -16,7 +16,7 @@ class IndexController extends Controller
         if ($status == 1) {
             $list = D('Title')->where(['show' => 1, 'zn_en' => 0])->find();
         } else {
-            $list = D('Title')->where(['show' => 1])->find();
+            $list = D('Title')->where(['show' => 1, 'zn_en' => 1])->find();
         }
         json_out_msg($list);
     }
@@ -27,7 +27,7 @@ class IndexController extends Controller
         if ($status) {
             $list = D('Contact')->where(['zn_en' => 0])->select();
         } else {
-            $list = D('Contact')->select();
+            $list = D('Contact')->where(['zn_en' => 1])->select();
         }
 
         json_out_msg($list);
@@ -52,7 +52,7 @@ class IndexController extends Controller
             if ($status) {
                 $list = D('News')->where(['zn_en' => 0])->select();
             } else {
-                $list = D('News')->select();
+                $list = D('News')->where(['zn_en' => 1])->select();
             }
 
             $list = array_values($list);
@@ -85,7 +85,7 @@ class IndexController extends Controller
         if ($status) {
             $list = D('Team')->where(['show' => 1, 'zn_en' => 0])->find();
         } else {
-            $list = D('Team')->where(['show' => 1])->find();
+            $list = D('Team')->where(['show' => 1, 'zn_en' => 1])->find();
         }
 
         //$list['content']="<pre>".$list['content']."</pre>";
@@ -98,7 +98,7 @@ class IndexController extends Controller
         if ($status) {
             $list = D('Member')->where(['show' => 1, 'zn_en' => 0])->select();
         } else {
-            $list = D('Member')->where(['show' => 1])->select();
+            $list = D('Member')->where(['show' => 1, 'zn_en' => 1])->select();
         }
 
         //$list['content']="<pre>".$list['content']."</pre>";
@@ -111,7 +111,7 @@ class IndexController extends Controller
         if ($status) {
             $list = D('Abort')->where(['show' => 1, 'zn_en' => 0])->find();
         } else {
-            $list = D('Abort')->where(['show' => 1])->find();
+            $list = D('Abort')->where(['show' => 1, 'zn_en' => 1])->find();
         }
 
         json_out_msg($list);
@@ -123,7 +123,7 @@ class IndexController extends Controller
         if ($status) {
             $list = D('Menu')->where(['show' => 1, 'zn_en' => 0])->select();
         } else {
-            $list = D('Menu')->where(['show' => 1])->select();
+            $list = D('Menu')->where(['show' => 1, 'zn_en' => 1])->select();
         }
 
         json_out_msg($list);
@@ -136,7 +136,7 @@ class IndexController extends Controller
         if ($status == 1) {
             $res = D('Menu')->where(['id' => $id, 'zn_en' => 0])->find();
         } else {
-            $res = D('Menu')->where(['id' => $id])->find();
+            $res = D('Menu')->where(['id' => $id, 'zn_en' => 1])->find();
         }
 
         if ($res) {
