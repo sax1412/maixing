@@ -91,13 +91,27 @@
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
         }
-        $.ajax({
-            "url": '/home/index/team',
-            "dataType": 'json',
-            success: function (r) {
-                $('#team_intro').text(r.msg.intro);
-            }
-        });
+        if(aQuery.indexOf("status")>0){
+            $.ajax({
+                "url": '/home/index/team',
+                "dataType": 'json',
+                "data":{
+                    "status":1
+                },
+                success: function (r) {
+                    $('#team_intro').text(r.msg.intro);
+                }
+            });
+        }else{
+            $.ajax({
+                "url": '/home/index/team',
+                "dataType": 'json',
+                success: function (r) {
+                    $('#team_intro').text(r.msg.intro);
+                }
+            });
+        }
+
         $.ajax({
             "url": '/home/index/member',
             "dataType": 'json',

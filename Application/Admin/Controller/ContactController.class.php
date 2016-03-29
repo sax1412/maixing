@@ -83,6 +83,16 @@ class ContactController extends Controller
         $id = I('id');
         $res = D('Contact')->where(['id' => $id])->find();
         if ($res) {
+            if ($res['show'] == 1) {
+                $res['show'] = '是';
+            } else {
+                $res['show'] = '否';
+            }
+            if ($res['zn_en'] == 1) {
+                $res['zn_en'] = '是';
+            } else {
+                $res['zn_en'] = '否';
+            }
             json_out_msg($res);
         } else {
             json_die('未知错误');
