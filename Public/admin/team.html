@@ -33,6 +33,8 @@
                 success: function (r) {
                     $('#form').css('display', 'block');
                     $('#intro').val(r.msg.intro);
+                    $('#zn_en').val(r.msg.zn_en);
+                    $('#show').val(r.msg.show);
                     $('#insert').text('保存');
                 }
             })
