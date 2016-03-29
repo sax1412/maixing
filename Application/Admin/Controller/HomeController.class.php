@@ -54,7 +54,7 @@ class HomeController extends Controller
 
     public function banner_list()
     {
-        $res = D('Title')->order('id desc')->select();
+        $res = D('Title')->order('id asc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
             $v['time'] = date('Y-m-d', $v['time']);

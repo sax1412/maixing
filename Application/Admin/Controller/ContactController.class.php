@@ -56,7 +56,7 @@ class ContactController extends Controller
 
     public function contact_list()
     {
-        $res = D('Contact')->order('id desc')->select();
+        $res = D('Contact')->order('id asc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
             $v['time'] = date('Y-m-d', $v['time']);

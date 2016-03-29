@@ -50,7 +50,7 @@ class AbortController extends Controller
 
     public function abort_list()
     {
-        $res = D('Abort')->order('id desc')->select();
+        $res = D('Abort')->order('id asc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
             $v['time'] = date('Y-m-d', $v['time']);

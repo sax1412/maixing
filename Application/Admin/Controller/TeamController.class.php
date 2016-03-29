@@ -50,7 +50,7 @@ class TeamController extends Controller
 
     public function team_list()
     {
-        $res = D('Team')->order('id desc')->select();
+        $res = D('Team')->order('id asc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
             $v['time'] = date('Y-m-d', $v['time']);
