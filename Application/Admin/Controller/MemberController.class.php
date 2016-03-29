@@ -58,7 +58,7 @@ class MemberController extends Controller
 
     public function member_list()
     {
-        $res = D('Member')->order('id desc')->select();
+        $res = D('Member')->order('id asc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
             $v['time'] = date('Y-m-d', $v['time']);

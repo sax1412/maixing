@@ -62,7 +62,7 @@ class MenuController extends Controller
 
     public function menu_list()
     {
-        $res = D('Menu')->order('id desc')->select();
+        $res = D('Menu')->order('id asc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
             $v['time'] = date('Y-m-d', $v['time']);
