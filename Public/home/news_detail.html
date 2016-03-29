@@ -53,6 +53,31 @@
             }
         });
     });
+    function chinese(){
+        $('#bottom').empty();
+        $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;font-weight: 600;margin-top: 20px;margin-bottom: 20px;'>" +
+        "麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>法律说明</a></div>");
+        $('#top').empty();
+        $('#top').append("<div style='text-align: right'><a href='index.html' id='index' style='text-decoration: none;color: #000'>首页</a>&nbsp;&nbsp;<a href='#' onclick='chinese()' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='#' onclick='english()' style='text-decoration: none; color: #000'>English</a>" +
+        "</div><ul style='list-style: none;'><li><a href='contact.html' style='text-decoration: none;' id='contact'>联系我们</a></li>" +
+        "<li><a href='news.html' style='text-decoration: none;' id='news'>新闻动态</a></li>" +
+        "<li><a href='#' style='text-decoration: none;'>投资案例</a></li>" +
+        "<li><a href='team.html' style='text-decoration: none;' id='team'>投资团队</a></li>" +
+        "<li><a href='abort.html' style='text-decoration: none;' id='abort'>关于我们</a></li></ul>");
+    }
+
+    function english(){
+        $('#bottom').empty();
+        $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;font-weight: 600;margin-top: 20px;margin-bottom: 20px;'>" +
+        "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
+        $('#top').empty();
+        $('#top').append("<div style='text-align: right'><a href='index.html' id='index' style='text-decoration: none;color: #000'>Index</a>&nbsp;&nbsp;<a href='#' onclick='chinese()' style='text-decoration: none; color: #000'>Chinese</a>&nbsp;|&nbsp;<a href='#' onclick='english()' style='text-decoration: none; color: #000'>English</a>" +
+        "</div><ul style='list-style: none;'><li><a href='contact.html' style='text-decoration: none;' id='contact'>Contact Us</a></li>" +
+        "<li><a href='news.html' style='text-decoration: none;' id='news'>News</a></li>" +
+        "<li><a href='#' style='text-decoration: none;'>Investment case</a></li>" +
+        "<li><a href='team.html' style='text-decoration: none;' id='team'>Investment Team</a></li>" +
+        "<li><a href='abort.html' style='text-decoration: none;' id='abort'>About Us</a></li></ul>");
+    }
 </script>
 <style>
     pre {
@@ -71,8 +96,8 @@
         <div class="col-lg-4">
             <img style="padding-top: 5px;" src="/Public/home/images/logo.jpg">
         </div>
-        <div class="col-lg-5 col-lg-offset-3">
-            <div style="text-align: right"><a href="index.html" style="text-decoration: none;color: #000">首页</a>&nbsp;&nbsp;<a href="#" style="text-decoration: none; color: #000">中文</a>&nbsp;|&nbsp;<a href="#" style="text-decoration: none; color: #000">English</a>
+        <div class="col-lg-6 col-lg-offset-2" id="top">
+            <div style="text-align: right"><a href="index.html" style="text-decoration: none;color: #000">首页</a>&nbsp;&nbsp;<a href="#" style="text-decoration: none; color: #000">中文</a>&nbsp;|&nbsp;<a href="#" onclick="english()" style="text-decoration: none; color: #000">English</a>
             </div>
             <ul style="list-style: none;">
                 <li><a href="contact.html" style="text-decoration: none;" id="contact">联系我们</a></li>
@@ -130,7 +155,7 @@
     </div>
 </div>
 <div class="container" style="margin-top: 50px;width:100%;background-color: #525c75">
-    <div class="row">
+    <div class="row" id="bottom">
         <div class="col-lg-12"
              style="color: #ffffff;text-align: center;font-weight: 600;margin-top: 20px;margin-bottom: 20px;">
             麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©&nbsp;&nbsp;|&nbsp;&nbsp;<a href="law.html" style="text-decoration: none;color: #fff">法律说明</a>
