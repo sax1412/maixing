@@ -84,6 +84,7 @@
                     if (r.code == 200) {
                         oTable.fnReloadAjax();
                         $('#form').css('display', 'none');
+                        title_num=0;
                         $('#insert').text('提交');
                     } else {
                         alert(r.msg);
@@ -125,6 +126,7 @@
                     success: function (r) {
                         if (r.code == 200) {
                             $('#form').css('display', 'none');
+                            title_num=0;
                             //oTable.fnReloadAjax('http://localhost:60/admin/home/banner_list');
                             oTable.fnReloadAjax(); //使用默认
                         } else {
@@ -219,7 +221,7 @@
                         </button>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  首页管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="index.html" data-original-title="Basic"><i
@@ -228,7 +230,7 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 团队管理 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <li><a href="team.html" data-original-title="Basic"><i
@@ -240,7 +242,7 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  新闻管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="news.html" data-original-title="Basic"><i
@@ -249,7 +251,7 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  关于我们 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <li><a href="abort.html" data-original-title="Basic"><i
@@ -261,7 +263,7 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="fa fa-table"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 联系我们 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="contact.html" data-original-title="Basic"><i

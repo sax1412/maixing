@@ -75,7 +75,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "/admin/news/news_list",
+        "sAjaxSource": "http://localhost:60/admin/news/news_list",
         'bPaginate': true,
         "bDestory": true,
         "bRetrieve": true,
