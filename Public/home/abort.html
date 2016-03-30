@@ -94,7 +94,7 @@
                 success: function (r) {
                     var length = r.msg.length;
                     for (var i = 0; i < length; i++) {
-                        $('#menu').append("<div class='row'><div class='col-lg-2 col-lg-offset-1 menu' onclick='menu_detail(" + r.msg[i].id + ")'>" + r.msg[i].menu + "</div></div>");
+                        $('#menu').append("<div class='row'><div class='col-lg-2 col-lg-offset-1 menu' onclick='menu_detail(" + r.msg[i].id + ")'>" + r.msg[i].menu + "<br>" + r.msg[i].english + "</div></div>");
                     }
                 }
             });
