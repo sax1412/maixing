@@ -15,24 +15,21 @@ class MenuController extends Controller
     public function menu_add()
     {
         $menu = I('menu');
-        $english = I('english');
         $title = I('title');
         $content = I('content');
-        $en = I('en');
         $show = I('show');
         $zn_en = I('zn_en');
         $len = count($title);
         $str = "";
-        if ($menu && $english ) {
+        if ($menu) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
                 $data['admin'] = $_SESSION['auth'];
             }
             $data['menu'] = $menu;
-            $data['english'] = $english;
             for ($i = 0; $i < $len; $i++) {
-                $str .= $title[$i] . "&" . $content[$i] . "&" . $en[$i] . "*";
+                $str .= $title[$i] . "&" . $content[$i] .  "*";
             }
             $data['time'] = time();
             $data['content'] = $str;
@@ -122,24 +119,21 @@ class MenuController extends Controller
     {
         $id = I('id');
         $menu = I('menu');
-        $english = I('english');
         $title = I('title');
         $content = I('content');
-        $en = I('en');
         $show = I('show');
         $zn_en = I('zn_en');
         $len = count($title);
         $str = "";
-        if ($title && $english) {
+        if ($title) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
                 $data['admin'] = $_SESSION['auth'];
             }
             $data['menu'] = $menu;
-            $data['english'] = $english;
             for ($i = 0; $i < $len; $i++) {
-                $str .= $title[$i] . "&" . $content[$i] . "&" . $en[$i] . "*";
+                $str .= $title[$i] . "&" . $content[$i]  . "*";
             }
             $data['content'] = $str;
             $data['time'] = time();
