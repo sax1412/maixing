@@ -49,7 +49,7 @@
                 },
                 success:function(r){
                     var content='<pre>'+r.msg.content+'</pre>';
-                    var title='<pre>'+r.msg.title+'</pre>';
+                    var title="<pre style='font-size: 36px; text-align: center; color:#525c75;font-weight: 600;font-family: 'Microsoft YaHei', sans-serif'>"+r.msg.title+"</pre>";
                     $('#title').html(title);
                     $('#content').html(content);
                     $('#foot').text(r.msg.note);
@@ -61,7 +61,7 @@
                 "dataType":'json',
                 success:function(r){
                     var content='<pre>'+r.msg.content+'</pre>';
-                    var title='<pre>'+r.msg.title+'</pre>';
+                    var title="<pre style='font-size: 36px; text-align: center; color:#525c75;font-weight: 600;font-family: 'Microsoft YaHei', sans-serif'>"+r.msg.title+"</pre>";
                     $('#title').html(title);
                     $('#content').html(content);
                     $('#foot').text(r.msg.note);
