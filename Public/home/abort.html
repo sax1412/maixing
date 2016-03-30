@@ -63,7 +63,7 @@
                 success: function (r) {
                     var length = r.msg.length;
                     for (var i = 0; i < length; i++) {
-                        $('#menu').append("<div class='row'><div class='col-lg-2 col-lg-offset-1 menu' onclick='menu_detail(" + r.msg[i].id + ")'>" + r.msg[i].english + "</div></div>");
+                        $('#menu').append("<div class='row'><div class='col-lg-2 col-lg-offset-1 menu' onclick='menu_detail(" + r.msg[i].id + ")'>" + r.msg[i].menu + "</div></div>");
                     }
                 }
             });
@@ -103,7 +103,6 @@
                 for (var i = 0; i < len; i++) {
                     $('#detail').append("<div class='col-lg-8 col-lg-offset-4' style='border-bottom:1px #BBB solid;margin-bottom: 20px;padding-bottom: 20px;'>" +
                     "<div class='col-lg-1'><img src='/Public/home/images/1.jpg'></div><div class='title'>" + r.msg.content[i][0] + "</div>" +
-                    "<div class='en col-lg-offset-1'>" + r.msg.content[i][2] + "</div>" +
                     "<div class='content col-lg-offset-1'><pre style='font-size: 14px;text-align: left !important; padding: 0'>" + r.msg.content[i][1] + "</pre></div></div>");
                 }
             }
