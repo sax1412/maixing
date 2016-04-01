@@ -75,7 +75,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "/admin/news/news_list",
+        "sAjaxSource": "http://localhost:60/admin/news/news_list",
         'bPaginate': true,
         "bDestory": true,
         "bRetrieve": true,
@@ -131,7 +131,18 @@ function initTable() {
             {"mDataProp": "time"},
             {"mDataProp": "auth"},
             {"mDataProp": "from"},
-            {"mDataProp": "link"},
+            {
+                "mDataProp": "link",
+                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    var text = sData;
+                    $.trim(text);
+                    var len = text.length;
+                    if (len > 20) {
+                        text = text.substring(0, 16) + '...';
+                    }
+                    $(nTd).html("<span>" + text + "</span>");
+                }
+            },
             {
                 "mDataProp": "id",
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {

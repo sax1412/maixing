@@ -79,14 +79,14 @@
                         "<div class='hidden'>" + r.msg[i].city + "</div>" +
                         "<div class='col-lg-4 col-lg-offset-1'><img style='width: 110%' src='../.." + r.msg[i].img + "'>" +
                         "</div>" +
-                        "<div class='col-lg-5 col-lg-offset-1'><p class='company'>" + r.msg[i].company + "</p><p><span>电话：</span>" + r.msg[i].tel + "</p><p><span>传真：</span>" + r.msg[i].fax + "</p><p><span>邮箱：</span>" + r.msg[i].email + "</p><p><span>地址：</span>" + r.msg[i].add + "</p>" +
+                        "<div class='col-lg-5 col-lg-offset-1 contact'><p class='company'>" + r.msg[i].company + "</p><p><span>电话：</span>" + r.msg[i].tel + "</p><p><span>传真：</span>" + r.msg[i].fax + "</p><p><span>邮箱：</span>" + r.msg[i].email + "</p><p><span>地址：</span>" + r.msg[i].add + "</p>" +
                         "</div>" +
                         "</div>");
                     }
                     $('#city_list').find('span').first().css('border-bottom','2px #9b761d solid');
                     $('#city_one').append("<div class='row'><div class='col-lg-4 col-lg-offset-1'><img style='width: 110%' src='../.." + r.msg[0].img + "'>" +
                     "</div>" +
-                    "<div class='col-lg-5 col-lg-offset-1'><p class='company'>" + r.msg[0].company + "</p><p><span>电话：</span>" + r.msg[0].tel + "</p><p><span>传真：</span>" + r.msg[0].fax + "</p><p><span>邮箱：</span>" + r.msg[0].email + "</p><p><span>地址：</span>" + r.msg[0].add + "</p>" +
+                    "<div class='col-lg-5 col-lg-offset-1 contact'><p class='company'>" + r.msg[0].company + "</p><p><span>电话：</span>" + r.msg[0].tel + "</p><p><span>传真：</span>" + r.msg[0].fax + "</p><p><span>邮箱：</span>" + r.msg[0].email + "</p><p><span>地址：</span>" + r.msg[0].add + "</p>" +
                     "</div>" +
                     "</div>");
                 }
@@ -103,14 +103,14 @@
                         "<div class='hidden'>" + r.msg[i].city + "</div>" +
                         "<div class='col-lg-4 col-lg-offset-1'><img style='width: 110%' src='../.." + r.msg[i].img + "'>" +
                         "</div>" +
-                        "<div class='col-lg-5 col-lg-offset-1'><p class='company'>" + r.msg[i].company + "</p><p><span>电话：</span>" + r.msg[i].tel + "</p><p><span>传真：</span>" + r.msg[i].fax + "</p><p><span>邮箱：</span>" + r.msg[i].email + "</p><p><span>地址：</span>" + r.msg[i].add + "</p>" +
+                        "<div class='col-lg-5 col-lg-offset-1 contact'><p class='company'>" + r.msg[i].company + "</p><p><span>电话：</span>" + r.msg[i].tel + "</p><p><span>传真：</span>" + r.msg[i].fax + "</p><p><span>邮箱：</span>" + r.msg[i].email + "</p><p><span>地址：</span>" + r.msg[i].add + "</p>" +
                         "</div>" +
                         "</div>");
                     }
                     $('#city_list').find('span').first().css('border-bottom','2px #9b761d solid');
                     $('#city_one').append("<div class='row'><div class='col-lg-4 col-lg-offset-1'><img style='width: 110%' src='../.." + r.msg[0].img + "'>" +
                     "</div>" +
-                    "<div class='col-lg-5 col-lg-offset-1'><p class='company'>" + r.msg[0].company + "</p><p><span>电话：</span>" + r.msg[0].tel + "</p><p><span>传真：</span>" + r.msg[0].fax + "</p><p><span>邮箱：</span>" + r.msg[0].email + "</p><p><span>地址：</span>" + r.msg[0].add + "</p>" +
+                    "<div class='col-lg-5 col-lg-offset-1 contact'><p class='company'>" + r.msg[0].company + "</p><p><span>电话：</span>" + r.msg[0].tel + "</p><p><span>传真：</span>" + r.msg[0].fax + "</p><p><span>邮箱：</span>" + r.msg[0].email + "</p><p><span>地址：</span>" + r.msg[0].add + "</p>" +
                     "</div>" +
                     "</div>");
                 }
@@ -121,14 +121,16 @@
 <style>
     span {
         color: #9b761d;
-        font-weight: 600
     }
 
     .company {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 600;
-        margin-top: 10px;
+        margin-bottom: 25px;
+        font-family: "Microsoft YaHei"
     }
+
+
 
     .detail {
         display: none;
@@ -137,16 +139,26 @@
 
     .city_name {
         color: #000000 !important;
-        font-weight: 500;
         display: block;
         margin-left: 10px;
         float: left;
         font-size: 18px;
-        font-family: "Microsoft YaHei", sans-serif
+        font-family: "Microsoft YaHei"
     }
 
     .city_name:hover {
         cursor: pointer
+    }
+
+    .contact p span{
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Microsoft YaHei";
+    }
+
+    .contact p{
+        font-weight: 600;
+        font-family: "Microsoft YaHei";
     }
 </style>
 <body>

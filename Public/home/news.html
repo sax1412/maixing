@@ -83,7 +83,7 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1'>" + r.msg[i].time + "</div>" +
+                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1' style='padding-top: 2px;'><span style='font-size: 16px'>" + r.msg[i].time1 + "</span><br><span style='font-size: 14px;'>" + r.msg[i].time2 + "</span></div>" +
                         "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
                         "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
                         "<hr class='col-lg-10 col-lg-offset-1'>");
@@ -97,7 +97,7 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1'>" + r.msg[i].time + "</div>" +
+                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1' style='text-align: center'><span style='font-size: 16px'>" + r.msg[i].time1 + "</span><br><span style='font-size: 14px;'>" + r.msg[i].time2 + "</span></div>" +
                         "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
                         "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
                         "<hr class='col-lg-10 col-lg-offset-1'>");
@@ -118,7 +118,7 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1'>" + r.msg[i].time + "</div>" +
+                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1' style='text-align: center'><span style='font-size: 16px'>" + r.msg[i].time1 + "</span><br><span style='font-size: 14px;'>" + r.msg[i].time2 + "</span></div>" +
                         "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
                         "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
                         "<hr class='col-lg-10 col-lg-offset-1'>");
@@ -139,8 +139,10 @@
    }
 </script>
 <style>
+    .title{font-family: "Microsoft YaHei"; font-size: 18px; font-weight: 600 !important;}
     #news_list{height: 1000px; overflow-y: hidden;}
     #show,#up:hover{cursor: pointer}
+    .content{margin-top: -5px; font-family: "Microsoft YaHei"; font-size: 14px;}
 </style>
 <body>
 <div class="container" style="margin-top: 10px;width: 100% !important;">
