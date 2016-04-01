@@ -102,6 +102,7 @@
             $("#team").css('color', '#9b761d');
         }
         if(aQuery.indexOf("status")>0){
+            $('#img img').attr('src','/Public/home/images/team_en.jpg');
             $('#bottom').empty();
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
             "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
@@ -201,7 +202,7 @@
 </div>
 <div class="container" style="margin-top: -50px;">
     <div class="row">
-        <div class="col-lg-3 col-lg-offset-1">
+        <div class="col-lg-3 col-lg-offset-1" id="img">
             <img src="/Public/home/images/team.jpg" style="opacity:0.9;-webkit-opacity:0.9;">
         </div>
         <div class="col-lg-6 " id="team_intro">
