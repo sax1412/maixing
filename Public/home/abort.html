@@ -97,7 +97,7 @@
                 success: function (r) {
                     var length = r.msg.length;
                     for (var i = 0; i < length; i++) {
-                        $('#menu').append("<div class='menu' style='width: 180px;' onclick='menu_detail(this," + r.msg[i].id + ")'>" + r.msg[i].menu + "<br><span style='font-size: 12px'>" + r.msg[i].english + "</span></div>");
+                        $('#menu').append("<div class='menu' style='width: 180px; ' onclick='menu_detail(this," + r.msg[i].id + ")'>" + r.msg[i].menu + "<br><span style='font-size: 12px'>" + r.msg[i].english + "</span></div>");
                     }
                 }
             });
@@ -135,6 +135,9 @@
     }
 </script>
 <style>
+    ul li a{
+        color: #4c4c4c;
+    }
     pre {
         background-color: #ffffff;
         border: 0;
