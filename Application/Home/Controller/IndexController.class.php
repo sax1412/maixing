@@ -46,7 +46,10 @@ class IndexController extends Controller
             $list = D('News')->where($map)->select();
             $list = array_values($list);
             foreach ($list as &$v) {
-                $v['time'] = date('Y/m/d', $v['time']);
+                $time = date('Y/m/d', $v['time']);
+                $time1 = explode('/', $time);
+                $v['time1'] = $time1[0];
+                $v['time2'] = $time1[1] . '/' . $time1[2];
             }
         } else {
             if ($status) {
@@ -57,7 +60,10 @@ class IndexController extends Controller
 
             $list = array_values($list);
             foreach ($list as &$v) {
-                $v['time'] = date('Y/m/d', $v['time']);
+                $time = date('Y/m/d', $v['time']);
+                $time1 = explode('/', $time);
+                $v['time1'] = $time1[0];
+                $v['time2'] = $time1[1] . '/' . $time1[2];
             }
         }
         json_out_msg($list);

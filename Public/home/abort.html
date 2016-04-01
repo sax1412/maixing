@@ -97,7 +97,7 @@
                 success: function (r) {
                     var length = r.msg.length;
                     for (var i = 0; i < length; i++) {
-                        $('#menu').append("<div class='menu' style='width: 180px;' onclick='menu_detail(this," + r.msg[i].id + ")'>" + r.msg[i].menu + "<br>" + r.msg[i].english + "</div>");
+                        $('#menu').append("<div class='menu' style='width: 180px;' onclick='menu_detail(this," + r.msg[i].id + ")'>" + r.msg[i].menu + "<br><span style='font-size: 12px'>" + r.msg[i].english + "</span></div>");
                     }
                 }
             });
@@ -116,10 +116,19 @@
             },
             success: function (r) {
                 var len = r.msg.content.length;
-                for (var i = 0; i < len; i++) {
-                    $('#detail').append("<div class='col-lg-12' style='padding-bottom: 20px;'>" +
-                    "<div class='col-lg-1'><img style='margin-top: 5px;' src='/Public/home/images/1.jpg'></div><div class='title'>" + r.msg.content[i][0] + "</div>" +
-                    "<div class='content col-lg-offset-1' style='margin-top: 10px;'><pre style='font-size: 14px;text-align: left !important; padding: 0'>" + r.msg.content[i][1] + "</pre><div style='width:105%;height:20px;margin-left:-5%;border-bottom: 1px #cfcfcf solid'></div></div></div>");
+                if (aQuery.indexOf("status") > 0){
+                    for (var i = 0; i < len; i++) {
+                        $('#detail').append("<div class='col-lg-12' style='padding-bottom: 20px;'>" +
+                        "<div class='col-lg-1'><img style='margin-top: 5px;' src='/Public/home/images/1.jpg'></div><div class='title'>" + r.msg.content[i][2] + "</div>" +
+                        "<div class='content col-lg-offset-1' style='margin-top: 10px;'><pre style='font-size: 14px;text-align: left !important; padding: 0'>" + r.msg.content[i][1] + "</pre><div style='width:105%;height:20px;margin-left:-5%;border-bottom: 1px #cfcfcf solid'></div></div></div>");
+                    }
+                }else{
+                    for (var i = 0; i < len; i++) {
+                        $('#detail').append("<div class='col-lg-12' style='padding-bottom: 20px;'>" +
+                        "<div class='col-lg-1'><img style='margin-top: 5px;' src='/Public/home/images/1.jpg'></div><div class='title'>" + r.msg.content[i][0] + "</div>" +
+                        "<div class='en col-lg-offset-1'>" + r.msg.content[i][2] + "</div>"+
+                        "<div class='content col-lg-offset-1' style='margin-top: 10px;'><pre style='font-size: 14px;text-align: left !important; padding: 0'>" + r.msg.content[i][1] + "</pre><div style='width:105%;height:20px;margin-left:-5%;border-bottom: 1px #cfcfcf solid'></div></div></div>");
+                    }
                 }
             }
         })
@@ -163,12 +172,14 @@
     }
 
     .en {
+        margin-top: 5px;
         font-size: 14px;
         color: #9b761d;
         font-family: "Microsoft YaHei";
     }
 
     .content {
+        padding-top: 15px;
         font-size: 14px;
         font-family: "Microsoft YaHei";
     }
@@ -209,9 +220,9 @@
                 麦星寄语
             </div>
             <div class="col-lg-8 col-lg-offset-2" style="margin-top: 10px; text-align: center">
-                <hr style="border-color: #525c75;width: 20%;margin-left:20%;float: left">
+                <hr style="border-color: #525c75;width: 40%;float: left">
                 <p style="color: #9b761d;padding-top:10px;font-weight:600;float: left;width: 20%">&nbsp;&nbsp;&nbsp;&nbsp;Message&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <hr style="border-color: #525c75;width: 20%;float: left">
+                <hr style="border-color: #525c75;width: 40%;float: left">
             </div>
             <div class="col-lg-12" id="content"
                  style="line-height:40px;margin-top:10px;font-size: 16px; text-align: center; font-family: 'Microsoft YaHei', sans-serif">
