@@ -105,6 +105,8 @@
     });
 
     function menu_detail(ids,id) {
+        $('.menu').css('background-color','#f9f9f9');
+        $('.menu').css('color','#000');
         $(ids).css('background-color','#b3b3b3');
         $(ids).css('color','#FFFFFF');
         $('#detail').empty();
@@ -115,6 +117,7 @@
                 "id": id
             },
             success: function (r) {
+                var aQuery = window.location.href;
                 var len = r.msg.content.length;
                 if (aQuery.indexOf("status") > 0){
                     for (var i = 0; i < len; i++) {
@@ -165,8 +168,8 @@
 
     .menu:hover {
         cursor: pointer;
-        background-color: #b3b3b3;
-        color: #fff;
+        background-color: #b3b3b3 !important;
+        color: #fff !important;
     }
 
     .title {
