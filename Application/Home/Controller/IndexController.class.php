@@ -23,13 +23,18 @@ class IndexController extends Controller
 
     public function city()
     {
+        $str = $_SERVER['HTTP_USER_AGENT'];
         $status = I('status');
         if ($status) {
             $list = D('Contact')->where(['zn_en' => 0])->select();
         } else {
             $list = D('Contact')->where(['zn_en' => 1])->select();
         }
-
+        if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
+            foreach ($list as &$v) {
+                $v['agent'] = 1;
+            }
+        }
         json_out_msg($list);
     }
 
@@ -87,13 +92,16 @@ class IndexController extends Controller
 
     public function team()
     {
+        $str = $_SERVER['HTTP_USER_AGENT'];
         $status = I('status');
         if ($status) {
             $list = D('Team')->where(['show' => 1, 'zn_en' => 0])->find();
         } else {
             $list = D('Team')->where(['show' => 1, 'zn_en' => 1])->find();
         }
-
+        if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
+            $list['agent'] = 1;
+        }
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
     }
@@ -108,13 +116,16 @@ class IndexController extends Controller
 
     public function abort()
     {
+        $str = $_SERVER['HTTP_USER_AGENT'];
         $status = I('status');
         if ($status) {
             $list = D('Abort')->where(['show' => 1, 'zn_en' => 0])->find();
         } else {
             $list = D('Abort')->where(['show' => 1, 'zn_en' => 1])->find();
         }
-
+        if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
+            $list['agent'] = 1;
+        }
         json_out_msg($list);
     }
 
