@@ -97,9 +97,9 @@ class NewsController extends Controller
                 $res['show'] = '否';
             }
             if ($res['zn_en'] == 1) {
-                $res['zn_en'] = '是';
+                $res['zn_en'] = '中文';
             } else {
-                $res['zn_en'] = '否';
+                $res['zn_en'] = '英文';
             }
             json_out_msg($res);
         } else {
