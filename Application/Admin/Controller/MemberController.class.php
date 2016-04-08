@@ -51,7 +51,7 @@ class MemberController extends Controller
                 json_die('未知错误');
             }
         } else {
-            json_die('内容不得为空');
+            json_die('内容不得为空!');
         }
 
     }
@@ -96,9 +96,9 @@ class MemberController extends Controller
                 $res['show'] = '否';
             }
             if ($res['zn_en'] == 1) {
-                $res['zn_en'] = '是';
+                $res['zn_en'] = '中文';
             } else {
-                $res['zn_en'] = '否';
+                $res['zn_en'] = '英文';
             }
             json_out_msg($res);
         } else {
