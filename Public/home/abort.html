@@ -10,7 +10,7 @@
 <style>
     ul li {
         float: right;
-        margin-left: 30px;
+        margin-left: 50px;
         margin-top: 10px;
     }
 
@@ -50,12 +50,12 @@
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
             "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
             $('#top').empty();
-            $('#top').append("<div style='text-align: right'><a href='index.html?status=1' id='index' style='text-decoration: none;color: #000'>Home</a>&nbsp;&nbsp;<a href='abort.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='abort.html?status=1' style='text-decoration: none; color: #000'>English</a>" +
+            $('#top').append("<div style='text-align: right'><a href='abort.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='abort.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
             "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>Contact Us</a></li>" +
             "<li><a href='news.html?status=1' style='text-decoration: none;' id='news'>News</a></li>" +
             "<li><a href='#' style='text-decoration: none;'>Investment Case</a></li>" +
             "<li><a href='team.html?status=1' style='text-decoration: none;' id='team'>Investment Team</a></li>" +
-            "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>About Us</a></li></ul>");
+            "<li><a href='abort.html?status=1' style='text-decoration: none;color: #9b761d' id='abort'>About Us</a></li></ul>");
             $.ajax({
                 "url": '/home/index/abort',
                 "dataType": 'json',
@@ -63,7 +63,7 @@
                     "status": 1
                 },
                 success: function (r) {
-                    var content = '<pre>' + r.msg.content + '</pre>';
+                    var content = '<pre style="line-height: 34px;">' + r.msg.content + '</pre>';
                     $('#content').html(content);
                     if (r.msg.agent == 1) {
                         $('#title').css('margin-left', '8.33333333%');
@@ -92,7 +92,7 @@
                 "url": '/home/index/abort',
                 "dataType": 'json',
                 success: function (r) {
-                    var content = '<pre>' + r.msg.content + '</pre>';
+                    var content = '<pre style="line-height: 34px;">' + r.msg.content + '</pre>';
                     $('#content').html(content);
                     if (r.msg.agent == 1) {
                         $('#title').css('margin-left', '8.33333333%');
@@ -147,6 +147,14 @@
                 }
             }
         })
+    }
+    function home(){
+        var aQuery = window.location.href;  //取得Get参数
+        if(aQuery.indexOf("status")>0){
+            window.location.href='index.html?status=1';
+        }else{
+            window.location.href='index.html';
+        }
     }
 </script>
 <style>
@@ -309,10 +317,10 @@
 <div class="container" style="margin-top: 10px;width: 100% !important;">
     <div class="row">
         <div class="col-lg-4">
-            <img id="log" onclick="window.location.href='index.html'" style="padding-top: 5px;" src="/Public/home/images/logo.jpg">
+            <img id="log" onclick="home()" style="padding-top: 5px;" src="/Public/home/images/logo.jpg">
         </div>
         <div class="col-lg-8" id="top">
-            <div style="text-align: right"><a href="abort.html">中文</a>&nbsp;|&nbsp;<a
+            <div style="text-align: right"><a href="abort.html" style="color: #9b761d">中文</a>&nbsp;|&nbsp;<a
                     href="abort.html?status=1">English</a>
             </div>
             <ul style="list-style: none;">
@@ -337,7 +345,7 @@
         </div>
         <div id="detail" class="col-lg-8" style="margin-top: 120px;">
             <div class="col-lg-8 col-lg-offset-2" id="title"
-                 style="font-size: 24px; text-align: center; color:#525c75;font-weight: 600;font-family: 'Microsoft YaHei'">
+                 style="font-size: 24px; text-align: center; color:#4c4c4c;font-weight: 600;font-family: 'Microsoft YaHei'">
                 麦星寄语
             </div>
             <div class="col-lg-8 col-lg-offset-2" id="contents" style="margin-top: 10px; text-align: center">

@@ -10,7 +10,7 @@
 <style>
     ul li {
         float: right;
-        margin-left: 30px;
+        margin-left: 50px;
         margin-top: 10px;
     }
 
@@ -24,20 +24,23 @@
         color: #9b761d
     }
 
-    #top div a{
+    #top div a {
         font-family: "Microsoft YaHei";
-        text-decoration: none;font-size:12px;color: #000;
+        text-decoration: none;
+        font-size: 12px;
+        color: #000;
     }
-    #bottom{
+
+    #bottom {
         font-size: 12px;
         font-family: "Microsoft YaHei";
     }
 </style>
 <script>
     $(function () {
-        $("#news").css('color','#9b761d');
+        $("#news").css('color', '#9b761d');
         var r = window.location.search;
-        r = r.substring(r.indexOf("?")+4,r.length);
+        r = r.substring(r.indexOf("?") + 4, r.length);
         var id = r;
         $.ajax({
             "url": '/home/index/news_detail',
@@ -46,23 +49,38 @@
             },
             "dataType": 'json',
             success: function (r) {
-                var content1='<pre>'+r.msg.content1+'</pre>';
-                var content2='<pre>'+r.msg.content2+'</pre>';
-                var content3='<pre>'+r.msg.content3+'</pre>';
+                var content1 = '<pre>' + r.msg.content1 + '</pre>';
+                var content2 = '<pre>' + r.msg.content2 + '</pre>';
+                var content3 = '<pre>' + r.msg.content3 + '</pre>';
                 $('#title').text(r.msg.title);
                 $('#time').text(r.msg.time);
                 $('#from').text(r.msg.from);
                 $('#auth').text(r.msg.auth);
-                $('#img1').attr('src','../..'+r.msg.img1);
+                if (r.msg.img1) {
+                    $('#img1').attr('src', '../..' + r.msg.img1);
+                }
+                else {
+                    $('#img1').css('display','none');
+                }
                 $('#content1').html(content1);
-                $('#img2').attr('src','../..'+r.msg.img2);
+                if (r.msg.img2) {
+                    $('#img2').attr('src', '../..' + r.msg.img2);
+                }
+                else {
+                    $('#img2').css('display','none');
+                }
                 $('#content2').html(content2);
-                $('#img3').attr('src','../..'+r.msg.img3);
+                if (r.msg.img3) {
+                    $('#img3').attr('src', '../..' + r.msg.img3);
+                }
+                else {
+                    $('#img3').css('display','none');
+                }
                 $('#content3').html(content3);
             }
         });
     });
-    function chinese(){
+    function chinese() {
         $('#bottom').empty();
         $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
         "麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>法律说明</a></div>");
@@ -75,23 +93,32 @@
         "<li><a href='abort.html' style='text-decoration: none;' id='abort'>关于我们</a></li></ul>");
     }
 
-    function english(){
+    function english() {
         $('#bottom').empty();
         $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;font-weight: 600;margin-top: 20px;margin-bottom: 20px;'>" +
         "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
         $('#top').empty();
-        $('#top').append("<div style='text-align: right'><a href='index.html?status=1' id='index' style='text-decoration: none;color: #000'>Home</a>&nbsp;&nbsp;<a href='#' onclick='chinese()' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='#' onclick='english()' style='text-decoration: none; color: #000'>English</a>" +
+        $('#top').append("<div style='text-align: right'><a href='#' onclick='chinese()' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='#' onclick='english()' style='text-decoration: none; color: #9b761d'>English</a>" +
         "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>Contact Us</a></li>" +
-        "<li><a href='news.html?status=1' style='text-decoration: none;' id='news'>News</a></li>" +
+        "<li><a href='news.html?status=1' style='text-decoration: none;color: #9b761d' id='news'>News</a></li>" +
         "<li><a href='#' style='text-decoration: none;'>Investment Case</a></li>" +
         "<li><a href='team.html?status=1' style='text-decoration: none;' id='team'>Investment Team</a></li>" +
         "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>About Us</a></li></ul>");
     }
+    function home(){
+        var aQuery = window.location.href;  //取得Get参数
+        if(aQuery.indexOf("status")>0){
+            window.location.href='index.html?status=1';
+        }else{
+            window.location.href='index.html';
+        }
+    }
 </script>
 <style>
-    ul li a{
+    ul li a {
         color: #4c4c4c;
     }
+
     pre {
         background-color: #ffffff;
         border: 0;
@@ -99,17 +126,26 @@
         text-align: center;
         font-family: 'Microsoft YaHei', sans-serif
     }
-    #from1{margin-left: -5%}
-    #auth1{margin-left: -2%}
 
-    #content1,#content2,#content3{
+    #from1 {
+        margin-left: -5%
+    }
+
+    #auth1 {
+        margin-left: -2%
+    }
+
+    #content1, #content2, #content3 {
         padding: 1px;
     }
-    #log:hover{
+
+    #log:hover {
         cursor: pointer;
     }
+
     .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {
-        float: left; position: relative;
+        float: left;
+        position: relative;
     }
 
     .col-lg-12 {
@@ -212,10 +248,11 @@
 <div class="container" style="margin-top: 10px;width: 100% !important;">
     <div class="row">
         <div class="col-lg-4">
-            <img id="log" onclick="window.location.href='index.html'" style="padding-top: 5px;" src="/Public/home/images/logo.jpg">
+            <img id="log" onclick="home()" style="padding-top: 5px;"
+                 src="/Public/home/images/logo.jpg">
         </div>
         <div class="col-lg-8" id="top">
-            <div style="text-align: right"><a href="#" >中文</a>&nbsp;|&nbsp;<a href="#" onclick="english()">English</a>
+            <div style="text-align: right"><a href="news.html"style="color: #9b761d">中文</a>&nbsp;|&nbsp;<a href="news.html?status=1" onclick="english()">English</a>
             </div>
             <ul style="list-style: none;">
                 <li><a href="contact.html" style="text-decoration: none;" id="contact">联系我们</a></li>
@@ -238,8 +275,8 @@
     </div>
     <div class="row" style="font-size: 12px;color: #999;margin-top: 10px;">
         <div class="col-lg-2 col-lg-offset-2" id="time"></div>
-        <div class="col-lg-1 " id="from1">来源：<span id="from"></span></div>
-        <div class="col-lg-2 "id="auth1">作者：<span id="auth"></span></div>
+        <div class=" " style="float: left;" id="from1">来源：<span id="from"></span></div>
+        <div class=" " style="width: 20%;margin-left: 1%;float: left" id="auth1">作者：<span id="auth"></span></div>
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-lg-8 col-lg-offset-2">
@@ -276,7 +313,8 @@
     <div class="row" id="bottom">
         <div class="col-lg-12"
              style="color: #ffffff;text-align: center;font-family: 'Microsoft YaHei';font-size: 12px;margin-top: 20px;margin-bottom: 20px;">
-            麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©&nbsp;&nbsp;|&nbsp;&nbsp;<a href="law.html" style="text-decoration: none;color: #fff">法律说明</a>
+            麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©&nbsp;&nbsp;|&nbsp;&nbsp;<a href="law.html"
+                                                                         style="text-decoration: none;color: #fff">法律说明</a>
         </div>
     </div>
 </div>
