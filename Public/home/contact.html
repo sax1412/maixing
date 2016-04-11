@@ -86,7 +86,7 @@
                     $('#city_list').find('span').first().css('border-bottom','2px #9b761d solid');
                     $('#city_one').append("<div class='row'><div class='col-lg-4 col-lg-offset-1'><img style='width: 110%' src='../.." + r.msg[0].img + "'>" +
                     "</div>" +
-                    "<div class='col-lg-5 contact' style='padding-left: 50px;margin-top: 30px;'><p class='company'>" + r.msg[0].company + "</p><p><span>电话：</span>" + r.msg[0].tel + "</p><p><span>传真：</span>" + r.msg[0].fax + "</p><p><span>邮箱：</span>" + r.msg[0].email + "</p><p><span>地址：</span>" + r.msg[0].add + "</p>" +
+                    "<div class='col-lg-5 col-lg-offset-1 contact' style='padding-left: 50px;margin-top: 30px;'><p class='company'>" + r.msg[0].company + "</p><p><span>电话：</span>" + r.msg[0].tel + "</p><p><span>传真：</span>" + r.msg[0].fax + "</p><p><span>邮箱：</span>" + r.msg[0].email + "</p><p><span>地址：</span>" + r.msg[0].add + "</p>" +
                     "</div>" +
                     "</div>");
                     if (r.msg[0].agent == 1) {
@@ -160,8 +160,8 @@
     .city_name {
         color: #000000 !important;
         display: block;
-        margin-left: 14%;
-        float: left;
+        margin-right: 0;
+        float: right;
         font-size: 18px;
         font-family: "Microsoft YaHei"
     }
@@ -189,7 +189,7 @@
     }
 
     #city_list span{
-        width: 28%;
+        margin-right: 20px;
         text-align: center;
     }
     .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {
