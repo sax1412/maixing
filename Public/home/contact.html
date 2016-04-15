@@ -74,7 +74,7 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>");
+                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;");
                         $('#city').append("<div class='row detail'>" +
                         "<div class='hidden'>" + r.msg[i].city + "</div>" +
                         "<div class='col-lg-4 col-lg-offset-1'><img style='width: 110%' src='../.." + r.msg[i].img + "'>" +
@@ -102,7 +102,7 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>");
+                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;");
                         $('#city').append("<div class='row detail'>" +
                         "<div class='hidden'>" + r.msg[i].city + "</div>" +
                         "<div class='col-lg-5 col-lg-offset-1'><img style='width: 100%' src='../.." + r.msg[i].img + "'>" +
@@ -329,7 +329,7 @@
     </div>
 </div>
 <div class="container" style="margin-top: 10px;">
-    <div class="row">
+    <div class="row" style="padding-left: 5%">
         <div class="col-lg-2 col-lg-offset-5" id="city_list"></div>
     </div>
 </div>
