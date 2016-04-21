@@ -180,25 +180,58 @@ class IndexController extends Controller
         json_out_msg($list);
     }
 
-    public function case_find(){
-        $w=I('w');
-        switch($w){
-            case '医疗':$list = D('Invest')->where(['zn_en' => 1,'trade'=>1])->select();break;
-            case '消费':$list = D('Invest')->where(['zn_en' => 1,'trade'=>2])->select();break;
-            case '高新技术':$list = D('Invest')->where(['zn_en' => 1,'trade'=>3])->select();break;
-            case '中国':$list = D('Invest')->where(['zn_en' => 1,'area'=>1])->select();break;
-            case '美国':$list = D('Invest')->where(['zn_en' => 1,'area'=>2])->select();break;
-            case '前期':$list = D('Invest')->where(['zn_en' => 1,'stage'=>1])->select();break;
-            case '成长前期':$list = D('Invest')->where(['zn_en' => 1,'stage'=>2])->select();break;
-            case '成长期':$list = D('Invest')->where(['zn_en' => 1,'stage'=>3])->select();break;
-            case 'Medical care':$list = D('Invest')->where(['zn_en' => 0,'trade'=>1])->select();break;
-            case 'Consumption':$list = D('Invest')->where(['zn_en' => 0,'trade'=>2])->select();break;
-            case 'Hign technology':$list = D('Invest')->where(['zn_en' => 0,'trade'=>3])->select();break;
-            case 'China':$list = D('Invest')->where(['zn_en' => 0,'area'=>1])->select();break;
-            case 'America':$list = D('Invest')->where(['zn_en' => 0,'area'=>2])->select();break;
-            case 'Early stage':$list = D('Invest')->where(['zn_en' => 0,'stage'=>1])->select();break;
-            case 'Early growth':$list = D('Invest')->where(['zn_en' => 0,'stage'=>2])->select();break;
-            case 'Growth':$list = D('Invest')->where(['zn_en' => 0,'stage'=>3])->select();break;
+    public function case_find()
+    {
+        $w = I('w');
+        switch ($w) {
+            case '医疗':
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 1])->select();
+                break;
+            case '消费':
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 2])->select();
+                break;
+            case '高新技术':
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3])->select();
+                break;
+            case '中国':
+                $list = D('Invest')->where(['zn_en' => 1, 'area' => 1])->select();
+                break;
+            case '美国':
+                $list = D('Invest')->where(['zn_en' => 1, 'area' => 2])->select();
+                break;
+            case '前期':
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1])->select();
+                break;
+            case '成长前期':
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 2])->select();
+                break;
+            case '成长期':
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 3])->select();
+                break;
+            case 'Medical care':
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 1])->select();
+                break;
+            case 'Consumption':
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 2])->select();
+                break;
+            case 'Hign technology':
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3])->select();
+                break;
+            case 'China':
+                $list = D('Invest')->where(['zn_en' => 0, 'area' => 1])->select();
+                break;
+            case 'America':
+                $list = D('Invest')->where(['zn_en' => 0, 'area' => 2])->select();
+                break;
+            case 'Early stage':
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 1])->select();
+                break;
+            case 'Early growth':
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 2])->select();
+                break;
+            case 'Growth':
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 3])->select();
+                break;
         }
         $str = $_SERVER['HTTP_USER_AGENT'];
         if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
@@ -213,10 +246,17 @@ class IndexController extends Controller
         $invest = D('Invest')->where(['id' => $id])->find();
         if ($invest['stage'] == 1) {
             $invest['stage'] = '早期';
-        } elseif($invest['stage'] == 2){
+        } elseif ($invest['stage'] == 2) {
             $invest['stage'] = '成长早期';
-        }else {
+        } else {
             $invest['stage'] = '成长期';
+        }
+        if ($invest['exit'] == 0) {
+            unset($invest['exit_time']);
+            unset($invest['exit_way']);
+            unset($invest['reward']);
+            unset($invest['stock']);
+            unset($invest['addr']);
         }
         json_out_msg($invest);
     }

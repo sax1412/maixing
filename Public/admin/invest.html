@@ -47,6 +47,7 @@
                     $('#exit_time').val(r.msg.exit_time);
                     $('#exit_way').val(r.msg.exit_way);
                     $('#reward').val(r.msg.reward);
+                    $('#up_stock').val(r.msg.up_stock);
                     $('#show').val(r.msg.show);
                     $('#zn_en').val(r.msg.zn_en);
                     $('#insert').text('保存');
@@ -69,6 +70,7 @@
             var exit_time = $('#exit_time').val();
             var exit_way = $('#exit_way').val();
             var reward = $('#reward').val();
+            var up_stock = $('#up_stock').val();
             var show = $('#show').val();
             var zn_en = $('#zn_en').val();
             $.ajax({
@@ -82,18 +84,19 @@
                     "company_all": company_all,
                     "stock": stock,
                     "area": area,
-                    "trade":trade,
-                    "stage":stage,
-                    "length":length,
-                    "web":web,
-                    "addr":addr,
-                    "description":description,
-                    "exit":exit,
-                    "exit_time":exit_time,
-                    "exit_way":exit_way,
-                    "reward":reward,
-                    "show":show,
-                    "zn_en":zn_en
+                    "trade": trade,
+                    "stage": stage,
+                    "length": length,
+                    "web": web,
+                    "addr": addr,
+                    "description": description,
+                    "exit": exit,
+                    "exit_time": exit_time,
+                    "exit_way": exit_way,
+                    "reward": reward,
+                    "up_stock":up_stock,
+                    "show": show,
+                    "zn_en": zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -123,6 +126,7 @@
             var exit_time = $('#exit_time').val();
             var exit_way = $('#exit_way').val();
             var reward = $('#reward').val();
+            var up_stock = $('#up_stock').val();
             var show = $('#show').val();
             var zn_en = $('#zn_en').val();
             if (button == '保存') {
@@ -138,18 +142,19 @@
                         "company_all": company_all,
                         "stock": stock,
                         "area": area,
-                        "trade":trade,
-                        "stage":stage,
-                        "length":length,
-                        "web":web,
-                        "addr":addr,
-                        "description":description,
-                        "exit":exit,
-                        "exit_time":exit_time,
-                        "exit_way":exit_way,
-                        "reward":reward,
-                        "show":show,
-                        "zn_en":zn_en
+                        "trade": trade,
+                        "stage": stage,
+                        "length": length,
+                        "web": web,
+                        "addr": addr,
+                        "description": description,
+                        "exit": exit,
+                        "up_stock":up_stock,
+                        "exit_time": exit_time,
+                        "exit_way": exit_way,
+                        "reward": reward,
+                        "show": show,
+                        "zn_en": zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -197,7 +202,7 @@
         text-align: center
     }
 
-    textarea{
+    textarea {
         height: 200px !important;
     }
 </style>
@@ -241,7 +246,8 @@
                         </ul>
                     </li>-->
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 团队管理 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <li><a href="team.html" data-original-title="Basic"><i
@@ -253,16 +259,18 @@
                         </ul>
                     </li>
                     <li class="active">
-                    <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
-                            class="hidden-minibar">  麦星投资 <span class="badge bg-primary pull-right">1</span></a>
-                    <ul>
-                        <li><a href="invest.html" data-original-title="Basic"><i
-                                class="fa fa-table"></i><span> 投资管理</span></a>
-                        </li>
-                    </ul>
-                </li>
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
+                                class="hidden-minibar">  麦星投资 <span class="badge bg-primary pull-right">1</span></a>
+                        <ul>
+                            <li><a href="invest.html" data-original-title="Basic"><i
+                                    class="fa fa-table"></i><span> 投资管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  新闻管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="news.html" data-original-title="Basic"><i
@@ -271,7 +279,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  关于我们 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <li><a href="abort.html" data-original-title="Basic"><i
@@ -283,7 +292,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 联系我们 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="contact.html" data-original-title="Basic"><i
@@ -325,7 +335,8 @@
                             <a class="btn btn-success" style="float: left"
                                onclick="$('input[id=lefile]').click();">上传</a>
                         </div>
-                        <label class="col-sm-1 control-label">股票代码</label>
+                        <label class="col-sm-1 control-label">交易股票</label>
+
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="stock" name="stock">
                         </div>
@@ -402,18 +413,30 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">退出方式</label>
 
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="exit_way" name="exit_way">
+                        <div class="col-sm-4">
+                            <select class="form-control" id="exit_way">
+                                <option>上市</option>
+                                <option>被强生公司收购</option>
+                            </select>
                         </div>
-                        <label class="col-sm-1 control-label">首页展示</label>
-                        <div class="col-sm-2">
+                        <label class="col-sm-1 control-label">上市股票</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="up_stock">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">首页展示</label>
+
+                        <div class="col-sm-4">
                             <select class="form-control" id="show">
                                 <option>是</option>
                                 <option>否</option>
                             </select>
                         </div>
                         <label class="col-sm-1 control-label">版式</label>
-                        <div class="col-sm-2">
+
+                        <div class="col-sm-4">
                             <select class="form-control" id="zn_en">
                                 <option>中文</option>
                                 <option>英文</option>
@@ -424,7 +447,7 @@
                         <label class="col-sm-2 control-label">投资收益</label>
 
                         <div class="col-sm-9">
-                                <textarea class="form-control" id="reward" name="reward"></textarea>
+                            <textarea class="form-control" id="reward" name="reward"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
