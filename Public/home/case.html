@@ -185,7 +185,16 @@
                 $('#invest_exit_way').text(r.msg.exit_way);
                 $('#invest_web').text(r.msg.web);
                 $('#invest_reward').text(r.msg.reward);
+                $('#invest_addr').text(r.msg.addr);
+                $('#up_stock').text(r.msg.up_stock);
                 $('#invest_intro').text(r.msg.description);
+                if(r.msg.exit==0){
+                    $('.exit').css('display','none');
+                }
+                if(r.msg.exit_way=='上市'){
+                    $('.up_stock').css('display','block');
+                    $('.addr').css('display','block');
+                }
             }
         });
     }
@@ -468,6 +477,9 @@
         background-color: #b0a065;
     }
 
+    .addr,.up_stock{
+        display: none;
+    }
 </style>
 <body>
 <div id="mask"
@@ -610,11 +622,13 @@
             <div class="col-lg-6" style="padding: 0;margin-top:10px;height:330px;overflow-y: scroll;width: 47.4% !important;  ">
                 <div class="col-lg-12" style="font-size: 16px;">投资阶段：<span id="invest_stage"></span></div>
                 <div class="col-lg-11" style="font-size: 16px;">投资时间：<span id="invest_time"></span></div>
-                <div class="col-lg-11" style="font-size: 16px;">退出时间：<span id="invest_exit_time"></span></div>
-                <div class="col-lg-11" style="font-size: 16px;">退出方式：<span id="invest_exit_way"></span></div>
-                <div class="col-lg-11" style="font-size: 16px;">投资收益：<span id="invest_reward"></span></div>
+                <div class="col-lg-11 exit" style="font-size: 16px;">退出时间：<span id="invest_exit_time"></span></div>
+                <div class="col-lg-11 exit" style="font-size: 16px;">退出方式：<span id="invest_exit_way"></span></div>
+                <div class="col-lg-11 exit" style="font-size: 16px;">投资收益：<span id="invest_reward"></span></div>
+                <div class="col-lg-11 exit addr" style="font-size: 16px;">上市地点：<span id="invest_addr"></span></div>
+                <div class="col-lg-11 exit up_stock" style="font-size: 16px;">上市股票：<span id="up_stock"></span></div>
                 <div class="col-lg-11" style="font-size: 16px;">公司网站：<span id="invest_web"></span></div>
-                <div class="col-lg-11" style="font-size: 16px;">香港联交所交易代码：<span id="invest_stock"></span></div>
+                <div class="col-lg-11 exit" style="font-size: 16px;">香港联交所交易代码：<span id="invest_stock"></span></div>
                 <div class="col-lg-11" id="invest_intro" style="font-size: 16px;"></div>
             </div>
         </div>
