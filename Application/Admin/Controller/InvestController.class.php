@@ -17,7 +17,11 @@ class InvestController extends Controller
         $data = D('Invest');
         $data->create();
         $zn_en = I('zn_en');
+        $show = I('show');
         $exit = I('exit');
+        $stage = I('stage');
+        $trade = I('trade');
+        $area = I('area');
         if (!$_SESSION['auth']) {
             redirect("/Public/admin/login.html");
         } else {
@@ -28,10 +32,34 @@ class InvestController extends Controller
         } else {
             $data->zn_en = 0;
         }
+        if ($show == '是') {
+            $data->show = 1;
+        } else {
+            $data->show = 0;
+        }
         if ($exit == '是') {
             $data->exit = 1;
         } else {
             $data->exit = 0;
+        }
+        if ($stage == '早期') {
+            $data->stage = 1;
+        } elseif ($stage == '成长早期') {
+            $data->stage = 2;
+        } else {
+            $data->stage = 3;
+        }
+        if ($area == '中国') {
+            $data->area = 1;
+        } else {
+            $data->area = 2;
+        }
+        if ($trade == '医疗') {
+            $data->trade = 1;
+        } elseif ($trade == '消费') {
+            $data->trade = 2;
+        } else {
+            $data->trade = 3;
         }
         $res = $data->add();
         if ($res) {
@@ -50,6 +78,18 @@ class InvestController extends Controller
                 $v['exit'] = '是';
             } else {
                 $v['exit'] = '否';
+            }
+            if ($v['stage'] == 1) {
+                $v['stage'] = '早期';
+            } elseif($v['stage'] == 2){
+                $v['stage'] = '成长早期';
+            }else {
+                $v['stage'] = '成长期';
+            }
+            if ($v['area'] == 1) {
+                $v['area'] = '中国';
+            } else {
+                $v['area'] = '美国';
             }
         }
         $out['aaData'] = $res;
@@ -84,6 +124,30 @@ class InvestController extends Controller
             } else {
                 $res['zn_en'] = '英文';
             }
+            if ($res['show'] == 1) {
+                $res['show'] = '是';
+            } else {
+                $res['show'] = '否';
+            }
+            if ($res['stage'] == 1) {
+                $res['stage'] = '早期';
+            } elseif($res['stage'] == 2){
+                $res['stage'] = '成长早期';
+            }else {
+                $res['stage'] = '成长期';
+            }
+            if ($res['area'] == 1) {
+                $res['area'] = '中国';
+            } else {
+                $res['area'] = '美国';
+            }
+            if ($res['trade'] == 1) {
+                $res['trade'] = '医疗';
+            } elseif($res['trade'] == 2){
+                $res['trade'] = '消费';
+            }else {
+                $res['trade'] = '高新技术';
+            }
             json_out_msg($res);
         } else {
             json_die('未知错误');
@@ -95,7 +159,11 @@ class InvestController extends Controller
         $data = D('Invest');
         $data->create();
         $zn_en = I('zn_en');
+        $show = I('show');
         $exit = I('exit');
+        $stage = I('stage');
+        $trade = I('trade');
+        $area = I('area');
         if (!$_SESSION['auth']) {
             redirect("/Public/admin/login.html");
         } else {
@@ -106,10 +174,34 @@ class InvestController extends Controller
         } else {
             $data->zn_en = 0;
         }
+        if ($show == '是') {
+            $data->show = 1;
+        } else {
+            $data->show = 0;
+        }
         if ($exit == '是') {
             $data->exit = 1;
         } else {
             $data->exit = 0;
+        }
+        if ($stage == '早期') {
+            $data->stage = 1;
+        } elseif ($stage == '成长早期') {
+            $data->stage = 2;
+        } else {
+            $data->stage = 3;
+        }
+        if ($area == '中国') {
+            $data->area = 1;
+        } else {
+            $data->area = 2;
+        }
+        if ($trade == '医疗') {
+            $data->trade = 1;
+        } elseif ($trade == '消费') {
+            $data->trade = 2;
+        } else {
+            $data->trade = 3;
         }
         $res = $data->save();
         if ($res) {
