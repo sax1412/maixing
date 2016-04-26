@@ -260,4 +260,11 @@ class IndexController extends Controller
         }
         json_out_msg($invest);
     }
+
+    public function member_detail()
+    {
+        $id = I('id');
+        $invest = D('Member')->where(['id' => $id])->find();
+        json_out_msg($invest);
+    }
 }
