@@ -48,7 +48,9 @@
             $('#menu img').click(function(){
                 window.location.href='abort.html?status=1';
             });
-            $('#title').text('Maision Message');
+            $('#title').text('Maision');
+            $('#hr').css('display','block');
+            $('#contents').css('display','none');
             $('#bottom').empty();
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
             "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
@@ -362,6 +364,9 @@
                 <hr style="border-color: #525c75;width: 40%;float: left">
                 <p style="color: #9b761d;padding-top:10px;font-weight:600;float: left;width: 20%;">&nbsp;&nbsp;&nbsp;&nbsp;Message&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <hr style="border-color: #525c75;width: 40%;float: left">
+            </div>
+            <div class="col-lg-8 col-lg-offset-2" id="hr" style="margin-top: 10px;display: none; text-align: center">
+                <hr style="border-color: #525c75;width: 100%;">
             </div>
             <div class="col-lg-12" id="content"
                  style="line-height:40px;margin-top:10px;font-size: 16px; text-align: center; font-family: 'Microsoft YaHei', sans-serif">
