@@ -23,7 +23,7 @@ class MenuController extends Controller
         $zn_en = I('zn_en');
         $len = count($title);
         $str = "";
-        if ($menu && $english ) {
+        if ($menu) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
@@ -130,7 +130,7 @@ class MenuController extends Controller
         $zn_en = I('zn_en');
         $len = count($title);
         $str = "";
-        if ($title && $english) {
+        if ($title) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
