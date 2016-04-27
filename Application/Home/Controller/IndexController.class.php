@@ -145,12 +145,7 @@ class IndexController extends Controller
     {
         $status = I('status');
         $id = I('id');
-        if ($status == 1) {
-            $res = D('Menu')->where(['id' => $id, 'zn_en' => 0])->find();
-        } else {
-            $res = D('Menu')->where(['id' => $id, 'zn_en' => 1])->find();
-        }
-
+        $res = D('Menu')->where(['id' => $id])->find();
         if ($res) {
             $content = $res['content'];
             $content = explode('*', $content);
@@ -168,8 +163,8 @@ class IndexController extends Controller
     public function case1()
     {
         $str = $_SERVER['HTTP_USER_AGENT'];
-        $status = I('status');
-        if ($status) {
+        $status = I('status/d');
+        if ($status == 1) {
             $list = D('Invest')->where(['show' => 1, 'zn_en' => 0])->select();
         } else {
             $list = D('Invest')->where(['show' => 1, 'zn_en' => 1])->select();

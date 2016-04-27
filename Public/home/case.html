@@ -90,85 +90,110 @@
             "<li><a href='case.html?status=1' style='text-decoration: none;color: #9b761d'>Investment Case</a></li>" +
             "<li><a href='team.html?status=1' style='text-decoration: none;' id='team'>Investment Team</a></li>" +
             "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>About Us</a></li></ul>");
-            $.ajax({
-                "url": '/home/index/case1',
-                "dataType": 'json',
-                "data": {
-                    "status": 1
-                },
-                success: function (r) {
-                    var len = r.msg.length;
-                    for (var i = 0; i < len; i++) {
-                        $('#detail').append("<div onclick='detail(this)'>" +
-                        "<img style='width: 100%' src='../.." + r.msg[i].img + "' ><p><span style='display: none'>" + r.msg[i].id + "</span>" + r.msg[i].company + "</p></div>");
-                    }
-                    var height = $(document.body).height();
-                    $('#mask').height(height);
-                }
-            });
+            index(1);
         } else {
             $('#menu img').click(function () {
                 window.location.href = 'case.html';
             });
             $('.menu_en').css('display', 'none');
             $('.menu_cn').css('display', 'block');
-            $.ajax({
-                "url": '/home/index/case1',
-                "dataType": 'json',
-                success: function (r) {
-                    var len = r.msg.length;
-                    for (var i = 0; i < len; i++) {
-                        $('#detail').append("<div onclick='detail(this)'>" +
-                        "<img style='width: 100%' src='../.." + r.msg[i].img + "'><p><span style='display: none'>" + r.msg[i].id + "</span>" + r.msg[i].company + "</p></div>");
-                    }
-                    var height = $(document.body).height();
-                    $('#mask').height(height);
-                }
-            });
-
+            index(0);
         }
+
         $('#industry,#industry_two').hover(function () {
             $('#industry_two').css('display', 'block');
+            $('#industry').css('background-color', '#c2c2c2');
+            $('#industry').css('color', '#fff');
         });
         $('#industry,#industry_two').mouseleave(function () {
             $('#industry_two').css('display', 'none');
+            $('#industry').css('background-color', '#f9f9f9');
+            $('#industry').css('color', '#4c4c4c');
         });
         $('#stage,#stage_two').hover(function () {
             $('#stage_two').css('display', 'block');
+            $('#stage').css('background-color', '#c2c2c2');
+            $('#stage').css('color', '#fff');
         });
         $('#stage,#stage_two').mouseleave(function () {
             $('#stage_two').css('display', 'none');
+            $('#stage').css('background-color', '#f9f9f9');
+            $('#stage').css('color', '#4c4c4c');
         });
         $('#area,#area_two').hover(function () {
             $('#area_two').css('display', 'block');
+            $('#area').css('background-color', '#c2c2c2');
+            $('#area').css('color', '#fff');
         });
         $('#area,#area_two').mouseleave(function () {
             $('#area_two').css('display', 'none');
+            $('#area').css('background-color', '#f9f9f9');
+            $('#area').css('color', '#4c4c4c');
         });
         $('#industry_en,#industry_two_en').hover(function () {
             $('#industry_two_en').css('display', 'block');
+            $('#industry_en').css('background-color', '#c2c2c2');
+            $('#industry_en').css('color', '#fff');
         });
         $('#industry_en,#industry_two_en').mouseleave(function () {
             $('#industry_two_en').css('display', 'none');
+            $('#industry_en').css('background-color', '#f9f9f9');
+            $('#industry_en').css('color', '#4c4c4c');
         });
         $('#stage_en,#stage_two_en').hover(function () {
             $('#stage_two_en').css('display', 'block');
+            $('#stage_en').css('background-color', '#c2c2c2');
+            $('#stage_en').css('color', '#fff');
         });
         $('#stage_en,#stage_two_en').mouseleave(function () {
             $('#stage_two_en').css('display', 'none');
+            $('#stage_en').css('background-color', '#f9f9f9');
+            $('#stage_en').css('color', '#4c4c4c');
         });
         $('#area_en,#area_two_en').hover(function () {
             $('#area_two_en').css('display', 'block');
+            $('#area_en').css('background-color', '#c2c2c2');
+            $('#area_en').css('color', '#fff');
         });
         $('#area_en,#area_two_en').mouseleave(function () {
             $('#area_two_en').css('display', 'none');
+            $('#area_en').css('background-color', '#f9f9f9');
+            $('#area_en').css('color', '#4c4c4c');
         });
     });
+
+    function index(status) {
+        $('#detail').empty();
+        $.ajax({
+            "url": '/home/index/case1',
+            "dataType": 'json',
+            "data": {
+                "status": status
+            },
+            success: function (r) {
+                var len = r.msg.length;
+                for (var i = 0; i < len; i++) {
+                    $('#detail').append("<div onclick='detail(this)'>" +
+                    "<img style='width: 100%' src='../.." + r.msg[i].img + "' ><p><span style='display: none'>" + r.msg[i].id + "</span>" + r.msg[i].company + "</p></div>");
+                }
+                var height = $(document.body).height();
+                $('#mask').height(height);
+            }
+        });
+    }
 
     function detail(id) {
         $('#invest').css('display', 'block');
         $('#mask').css('display', 'block');
         var id = $(id).children('p').children('span').text();
+        var aQuery = window.location.href;
+        if (aQuery.indexOf("status") > 0) {
+            $('#en').css('display','block');
+            $('#ch').css('display','none');
+        } else {
+            $('#en').css('display','none');
+            $('#ch').css('display','block');
+        }
         $.ajax({
             url: '/home/index/case_detail',
             data: {
@@ -176,25 +201,26 @@
             },
             dataType: 'json',
             success: function (r) {
-                $('#invest_img').attr('src', r.msg.img);
-                $('#invest_name').text(r.msg.company_all);
-                $('#invest_stage').text(r.msg.stage);
-                $('#invest_time').text(r.msg.length);
-                $('#invest_stock').text(r.msg.stock);
-                $('#invest_exit_time').text(r.msg.exit_time);
-                $('#invest_exit_way').text(r.msg.exit_way);
-                $('#invest_web').text(r.msg.web);
-                $('#invest_web').attr('href',"https://"+r.msg.web);
-                $('#invest_reward').text(r.msg.reward);
-                $('#invest_addr').text(r.msg.addr);
-                $('#up_stock').text(r.msg.up_stock);
-                $('#invest_intro').text(r.msg.description);
-                if(r.msg.exit==0){
-                    $('.exit').css('display','none');
+                var content = '<pre>' + r.msg.description + '</pre>';
+                $('#invest_img,#invest_img_en').attr('src', r.msg.img);
+                $('#invest_name,#invest_name_en').text(r.msg.company_all);
+                $('#invest_stage,#invest_stage_en').text(r.msg.stage);
+                $('#invest_time,#invest_time_en').text(r.msg.length);
+                $('#invest_stock,#invest_stock_en').text(r.msg.stock);
+                $('#invest_exit_time,#invest_exit_time_en').text(r.msg.exit_time);
+                $('#invest_exit_way,#invest_exit_way_en').text(r.msg.exit_way);
+                $('#invest_web,#invest_web_en').text(r.msg.web);
+                $('#invest_web,#invest_web_en').attr('href', "https://" + r.msg.web);
+                $('#invest_reward,#invest_reward_en').text(r.msg.reward);
+                $('#invest_addr,#invest_addr_en').text(r.msg.addr);
+                $('#up_stock,#up_stock_en').text(r.msg.up_stock);
+                $('#invest_intro,#invest_intro_en').html(content);
+                if (r.msg.exit == 0) {
+                    $('.exit').css('display', 'none');
                 }
-                if(r.msg.exit_way=='上市'){
-                    $('.up_stock').css('display','block');
-                    $('.addr').css('display','block');
+                if (r.msg.exit_way == '上市') {
+                    $('.up_stock').css('display', 'block');
+                    $('.addr').css('display', 'block');
                 }
             }
         });
@@ -251,7 +277,7 @@
         cursor: pointer;
     }
 
-    .menu {
+    .menu, .menu_right {
         margin-top: 0px;
         font-family: "Microsoft YaHei";
         font-size: 16px;
@@ -264,6 +290,12 @@
     }
 
     .menu:hover {
+        cursor: pointer;
+        background-color: #c2c2c2 !important;
+        color: #fff !important;
+    }
+
+    .menu_right:hover {
         cursor: pointer;
         background-color: #b3b3b3 !important;
         color: #fff !important;
@@ -459,26 +491,32 @@
     }
 
     /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-    ::-webkit-scrollbar
-    {
+    ::-webkit-scrollbar {
         width: 4px;
+        height: 4px;
     }
 
     /*定义滚动条轨道 内阴影+圆角*/
-    ::-webkit-scrollbar-track
-    {
+    ::-webkit-scrollbar-track {
         border-radius: 10px;
         background-color: #cccccc;
     }
 
     /*定义滑块 内阴影+圆角*/
-    ::-webkit-scrollbar-thumb
-    {
+    ::-webkit-scrollbar-thumb {
         border-radius: 10px;
         background-color: #b0a065;
     }
 
-    .addr,.up_stock{
+    .addr, .up_stock {
+        display: none;
+    }
+
+    pre {
+        text-align: left;
+    }
+
+    #en{
         display: none;
     }
 </style>
@@ -515,92 +553,92 @@
             <img src="/Public/home/images/case.jpg"
                  style="opacity:0.9;-webkit-opacity:0.9;margin-bottom: 33px;width: 180px">
 
-            <div class='menu menu_cn' id="industry" style='width: 180px;'>
+            <div class='menu menu_cn' id="industry" onclick="index(0)" style='width: 180px;'>
                 <span>按行业</span>
                 <br><span style='font-size: 12px'>Industry</span>
             </div>
             <div id="industry_two" style="display: none">
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>医疗</span>
                     <br><span style='font-size: 12px'>Medical care</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>消费</span>
                     <br><span style='font-size: 12px'>Consumption</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>高新技术</span>
                     <br><span style='font-size: 12px'>Hign technology</span>
                 </div>
             </div>
-            <div class='menu menu_cn' id="area" style='width: 180px;'>
+            <div class='menu menu_cn' id="area" onclick="index(0)" style='width: 180px;'>
                 <span>按地域</span>
                 <br><span style='font-size: 12px'>Area</span>
             </div>
             <div id="area_two" style="display: none">
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>中国</span>
                     <br><span style='font-size: 12px'>China</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>美国</span>
                     <br><span style='font-size: 12px'>America</span>
                 </div>
             </div>
-            <div class='menu menu_cn' id="stage" style='width: 180px;'>
+            <div class='menu menu_cn' id="stage" onclick="index(0)" style='width: 180px;'>
                 <span>按阶段</span>
                 <br><span style='font-size: 12px'>Stage</span>
             </div>
             <div id="stage_two" style="display: none">
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>早期</span>
                     <br><span style='font-size: 12px'>Early stage</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>成长早期</span>
                     <br><span style='font-size: 12px'>Early growth</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>成长期</span>
                     <br><span style='font-size: 12px'>Growth</span>
                 </div>
             </div>
-            <div class='menu menu_en' id="industry_en" style='width: 180px;'>
+            <div class='menu menu_en' id="industry_en" onclick="index(1)" style='width: 180px;'>
                 <span>Industry</span>
             </div>
             <div id="industry_two_en" style="display: none">
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>Medical care</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>Consumption</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>Hign technology</span>
                 </div>
             </div>
-            <div class='menu menu_en' id="area_en" style='width: 180px;'>
+            <div class='menu menu_en' id="area_en" onclick="index(1)" style='width: 180px;'>
                 <span>Area</span>
             </div>
             <div id="area_two_en" style="display: none">
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>China</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>America</span>
                 </div>
             </div>
-            <div class='menu menu_en' id="stage_en" style='width: 180px;'>
+            <div class='menu menu_en' id="stage_en" onclick="index(1)" style='width: 180px;'>
                 <span>Stage</span>
             </div>
             <div id="stage_two_en" style="display: none">
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>Early stage</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>Early growth</span>
                 </div>
-                <div class="menu" onclick="search(this)" style='width: 180px;'>
+                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>Growth</span>
                 </div>
             </div>
@@ -616,21 +654,47 @@
                  style="padding: 0;font-size: 24px;font-family: 'Microsoft YaHei';color: #4c4c4c">
 
             </div>
-            <div class=" col-lg-offset-6" style="position: relative;float: left;margin-top: 15px;width:25px !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
+            <div class=" col-lg-offset-6"
+                 style="position: relative;float: left;margin-top: 15px;width:25px !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
             <div class="col-lg-6" style="text-align:center;margin-top: 50px">
                 <img id="invest_img" style="margin: -10px auto; width: 75%"/>
             </div>
-            <div class="col-lg-6" style="padding: 0;margin-top:10px;height:330px;overflow: auto;width: 47.4% !important;  ">
-                <div class="col-lg-12" style="font-size: 16px;">投资阶段：<span id="invest_stage"></span></div>
-                <div class="col-lg-11" style="font-size: 16px;">投资时间：<span id="invest_time"></span></div>
-                <div class="col-lg-11 exit" style="font-size: 16px;">退出时间：<span id="invest_exit_time"></span></div>
-                <div class="col-lg-11 exit" style="font-size: 16px;">退出方式：<span id="invest_exit_way"></span></div>
-                <div class="col-lg-11 exit" style="font-size: 16px;">投资收益：<span id="invest_reward"></span></div>
-                <div class="col-lg-11 exit addr" style="font-size: 16px;">上市地点：<span id="invest_addr"></span></div>
-                <div class="col-lg-11 exit up_stock" style="font-size: 16px;">上市股票：<span id="up_stock"></span></div>
-                <div class="col-lg-11" style="font-size: 16px;">公司网站：<a href="" id="invest_web"></a></div>
-                <div class="col-lg-11 exit" style="font-size: 16px;">香港联交所交易代码：<span id="invest_stock"></span></div>
-                <div class="col-lg-11" id="invest_intro" style="font-size: 16px;"></div>
+            <div class="col-lg-6"
+                 style="padding: 0;margin-top:10px;height:330px;overflow: auto;width: 47.4% !important;  ">
+                <div style="padding: 0;width: 100%" id="ch">
+                    <div class="col-lg-12" style="font-size: 16px;">投资阶段：<span id="invest_stage"></span></div>
+                    <div class="col-lg-11" style="font-size: 16px;">投资时间：<span id="invest_time"></span></div>
+                    <div class="col-lg-11 exit" style="font-size: 16px;">退出时间：<span id="invest_exit_time"></span></div>
+                    <div class="col-lg-11 exit" style="font-size: 16px;">退出方式：<span id="invest_exit_way"></span></div>
+                    <div class="col-lg-11 exit" style="font-size: 16px;">投资收益：<span id="invest_reward"></span></div>
+                    <div class="col-lg-11 exit addr" style="font-size: 16px;">上市地点：<span id="invest_addr"></span></div>
+                    <div class="col-lg-11 exit up_stock" style="font-size: 16px;">上市股票：<span id="up_stock"></span></div>
+                    <div class="col-lg-11" style="font-size: 16px;">公司网站：<a href="" id="invest_web"></a></div>
+                    <div class="col-lg-11 exit" style="font-size: 16px;">香港联交所交易代码：<span id="invest_stock"></span></div>
+                    <div class="col-lg-11" id="invest_intro" style="font-size: 16px;"></div>
+                </div>
+                <div style="padding: 0;width: 100%" id="en">
+                    <div class="col-lg-12" style="font-size: 16px;">Investment Staged：<span
+                            id="invest_stage_en"></span></div>
+                    <div class="col-lg-11" style="font-size: 16px;">investment Time：<span
+                            id="invest_time_en"></span></div>
+                    <div class="col-lg-11 exit" style="font-size: 16px;">Exit Time：<span
+                            id="invest_exit_time_en"></span></div>
+                    <div class="col-lg-11 exit" style="font-size: 16px;">Exit Way：<span
+                            id="invest_exit_way_en"></span></div>
+                    <div class="col-lg-11 exit" style="font-size: 16px;">Investment Return：<span
+                            id="invest_reward_en"></span></div>
+                    <div class="col-lg-11 exit addr" style="font-size: 16px;">Listing Location：<span
+                            id="invest_addr_en"></span></div>
+                    <div class="col-lg-11 exit up_stock" style="font-size: 16px;">Lised Stocks：<span
+                            id="up_stock_en"></span></div>
+                    <div class="col-lg-11" style="font-size: 16px;">Company Web：<a href=""
+                                                                                             id="invest_web_en"></a>
+                    </div>
+                    <div class="col-lg-11 exit invest_en" style="font-size: 16px;">Hongkong Stock Exchange Transaction
+                        Code：<span id="invest_stock_en"></span></div>
+                    <div class="col-lg-11 invest_en" id="invest_intro_en" style="font-size: 16px;"></div>
+                </div>
             </div>
         </div>
     </div>
