@@ -21,6 +21,7 @@
         function form_close() {
             $('#form').css('display', 'none');
             $('#insert').text('提交');
+            title_num = 0;
         }
         function edit(id) {
             this_id = id;
@@ -42,13 +43,14 @@
                     for (var n = 0; n < count; n++) {
                         $('#row_title').append("<div class='status' style='width: 100%'><div class='form-group' style='margin-top: 20px;'>" +
                         "<label class='col-sm-1 control-label'>标题</label><div class='col-sm-6'>" +
-                        "<input type='text' value='"+ r.msg.content[n][0]+"' class='form-control' id='title" + n + "'></div>" +
+                        "<input type='text' value='" + r.msg.content[n][0] + "' class='form-control' id='title" + n + "'></div>" +
                         "<label class='col-sm-1 control-label'>英文</label>" +
-                        "<div class='col-sm-3'><input type='text' value='"+ r.msg.content[n][2]+"' class='form-control' id='en" + n + "' ></div></div>" +
+                        "<div class='col-sm-3'><input type='text' value='" + r.msg.content[n][2] + "' class='form-control' id='en" + n + "' ></div></div>" +
                         "<div class='form-group' style='margin-top: 20px;'>" +
                         "<label class='col-sm-1 control-label'>内容</label><div class='col-sm-10'> " +
-                        "<pre><textarea class=' form-control' id='content" + n + "'>"+ r.msg.content[n][1]+"</textarea></pre></div></div></div>");
+                        "<pre><textarea class=' form-control' id='content" + n + "'>" + r.msg.content[n][1] + "</textarea></pre></div></div></div>");
                     }
+                    title_num = title_num + count;
                 }
             });
         }
@@ -73,18 +75,18 @@
                 data: {
                     "id": id,
                     "menu": menu,
-                    "english":english,
+                    "english": english,
                     "title": title,
                     "content": content,
                     "en": en,
                     "show": show,
-                    "zn_en":zn_en
+                    "zn_en": zn_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
                         oTable.fnReloadAjax();
                         $('#form').css('display', 'none');
-                        title_num=0;
+                        title_num = 0;
                         $('#insert').text('提交');
                     } else {
                         alert(r.msg);
@@ -117,16 +119,16 @@
                     data: {
                         "menu": menu,
                         "title": title,
-                        "english":english,
+                        "english": english,
                         "content": content,
                         "en": en,
                         "show": show,
-                        "zn_en":zn_en
+                        "zn_en": zn_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
                             $('#form').css('display', 'none');
-                            title_num=0;
+                            title_num = 0;
                             //oTable.fnReloadAjax('http://localhost:60/admin/home/banner_list');
                             oTable.fnReloadAjax(); //使用默认
                         } else {
@@ -150,10 +152,12 @@
             "<label class='col-sm-1 control-label'>内容</label><div class='col-sm-10'> " +
             "<pre><textarea class=' form-control' id='content" + title_num + "'></textarea></pre></div></div></div>");
             title_num++;
+
         }
 
-        function title_remove(){
+        function title_remove() {
             $('#row_title .status:last').remove();
+            title_num--;
         }
     </script>
 </head>
@@ -186,18 +190,19 @@
         text-align: center;
     }
 
-    pre{
+    pre {
         padding: 0;
     }
 
-    textarea{
+    textarea {
         height: 200px !important;
     }
 
-    .submenu ul li a{
+    .submenu ul li a {
         padding-left: 30px !important;
     }
-    .active ul li a{
+
+    .active ul li a {
         padding-left: 30px !important;
     }
 </style>
@@ -232,7 +237,8 @@
                         </button>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  首页管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="index.html" data-original-title="Basic"><i
@@ -241,7 +247,8 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  关于我们 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <li><a href="abort.html" data-original-title="Basic"><i
@@ -253,7 +260,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 投资团队 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <li><a href="team.html" data-original-title="Basic"><i
@@ -265,7 +273,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  投资案例 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="invest.html" data-original-title="Basic"><i
@@ -274,7 +283,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  新闻动态 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="news.html" data-original-title="Basic"><i
@@ -283,7 +293,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 联系我们 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="contact.html" data-original-title="Basic"><i
@@ -315,6 +326,7 @@
                     </div>
                     <div class="form-group">
                         <label for="show" class="col-sm-1 control-label">版式</label>
+
                         <div class="col-sm-2">
                             <select class="form-control" id="zn_en">
                                 <option>中文</option>
