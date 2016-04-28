@@ -209,6 +209,13 @@
     pre{
         padding: 0;
     }
+
+    .submenu ul li a{
+        padding-left: 30px !important;
+    }
+    .active ul li a{
+        padding-left: 30px !important;
+    }
 </style>
 <body>
 <div class="site-holder">
@@ -369,11 +376,12 @@
                         <label class="col-sm-2 control-label">投资阶段</label>
 
                         <div class="col-sm-4">
-                            <select class="form-control" id="stage">
+                            <input type="text" class="form-control" id="stage" name="stage">
+                            <!--<select class="form-control" id="stage">
                                 <option>早期</option>
                                 <option>成长早期</option>
                                 <option>成长期</option>
-                            </select>
+                            </select>-->
                         </div>
                         <label class="col-sm-1 control-label">投资时间</label>
 

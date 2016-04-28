@@ -91,6 +91,7 @@
             "<li><a href='team.html?status=1' style='text-decoration: none;' id='team'>Investment Team</a></li>" +
             "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>About Us</a></li></ul>");
             index(1);
+            area(0);
         } else {
             $('#menu img').click(function () {
                 window.location.href = 'case.html';
@@ -98,6 +99,7 @@
             $('.menu_en').css('display', 'none');
             $('.menu_cn').css('display', 'block');
             index(0);
+            area(1);
         }
 
         $('#industry,#industry_two').hover(function () {
@@ -162,6 +164,26 @@
         });
     });
 
+    function area(status) {
+        $.ajax({
+            url: '/home/index/case_area',
+            dataType: 'json',
+            data: {
+                status: status
+            },
+            success: function (r) {
+                var len = r.msg.length;
+                for (var i = 0; i < len; i++) {
+                    if (status = 1) {
+                        $('#area_two').append("<div class='menu_right' onclick='search(this)' style='width: 180px;'><span>" + r.msg[i].area + "</span></div>");
+                    } else {
+                        $('#area_two_en').append("<div class='menu_right' onclick='search(this)' style='width: 180px;'><span>" + r.msg[i].area + "</span></div>");
+                    }
+                }
+            }
+        });
+    }
+
     function index(status) {
         $('#detail').empty();
         $.ajax({
@@ -188,11 +210,11 @@
         var id = $(id).children('p').children('span').text();
         var aQuery = window.location.href;
         if (aQuery.indexOf("status") > 0) {
-            $('#en').css('display','block');
-            $('#ch').css('display','none');
+            $('#en').css('display', 'block');
+            $('#ch').css('display', 'none');
         } else {
-            $('#en').css('display','none');
-            $('#ch').css('display','block');
+            $('#en').css('display', 'none');
+            $('#ch').css('display', 'block');
         }
         $.ajax({
             url: '/home/index/case_detail',
@@ -516,7 +538,7 @@
         text-align: left;
     }
 
-    #en{
+    #en {
         display: none;
     }
 </style>
@@ -576,14 +598,14 @@
                 <!--<br><span style='font-size: 12px'>Area</span>-->
             </div>
             <div id="area_two" style="display: none">
-                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
+                <!--<div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>中国</span>
-                    <!--<br><span style='font-size: 12px'>China</span>-->
+                    <br><span style='font-size: 12px'>China</span>
                 </div>
                 <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>美国</span>
-                    <!--<br><span style='font-size: 12px'>America</span>-->
-                </div>
+                    <br><span style='font-size: 12px'>America</span>
+                </div>-->
             </div>
             <div class='menu menu_cn' id="stage" onclick="index(0)" style='width: 180px;'>
                 <span>按阶段</span>
@@ -621,12 +643,12 @@
                 <span>Area</span>
             </div>
             <div id="area_two_en" style="display: none">
-                <div class="menu_right" onclick="search(this)" style='width: 180px;'>
+                <!--<div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>China</span>
                 </div>
                 <div class="menu_right" onclick="search(this)" style='width: 180px;'>
                     <span>America</span>
-                </div>
+                </div>-->
             </div>
             <div class='menu menu_en' id="stage_en" onclick="index(1)" style='width: 180px;'>
                 <span>Stage</span>
@@ -689,7 +711,7 @@
                     <div class="col-lg-11 exit up_stock" style="font-size: 16px;">Lised Stocks：<span
                             id="up_stock_en"></span></div>
                     <div class="col-lg-11" style="font-size: 16px;">Company Web：<a href=""
-                                                                                             id="invest_web_en"></a>
+                                                                                   id="invest_web_en"></a>
                     </div>
                     <div class="col-lg-11 exit invest_en" style="font-size: 16px;">Hongkong Stock Exchange Transaction
                         Code：<span id="invest_stock_en"></span></div>
