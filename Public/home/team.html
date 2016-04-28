@@ -151,6 +151,9 @@
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
         }
+
+        var width=$(document.body).width();
+        $('#img_div').css('margin-left',(width-900)/2+20);
         if (aQuery.indexOf("status") > 0) {
             $('#img img').attr('src', '/Public/home/images/team_en.jpg');
             $('#bottom').empty();
@@ -483,7 +486,7 @@
     </div>
 </div>
 </div>
-<div class="container" style="width: 70%;margin-left: 15%;margin-top: 20px;">
+<div class="container" id="img_div" style="width:900px;margin-top: 20px;">
     <div class="row" id="imgs">
 
     </div>
