@@ -170,8 +170,6 @@ function _deleteList() {
     }
 }
 $('document').ready(function () {
-
-    // Sidebar dropdown
     $('ul.nav-list').accordion();
     $('.settings-toggle').click(function (e) {
         e.preventDefault();

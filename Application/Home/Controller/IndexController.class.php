@@ -175,6 +175,13 @@ class IndexController extends Controller
         json_out_msg($list);
     }
 
+    function case_area()
+    {
+        $status = I('status/d');
+        $res = D('Invest')->where(['zn_en' => $status])->distinct(true)->field('area')->select();
+        json_out_msg($res);
+    }
+
     public function case_find()
     {
         $w = I('w');
@@ -187,12 +194,6 @@ class IndexController extends Controller
                 break;
             case '高新技术':
                 $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3])->select();
-                break;
-            case '中国':
-                $list = D('Invest')->where(['zn_en' => 1, 'area' => 1])->select();
-                break;
-            case '美国':
-                $list = D('Invest')->where(['zn_en' => 1, 'area' => 2])->select();
                 break;
             case '前期':
                 $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1])->select();
@@ -212,12 +213,6 @@ class IndexController extends Controller
             case 'Hign technology':
                 $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3])->select();
                 break;
-            case 'China':
-                $list = D('Invest')->where(['zn_en' => 0, 'area' => 1])->select();
-                break;
-            case 'America':
-                $list = D('Invest')->where(['zn_en' => 0, 'area' => 2])->select();
-                break;
             case 'Early stage':
                 $list = D('Invest')->where(['zn_en' => 0, 'stage' => 1])->select();
                 break;
@@ -227,6 +222,11 @@ class IndexController extends Controller
             case 'Growth':
                 $list = D('Invest')->where(['zn_en' => 0, 'stage' => 3])->select();
                 break;
+        }
+        if($list){
+
+        }else{
+            $list = D('Invest')->where(['area' => $w])->select();
         }
         $str = $_SERVER['HTTP_USER_AGENT'];
         if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
