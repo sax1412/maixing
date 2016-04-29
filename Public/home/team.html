@@ -246,6 +246,7 @@
         }
     }
     function detail(e) {
+        document.documentElement.style.overflow = "hidden";
         $('#detail').css('display', 'block');
         $('#mask').css('display', 'block');
         var id = $(e).children('.new').children('p').first().text();
@@ -460,7 +461,7 @@
 </div>
 <div id="detail">
     <img style="margin-left: 96%;margin-top: 15px;" src="images/off.jpg"
-         onclick="javascript:$('#detail').css('display','none');$('#mask').css('display','none')">
+         onclick="javascript:$('#detail').css('display','none');$('#mask').css('display','none');document.documentElement.style.overflow='';">
 
     <div class="col-lg-6" style="text-align:center;margin-top: 10px;">
         <div style="height: 18px;width: 80px;background-color: #e7e2d0;margin-left: 20px;"></div>

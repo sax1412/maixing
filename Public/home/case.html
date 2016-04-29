@@ -205,6 +205,7 @@
     }
 
     function detail(id) {
+        document.documentElement.style.overflow = "hidden";
         $('#invest').css('display', 'block');
         $('#mask').css('display', 'block');
         var id = $(id).children('p').children('span').text();
@@ -671,7 +672,7 @@
         </div>
         <div id="invest">
             <img style="margin-left: 96%;margin-top: 15px;" src="images/off.jpg"
-                 onclick="javascript:$('#invest').css('display','none');$('#mask').css('display','none')">
+                 onclick="javascript:$('#invest').css('display','none');$('#mask').css('display','none');document.documentElement.style.overflow='';">
 
             <div class="col-lg-6 col-lg-offset-6" id="invest_name"
                  style="padding: 0;font-size: 24px;font-family: 'Microsoft YaHei';color: #4c4c4c">
