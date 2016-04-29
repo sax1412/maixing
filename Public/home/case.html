@@ -196,7 +196,7 @@
                 var len = r.msg.length;
                 for (var i = 0; i < len; i++) {
                     $('#detail').append("<div onclick='detail(this)'>" +
-                    "<img style='width: 100%' src='../.." + r.msg[i].img + "' ><p><span style='display: none'>" + r.msg[i].id + "</span>" + r.msg[i].company + "</p></div>");
+                    "<img style='width: 100%' src='../.." + r.msg[i].img + "' ><p style='font-size:18px;'><span style='display: none'>" + r.msg[i].id + "</span>" + r.msg[i].company + "</p></div>");
                 }
                 var height = $(document.body).height();
                 $('#mask').height(height);
