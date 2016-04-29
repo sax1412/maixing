@@ -174,7 +174,7 @@
             success: function (r) {
                 var len = r.msg.length;
                 for (var i = 0; i < len; i++) {
-                    if (status = 1) {
+                    if (status == 1) {
                         $('#area_two').append("<div class='menu_right' onclick='search(this)' style='width: 180px;'><span>" + r.msg[i].area + "</span></div>");
                     } else {
                         $('#area_two_en').append("<div class='menu_right' onclick='search(this)' style='width: 180px;'><span>" + r.msg[i].area + "</span></div>");

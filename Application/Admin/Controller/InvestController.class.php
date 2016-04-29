@@ -21,7 +21,6 @@ class InvestController extends Controller
         $exit = I('exit');
         $stage = I('stage');
         $trade = I('trade');
-        $area = I('area');
         if (!$_SESSION['auth']) {
             redirect("/Public/admin/login.html");
         } else {
@@ -48,11 +47,6 @@ class InvestController extends Controller
             $data->stage = 2;
         } else {
             $data->stage = 3;
-        }
-        if ($area == '中国') {
-            $data->area = 1;
-        } else {
-            $data->area = 2;
         }
         if ($trade == '医疗') {
             $data->trade = 1;
@@ -85,11 +79,6 @@ class InvestController extends Controller
                 $v['stage'] = '成长早期';
             }else {
                 $v['stage'] = '成长期';
-            }
-            if ($v['area'] == 1) {
-                $v['area'] = '中国';
-            } else {
-                $v['area'] = '美国';
             }
         }
         $out['aaData'] = $res;
@@ -135,11 +124,6 @@ class InvestController extends Controller
                 $res['stage'] = '成长早期';
             }else {
                 $res['stage'] = '成长期';
-            }
-            if ($res['area'] == 1) {
-                $res['area'] = '中国';
-            } else {
-                $res['area'] = '美国';
             }
             if ($res['trade'] == 1) {
                 $res['trade'] = '医疗';
@@ -190,11 +174,6 @@ class InvestController extends Controller
             $data->stage = 2;
         } else {
             $data->stage = 3;
-        }
-        if ($area == '中国') {
-            $data->area = 1;
-        } else {
-            $data->area = 2;
         }
         if ($trade == '医疗') {
             $data->trade = 1;
