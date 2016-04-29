@@ -195,10 +195,10 @@ class IndexController extends Controller
             case '高新技术':
                 $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3])->select();
                 break;
-            case '前期':
+            case '早期':
                 $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1])->select();
                 break;
-            case '成长前期':
+            case '成长早期':
                 $list = D('Invest')->where(['zn_en' => 1, 'stage' => 2])->select();
                 break;
             case '成长期':
