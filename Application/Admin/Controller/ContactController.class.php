@@ -151,7 +151,8 @@ class ContactController extends Controller
         $info = $upload->upload();
         $path = '/Uploads/' . $info['upload']['savepath'] . $info['upload']['savename'];
         if (!$info) {
-            json_die('上传失败');
+            //json_die('上传失败');
+            json_die($info);
         } else {// 上传成功
             json_out_msg($path);
         }
