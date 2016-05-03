@@ -25,6 +25,7 @@ $(document).ready(function () {
     });
     $("input[id=lefile]").wrap("<form id='myupload' action='/admin/member/upload' method='post' enctype='multipart/form-data'></form>");
     $('input[id=lefile]').change(function () {
+        $('#img').val("<span style='color: darkgreen'>上传中···</span>");
         $('#myupload').ajaxSubmit({
             dataType: "json",
             success: function (data) {
