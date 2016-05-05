@@ -65,6 +65,8 @@
         }
         if(aQuery.indexOf("status")>0){
             $('#img img').attr('src','/Public/home/images/news_en.jpg');
+            $('#more').text('More');
+            $('#up').text('Up');
             $('#bottom').empty();
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
             "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
@@ -298,10 +300,10 @@
     </div>
     <div class="row">
         <div id="show" onclick="show()" class="col-lg-10 col-lg-offset-1" style="text-align: center; display:block;color: #999">
-            ——&nbsp;&nbsp;查看更多&nbsp;&nbsp;——
+            ——&nbsp;&nbsp;<span id="more">查看更多</span>&nbsp;&nbsp;——
         </div>
         <div id="up" onclick="up()" class="col-lg-10 col-lg-offset-1" style="text-align: center;display:none;color: #999">
-            ——&nbsp;&nbsp;收起&nbsp;&nbsp;——
+            ——&nbsp;&nbsp;<span id="up">收起</span>&nbsp;&nbsp;——
         </div>
     </div>
 </div>
