@@ -109,7 +109,7 @@ class IndexController extends Controller
     public function member()
     {
         //$status = I('status');
-        $list = D('Member')->where(['show' => 1])->select();
+        $list = D('Member')->where(['show' => 1])->order('convert(name using gb2312) asc')->select();
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
     }
