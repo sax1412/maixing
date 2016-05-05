@@ -102,7 +102,7 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                         $('#city').append("<div class='row detail'>" +
                         "<div class='hidden'>" + r.msg[i].city + "</div>" +
                         "<div class='col-lg-5 col-lg-offset-1'><img style='width: 100%' src='../.." + r.msg[i].img + "'>" +
