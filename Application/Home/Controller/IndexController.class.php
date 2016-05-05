@@ -48,7 +48,7 @@ class IndexController extends Controller
         $map['intro'] = ['like', '%' . $word . '%'];
         $map['_logic'] = 'OR';
         if ($word) {
-            $list = D('News')->where($map)->select();
+            $list = D('News')->where($map)->order('time desc')->select();
             $list = array_values($list);
             foreach ($list as &$v) {
                 $time = date('Y/m/d', $v['time']);
@@ -187,46 +187,46 @@ class IndexController extends Controller
         $w = I('w');
         switch ($w) {
             case '医疗':
-                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 1,'show'=>1])->select();
                 break;
             case '消费':
-                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 2])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 2,'show'=>1])->select();
                 break;
             case '高新技术':
-                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3,'show'=>1])->select();
                 break;
             case '早期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1,'show'=>1])->select();
                 break;
             case '成长早期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 2])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 2,'show'=>1])->select();
                 break;
             case '成长期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 3])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 3,'show'=>1])->select();
                 break;
             case 'Medical care':
-                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 1,'show'=>1])->select();
                 break;
             case 'Consumption':
-                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 2])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 2,'show'=>1])->select();
                 break;
             case 'Hign technology':
-                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3,'show'=>1])->select();
                 break;
             case 'Early stage':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 1,'show'=>1])->select();
                 break;
             case 'Early growth':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 2])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 2,'show'=>1])->select();
                 break;
             case 'Growth':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 3])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 3,'show'=>1])->select();
                 break;
         }
         if($list){
 
         }else{
-            $list = D('Invest')->where(['area' => $w])->select();
+            $list = D('Invest')->where(['area' => $w,'show'=>1])->select();
         }
         $str = $_SERVER['HTTP_USER_AGENT'];
         if (strstr($str, 'Android') || strstr($str, 'iPhone')) {

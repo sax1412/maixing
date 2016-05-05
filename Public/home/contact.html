@@ -62,7 +62,7 @@
             $('#top').append("<div style='text-align: right'><a href='contact.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='contact.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
             "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;color: #9b761d' id='contact'>CONTACTS</a></li>" +
             "<li><a href='news.html?status=1' style='text-decoration: none;' id='news'>NEWS</a></li>" +
-            "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTEMNT</a></li>" +
+            "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTEMNTS</a></li>" +
             "<li><a href='team.html?status=1' style='text-decoration: none;' id='team'>TEAM</a></li>" +
             "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>ABOUT US</a></li></ul>");
             $.ajax({
@@ -74,12 +74,12 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                         $('#city').append("<div class='row detail'>" +
                         "<div class='hidden'>" + r.msg[i].city + "</div>" +
                         "<div class='col-lg-4 col-lg-offset-1'><img style='width: 110%' src='../.." + r.msg[i].img + "'>" +
                         "</div>" +
-                        "<div class='col-lg-5 col-lg-offset-1 contact'style='padding-left: 50px;margin-top: 30px'><p><span>Tel：</span>" + r.msg[i].tel + "</p><p><span>Fax：</span>" + r.msg[i].fax + "</p><p><span>E-mail：</span>" + r.msg[i].email + "</p><p><span>Addr：</span>" + r.msg[i].add + "</p>" +
+                        "<div class='col-lg-5 col-lg-offset-1 contact'style='padding-left: 50px;margin-top: 30px'><p><span>T：</span>" + r.msg[i].tel + "</p><p><span>F：</span>" + r.msg[i].fax + "</p><p><span>E：</span>" + r.msg[i].email + "</p><p><span>A：</span>" + r.msg[i].add + "</p>" +
                         "</div>" +
                         "</div>");
                     }
@@ -102,7 +102,7 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+                        $('#city_list').append("<span class='city_name' onclick='show(this)'>" + r.msg[i].city + "</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                         $('#city').append("<div class='row detail'>" +
                         "<div class='hidden'>" + r.msg[i].city + "</div>" +
                         "<div class='col-lg-5 col-lg-offset-1'><img style='width: 100%' src='../.." + r.msg[i].img + "'>" +
