@@ -142,94 +142,123 @@
         color: #fff;
     }
 
-    pre{background-color: #ffffff;border: 0;font-size: 16px; text-align: left; font-family: 'Microsoft YaHei', sans-serif}
+    pre {
+        background-color: #ffffff;
+        border: 0;
+        font-size: 16px;
+        text-align: left;
+        font-family: 'Microsoft YaHei', sans-serif
+    }
 
 </style>
 <script>
     $(function () {
-        var aQuery = window.location.href;
-        if (aQuery.indexOf("team") > 0) {
-            $("#team").css('color', '#9b761d');
-        }
+                var aQuery = window.location.href;
+                if (aQuery.indexOf("team") > 0) {
+                    $("#team").css('color', '#9b761d');
+                }
 
-        var width=$(document.body).width();
-        $('#img_div').css('margin-left',(width-900)/2+20);
-        if (aQuery.indexOf("status") > 0) {
-            $('#img img').attr('src', '/Public/home/images/team_en.jpg');
-            $('#bottom').empty();
-            $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
-            "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
-            $('#top').empty();
-            $('#top').append("<div style='text-align: right'><a href='team.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='team.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
-            "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>CONTACTS</a></li>" +
-            "<li><a href='news.html?status=1' style='text-decoration: none;' id='news'>NEWS</a></li>" +
-            "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTMENTS</a></li>" +
-            "<li><a href='team.html?status=1' style='text-decoration: none;color: #9b761d' id='team'>TEAM</a></li>" +
-            "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>ABOUT US</a></li></ul>");
-            $.ajax({
-                "url": '/home/index/team',
-                "dataType": 'json',
-                "data": {
-                    "status": 1
-                },
-                success: function (r) {
-                    if (r.msg.agent == 1) {
-                        $('#imgs').css('margin-left', '1%');
-                    }
-                    //$('#team_intro').text(r.msg.intro);
+                var width = $(document.body).width();
+                $('#img_div').css('margin-left', (width - 900) / 2 + 20);
+                if (aQuery.indexOf("status") > 0) {
+                    $('#img img').attr('src', '/Public/home/images/team_en.jpg');
+                    $('#bottom').empty();
+                    $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
+                    "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
+                    $('#top').empty();
+                    $('#top').append("<div style='text-align: right'><a href='team.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='team.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
+                    "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>CONTACTS</a></li>" +
+                    "<li><a href='news.html?status=1' style='text-decoration: none;' id='news'>NEWS</a></li>" +
+                    "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTMENTS</a></li>" +
+                    "<li><a href='team.html?status=1' style='text-decoration: none;color: #9b761d' id='team'>TEAM</a></li>" +
+                    "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>ABOUT US</a></li></ul>");
+                    $.ajax({
+                        "url": '/home/index/team',
+                        "dataType": 'json',
+                        "data": {
+                            "status": 1
+                        },
+                        success: function (r) {
+                            if (r.msg.agent == 1) {
+                                $('#imgs').css('margin-left', '1%');
+                            }
+                            //$('#team_intro').text(r.msg.intro);
+                        }
+                    });
+                    $.ajax({
+                        "url": '/home/index/member',
+                        "dataType": 'json',
+                        "data": {
+                            status: 1
+                        },
+                        success: function (r) {
+                            var len = r.msg.length;
+                            for (var i = 0; i < len; i++) {
+                                $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                                "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                                "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
+                                "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                                "<p id='position'>" + r.msg[i].position + "</p></div>" +
+                                "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                            }
+                            var height = $(document.body).height();
+                            $('#mask').height(height);
+                        }
+                    });
                 }
-            });
-        } else {
-            $.ajax({
-                "url": '/home/index/team',
-                "dataType": 'json',
-                success: function (r) {
-                    if (r.msg.agent == 1) {
-                        $('#imgs').css('margin-left', '1%');
-                    }
-                    //$('#team_intro').text(r.msg.intro);
-                }
-            });
-        }
+                else {
+                    $.ajax({
+                        "url": '/home/index/team',
+                        "dataType": 'json',
+                        success: function (r) {
+                            if (r.msg.agent == 1) {
+                                $('#imgs').css('margin-left', '1%');
+                            }
+                            //$('#team_intro').text(r.msg.intro);
+                        }
+                    });
 
-        $.ajax({
-            "url": '/home/index/member',
-            "dataType": 'json',
-            success: function (r) {
-                var len = r.msg.length;
-                for (var i = 0; i < len; i++) {
-                    $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
-                    "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
-                    "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
-                    "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
-                    "<p id='position'>" + r.msg[i].position + "</p></div>" +
-                    "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                    $.ajax({
+                        "url": '/home/index/member',
+                        "dataType": 'json',
+                        success: function (r) {
+                            var len = r.msg.length;
+                            for (var i = 0; i < len; i++) {
+                                $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                                "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                                "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
+                                "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                                "<p id='position'>" + r.msg[i].position + "</p></div>" +
+                                "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                            }
+                            var height = $(document.body).height();
+                            $('#mask').height(height);
+                            /*var len = r.msg.length;
+                             var group = Math.ceil(len / 7);
+                             var n = 0;
+                             var m = 7;
+                             for (var j = 0; j < group; j++) {
+                             $('#imgs').append("<div class='row' style='width:940px;' id='" + j + "'></div>");
+                             }
+                             for (var i = 0; i < group; i++) {
+                             if (m > len) {
+                             m = len;
+                             }
+                             for (var k = n; k < m; k++) {
+                             if (k % 7 == 0) {
+                             $('#' + i).append("<div class='space'></div>");
+                             }
+                             $('#' + i).append("<div class='picture' onmouseout='hide(this)'  onmouseover='show(this)'><div class='shade'><div class='no_shade'><p style='margin-top: 80px;' id='name'>" + r.msg[k].name + "</p><p id='english'>" + r.msg[k].english + "</p><p id='hr'></p><p id='position'>" + r.msg[k].position + "</p></div></div><img src='../.." + r.msg[k].img + "'></div>");
+                             }
+                             m = m + 7;
+                             n = n + 7;
+                             }*/
+                        }
+                    });
                 }
-                var height = $(document.body).height();
-                $('#mask').height(height);
-                /*var len = r.msg.length;
-                 var group = Math.ceil(len / 7);
-                 var n = 0;
-                 var m = 7;
-                 for (var j = 0; j < group; j++) {
-                 $('#imgs').append("<div class='row' style='width:940px;' id='" + j + "'></div>");
-                 }
-                 for (var i = 0; i < group; i++) {
-                 if (m > len) {
-                 m = len;
-                 }
-                 for (var k = n; k < m; k++) {
-                 if (k % 7 == 0) {
-                 $('#' + i).append("<div class='space'></div>");
-                 }
-                 $('#' + i).append("<div class='picture' onmouseout='hide(this)'  onmouseover='show(this)'><div class='shade'><div class='no_shade'><p style='margin-top: 80px;' id='name'>" + r.msg[k].name + "</p><p id='english'>" + r.msg[k].english + "</p><p id='hr'></p><p id='position'>" + r.msg[k].position + "</p></div></div><img src='../.." + r.msg[k].img + "'></div>");
-                 }
-                 m = m + 7;
-                 n = n + 7;
-                 }*/
             }
-        });
-    });
+    )
+    ;
     function show(id) {
         $(id).find('.new').css('display', 'block');
     }
@@ -237,6 +266,7 @@
     function hide(id) {
         $(id).find('.new').css('display', 'none');
     }
+
     function home() {
         var aQuery = window.location.href;  //取得Get参数
         if (aQuery.indexOf("status") > 0) {
@@ -245,6 +275,7 @@
             window.location.href = 'index.html';
         }
     }
+
     function detail(e) {
         document.documentElement.style.overflow = "hidden";
         $('#detail').css('display', 'block');
@@ -257,7 +288,7 @@
             },
             dataType: 'json',
             success: function (r) {
-                var intro='<pre>'+r.msg.intro+'</pre>';
+                var intro = '<pre>' + r.msg.intro + '</pre>';
                 $('#member_img').attr('src', '../..' + r.msg.img);
                 $('#name').text(r.msg.name);
                 $('#en_name').text(r.msg.english);
@@ -464,7 +495,8 @@
          onclick="javascript:$('#detail').css('display','none');$('#mask').css('display','none');document.documentElement.style.overflow='';">
 
     <div class="col-lg-6" style="text-align:center;margin-top: 60px;">
-        <img id="member_img" style="margin: 0 auto;margin-left: 50px; width: 290px;height: 220px;box-shadow: 0px 3px 6px #999; float: left"/>
+        <img id="member_img"
+             style="margin: 0 auto;margin-left: 50px; width: 290px;height: 220px;box-shadow: 0px 3px 6px #999; float: left"/>
     </div>
     <div class="col-lg-6" style="padding: 0;margin-top:0px;width: 47.4% !important;  ">
         <div class="col-lg-11" style="text-align: center"><span id="name"
@@ -478,7 +510,8 @@
             </div>
             <div class="col-lg-1 col-lg-offset-5"
                  style="margin-top: 15px;width:5% !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
-            <div class="col-lg-12" id="intro" style="margin-top:15px;font-size: 16px !important;color: #4c4c4c;overflow: auto;height: 215px;"></div>
+            <div class="col-lg-12" id="intro"
+                 style="margin-top:15px;font-size: 16px !important;color: #4c4c4c;overflow: auto;height: 215px;"></div>
         </div>
     </div>
 </div>

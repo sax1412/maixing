@@ -108,8 +108,12 @@ class IndexController extends Controller
 
     public function member()
     {
-        //$status = I('status');
-        $list = D('Member')->where(['show' => 1])->order('convert(name using gb2312) asc')->select();
+        $status = I('status');
+        if ($status == 1) {
+            $list = D('Member')->where(['show' => 1, 'zn_en' => 0])->order('convert(name using gb2312) asc')->select();
+        } else {
+            $list = D('Member')->where(['show' => 1, 'zn_en' => 1])->order('convert(name using gb2312) asc')->select();
+        }
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
     }
@@ -187,46 +191,46 @@ class IndexController extends Controller
         $w = I('w');
         switch ($w) {
             case '医疗':
-                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 1,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 1, 'show' => 1])->select();
                 break;
             case '消费':
-                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 2,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 2, 'show' => 1])->select();
                 break;
             case '高新技术':
-                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3, 'show' => 1])->select();
                 break;
             case '早期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1, 'show' => 1])->select();
                 break;
             case '成长早期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 2,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 2, 'show' => 1])->select();
                 break;
             case '成长期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 3,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 3, 'show' => 1])->select();
                 break;
             case 'Medical care':
-                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 1,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 1, 'show' => 1])->select();
                 break;
             case 'Consumption':
-                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 2,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 2, 'show' => 1])->select();
                 break;
             case 'Hign technology':
-                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3, 'show' => 1])->select();
                 break;
             case 'Early stage':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 1,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 1, 'show' => 1])->select();
                 break;
             case 'Early growth':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 2,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 2, 'show' => 1])->select();
                 break;
             case 'Growth':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 3,'show'=>1])->select();
+                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 3, 'show' => 1])->select();
                 break;
         }
-        if($list){
+        if ($list) {
 
-        }else{
-            $list = D('Invest')->where(['area' => $w,'show'=>1])->select();
+        } else {
+            $list = D('Invest')->where(['area' => $w, 'show' => 1])->select();
         }
         $str = $_SERVER['HTTP_USER_AGENT'];
         if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
