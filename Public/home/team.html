@@ -153,112 +153,115 @@
 </style>
 <script>
     $(function () {
-                var aQuery = window.location.href;
-                if (aQuery.indexOf("team") > 0) {
-                    $("#team").css('color', '#9b761d');
-                }
+        var width = $(document).width();
+        if (width > 1800) {
+            $('#team_img div').height('350px');
+            $('#team_img div img').height('350px');
+        }
+        var aQuery = window.location.href;
+        if (aQuery.indexOf("team") > 0) {
+            $("#team").css('color', '#9b761d');
+        }
 
-                var width = $(document.body).width();
-                $('#img_div').css('margin-left', (width - 900) / 2 + 20);
-                if (aQuery.indexOf("status") > 0) {
-                    $('#img img').attr('src', '/Public/home/images/team_en.jpg');
-                    $('#bottom').empty();
-                    $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
-                    "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
-                    $('#top').empty();
-                    $('#top').append("<div style='text-align: right'><a href='team.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='team.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
-                    "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>CONTACTS</a></li>" +
-                    "<li><a href='news.html?status=1' style='text-decoration: none;' id='news'>NEWS</a></li>" +
-                    "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTMENTS</a></li>" +
-                    "<li><a href='team.html?status=1' style='text-decoration: none;color: #9b761d' id='team'>TEAM</a></li>" +
-                    "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>ABOUT US</a></li></ul>");
-                    $.ajax({
-                        "url": '/home/index/team',
-                        "dataType": 'json',
-                        "data": {
-                            "status": 1
-                        },
-                        success: function (r) {
-                            if (r.msg.agent == 1) {
-                                $('#imgs').css('margin-left', '1%');
-                            }
-                            //$('#team_intro').text(r.msg.intro);
-                        }
-                    });
-                    $.ajax({
-                        "url": '/home/index/member',
-                        "dataType": 'json',
-                        "data": {
-                            status: 1
-                        },
-                        success: function (r) {
-                            var len = r.msg.length;
-                            for (var i = 0; i < len; i++) {
-                                $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
-                                "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
-                                "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
-                                "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
-                                "<p id='position'>" + r.msg[i].position + "</p></div>" +
-                                "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
-                            }
-                            var height = $(document.body).height();
-                            $('#mask').height(height);
-                        }
-                    });
+        var width = $(document.body).width();
+        $('#img_div').css('margin-left', (width - 900) / 2 + 20);
+        if (aQuery.indexOf("status") > 0) {
+            $('#img img').attr('src', '/Public/home/images/team_en.jpg');
+            $('#bottom').empty();
+            $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
+            "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
+            $('#top').empty();
+            $('#top').append("<div style='text-align: right'><a href='team.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='team.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
+            "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>CONTACTS</a></li>" +
+            "<li><a href='news.html?status=1' style='text-decoration: none;' id='news'>NEWS</a></li>" +
+            "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTMENTS</a></li>" +
+            "<li><a href='team.html?status=1' style='text-decoration: none;color: #9b761d' id='team'>TEAM</a></li>" +
+            "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>ABOUT US</a></li></ul>");
+            $.ajax({
+                "url": '/home/index/team',
+                "dataType": 'json',
+                "data": {
+                    "status": 1
+                },
+                success: function (r) {
+                    if (r.msg.agent == 1) {
+                        $('#imgs').css('margin-left', '1%');
+                    }
+                    //$('#team_intro').text(r.msg.intro);
                 }
-                else {
-                    $.ajax({
-                        "url": '/home/index/team',
-                        "dataType": 'json',
-                        success: function (r) {
-                            if (r.msg.agent == 1) {
-                                $('#imgs').css('margin-left', '1%');
-                            }
-                            //$('#team_intro').text(r.msg.intro);
-                        }
-                    });
+            });
+            $.ajax({
+                "url": '/home/index/member',
+                "dataType": 'json',
+                "data": {
+                    status: 1
+                },
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                        "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                        "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
+                        "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                        "<p id='position'>" + r.msg[i].position + "</p></div>" +
+                        "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
+                }
+            });
+        }
+        else {
+            $.ajax({
+                "url": '/home/index/team',
+                "dataType": 'json',
+                success: function (r) {
+                    if (r.msg.agent == 1) {
+                        $('#imgs').css('margin-left', '1%');
+                    }
+                    //$('#team_intro').text(r.msg.intro);
+                }
+            });
 
-                    $.ajax({
-                        "url": '/home/index/member',
-                        "dataType": 'json',
-                        success: function (r) {
-                            var len = r.msg.length;
-                            for (var i = 0; i < len; i++) {
-                                $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
-                                "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
-                                "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
-                                "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
-                                "<p id='position'>" + r.msg[i].position + "</p></div>" +
-                                "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
-                            }
-                            var height = $(document.body).height();
-                            $('#mask').height(height);
-                            /*var len = r.msg.length;
-                             var group = Math.ceil(len / 7);
-                             var n = 0;
-                             var m = 7;
-                             for (var j = 0; j < group; j++) {
-                             $('#imgs').append("<div class='row' style='width:940px;' id='" + j + "'></div>");
-                             }
-                             for (var i = 0; i < group; i++) {
-                             if (m > len) {
-                             m = len;
-                             }
-                             for (var k = n; k < m; k++) {
-                             if (k % 7 == 0) {
-                             $('#' + i).append("<div class='space'></div>");
-                             }
-                             $('#' + i).append("<div class='picture' onmouseout='hide(this)'  onmouseover='show(this)'><div class='shade'><div class='no_shade'><p style='margin-top: 80px;' id='name'>" + r.msg[k].name + "</p><p id='english'>" + r.msg[k].english + "</p><p id='hr'></p><p id='position'>" + r.msg[k].position + "</p></div></div><img src='../.." + r.msg[k].img + "'></div>");
-                             }
-                             m = m + 7;
-                             n = n + 7;
-                             }*/
-                        }
-                    });
+            $.ajax({
+                "url": '/home/index/member',
+                "dataType": 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                        "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                        "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
+                        "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                        "<p id='position'>" + r.msg[i].position + "</p></div>" +
+                        "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
+                    /*var len = r.msg.length;
+                     var group = Math.ceil(len / 7);
+                     var n = 0;
+                     var m = 7;
+                     for (var j = 0; j < group; j++) {
+                     $('#imgs').append("<div class='row' style='width:940px;' id='" + j + "'></div>");
+                     }
+                     for (var i = 0; i < group; i++) {
+                     if (m > len) {
+                     m = len;
+                     }
+                     for (var k = n; k < m; k++) {
+                     if (k % 7 == 0) {
+                     $('#' + i).append("<div class='space'></div>");
+                     }
+                     $('#' + i).append("<div class='picture' onmouseout='hide(this)'  onmouseover='show(this)'><div class='shade'><div class='no_shade'><p style='margin-top: 80px;' id='name'>" + r.msg[k].name + "</p><p id='english'>" + r.msg[k].english + "</p><p id='hr'></p><p id='position'>" + r.msg[k].position + "</p></div></div><img src='../.." + r.msg[k].img + "'></div>");
+                     }
+                     m = m + 7;
+                     n = n + 7;
+                     }*/
                 }
-            }
-    )
-    ;
+            });
+        }
+    });
     function show(id) {
         $(id).find('.new').css('display', 'block');
     }
@@ -475,7 +478,7 @@
         </div>
     </div>
 </div>
-<div style="margin-top: 10px;width: 100%;padding: 0">
+<div style="margin-top: 10px;width: 100%;padding: 0" id="team_img">
     <div style="width: 100%; height: 250px; overflow: hidden;padding: 0">
         <img style="width: 100%;height: 250px" src="/Public/home/images/team1.jpg">
     </div>
