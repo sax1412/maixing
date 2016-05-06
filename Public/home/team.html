@@ -158,6 +158,10 @@
             $('#team_img div').height('350px');
             $('#team_img div img').height('350px');
         }
+        if (width > 1600) {
+            $('#detail').width('900px');
+            $('#detail').css('margin-left','3.33333333%');
+        }
         var aQuery = window.location.href;
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
@@ -499,7 +503,7 @@
 
     <div class="col-lg-6" style="text-align:center;margin-top: 60px;">
         <img id="member_img"
-             style="margin: 0 auto;margin-left: 50px; width: 290px;height: 220px;box-shadow: 0px 3px 6px #999; float: left"/>
+             style="margin: 0 auto; width: 290px;height: 220px;box-shadow: 0px 3px 6px #999;"/>
     </div>
     <div class="col-lg-6" style="padding: 0;margin-top:0px;width: 47.4% !important;  ">
         <div class="col-lg-11" style="text-align: center"><span id="name"
