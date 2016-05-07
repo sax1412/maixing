@@ -19,9 +19,10 @@ class MemberController extends Controller
         $position = I('position');
         $img = I('img');
         $intro = I('intro');
+        $intro_en = I('intro_en');
         $show = I('show');
         $zn_en = I('zn_en');
-        if ($name && $english && $position && $img && $intro) {
+        if ($name && $english && $position && $img) {
             if (!$_SESSION['auth']) {
                 redirect("/Public/admin/login.html");
             } else {
@@ -32,6 +33,7 @@ class MemberController extends Controller
             $data['position'] = $position;
             $data['img'] = $img;
             $data['intro'] = $intro;
+            $data['intro_en'] = $intro_en;
             $data['time'] = time();
             if ($show == '是') {
                 $data['show'] = 1;
@@ -114,6 +116,7 @@ class MemberController extends Controller
         $position = I('position');
         $img = I('img');
         $intro = I('intro');
+        $intro_en = I('intro_en');
         $show = I('show');
         $zn_en = I('zn_en');
         if ($name && $english && $position && $img && $intro) {
@@ -127,6 +130,7 @@ class MemberController extends Controller
             $data['position'] = $position;
             $data['img'] = $img;
             $data['intro'] = $intro;
+            $data['intro_en'] = $intro_en;
             $data['time'] = time();
             if ($show == '是') {
                 $data['show'] = 1;

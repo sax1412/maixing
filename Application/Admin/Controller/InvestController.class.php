@@ -73,6 +73,11 @@ class InvestController extends Controller
             } else {
                 $v['exit'] = '否';
             }
+            if ($v['show'] == 1) {
+                $v['show'] = '是';
+            } else {
+                $v['show'] = '否';
+            }
             if ($v['stage'] == 1) {
                 $v['stage'] = '早期';
             } elseif($v['stage'] == 2){

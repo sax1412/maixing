@@ -299,7 +299,12 @@
             },
             dataType: 'json',
             success: function (r) {
-                var intro = '<pre>' + r.msg.intro + '</pre>';
+                var aQuery = window.location.href;  //取得Get参数
+                if (aQuery.indexOf("status") > 0) {
+                    var intro = '<pre>' + r.msg.intro_en + '</pre>';
+                }else{
+                    var intro = '<pre>' + r.msg.intro + '</pre>';
+                }
                 $('#member_img').attr('src', '../..' + r.msg.img);
                 $('#name').text(r.msg.name);
                 $('#en_name').text(r.msg.english);

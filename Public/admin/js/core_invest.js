@@ -75,10 +75,10 @@ function initTable() {
             {"mDataProp": "id"},
             //{"mDataProp": "admin"},
             {"mDataProp": "company"},
-            {"mDataProp": "stock"},
+            {"mDataProp": "show"},
             {"mDataProp": "area"},
             {"mDataProp": "stage"},
-            {"mDataProp": "addr"},
+            {"mDataProp": "trade"},
             {"mDataProp": "exit"},
             //{"mDataProp": "img"},
 
