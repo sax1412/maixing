@@ -86,7 +86,7 @@ class InvestController extends Controller
                 $v['stage'] = '成长期';
             }
         }
-        $out['aaData'] = $res;
+        $out['aaData'] =  $res;
         echo json_encode($out);
     }
 
