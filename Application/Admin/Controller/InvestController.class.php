@@ -85,6 +85,13 @@ class InvestController extends Controller
             }else {
                 $v['stage'] = '成长期';
             }
+            if ($v['trade'] == 1) {
+                $v['trade'] = '医疗';
+            } elseif($v['trade'] == 2){
+                $v['trade'] = '消费';
+            }else {
+                $v['trade'] = '高新技术';
+            }
         }
         $out['aaData'] =  $res;
         echo json_encode($out);
