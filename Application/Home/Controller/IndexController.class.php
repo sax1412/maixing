@@ -199,15 +199,6 @@ class IndexController extends Controller
             case '高新技术':
                 $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3, 'show' => 1])->select();
                 break;
-            case '早期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 1, 'show' => 1])->select();
-                break;
-            case '成长早期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 2, 'show' => 1])->select();
-                break;
-            case '成长期':
-                $list = D('Invest')->where(['zn_en' => 1, 'stage' => 3, 'show' => 1])->select();
-                break;
             case 'Medical care':
                 $list = D('Invest')->where(['zn_en' => 0, 'trade' => 1, 'show' => 1])->select();
                 break;
@@ -217,20 +208,16 @@ class IndexController extends Controller
             case 'Hign technology':
                 $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3, 'show' => 1])->select();
                 break;
-            case 'Early stage':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 1, 'show' => 1])->select();
-                break;
-            case 'Early growth':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 2, 'show' => 1])->select();
-                break;
-            case 'Growth':
-                $list = D('Invest')->where(['zn_en' => 0, 'stage' => 3, 'show' => 1])->select();
-                break;
         }
         if ($list) {
 
         } else {
-            $list = D('Invest')->where(['area' => $w, 'show' => 1])->select();
+            $map['area'] = $w;
+            $map['stage'] = $w;
+            $map['_logic'] = 'OR';
+            $map['_complex'] = $where;
+            $map['show'] = 1;
+            $list = D('Invest')->where($map)->select();
         }
         $str = $_SERVER['HTTP_USER_AGENT'];
         if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
