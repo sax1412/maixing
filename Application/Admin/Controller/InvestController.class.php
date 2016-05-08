@@ -19,7 +19,6 @@ class InvestController extends Controller
         $zn_en = I('zn_en');
         $show = I('show');
         $exit = I('exit');
-        $stage = I('stage');
         $trade = I('trade');
         if (!$_SESSION['auth']) {
             redirect("/Public/admin/login.html");
@@ -40,13 +39,6 @@ class InvestController extends Controller
             $data->exit = 1;
         } else {
             $data->exit = 0;
-        }
-        if ($stage == '早期') {
-            $data->stage = 1;
-        } elseif ($stage == '成长早期') {
-            $data->stage = 2;
-        } else {
-            $data->stage = 3;
         }
         if ($trade == '医疗') {
             $data->trade = 1;
@@ -77,13 +69,6 @@ class InvestController extends Controller
                 $v['show'] = '是';
             } else {
                 $v['show'] = '否';
-            }
-            if ($v['stage'] == 1) {
-                $v['stage'] = '早期';
-            } elseif($v['stage'] == 2){
-                $v['stage'] = '成长早期';
-            }else {
-                $v['stage'] = '成长期';
             }
             if ($v['trade'] == 1) {
                 $v['trade'] = '医疗';
@@ -130,13 +115,6 @@ class InvestController extends Controller
             } else {
                 $res['show'] = '否';
             }
-            if ($res['stage'] == 1) {
-                $res['stage'] = '早期';
-            } elseif($res['stage'] == 2){
-                $res['stage'] = '成长早期';
-            }else {
-                $res['stage'] = '成长期';
-            }
             if ($res['trade'] == 1) {
                 $res['trade'] = '医疗';
             } elseif($res['trade'] == 2){
@@ -157,7 +135,6 @@ class InvestController extends Controller
         $zn_en = I('zn_en');
         $show = I('show');
         $exit = I('exit');
-        $stage = I('stage');
         $trade = I('trade');
         $area = I('area');
         if (!$_SESSION['auth']) {
@@ -179,13 +156,6 @@ class InvestController extends Controller
             $data->exit = 1;
         } else {
             $data->exit = 0;
-        }
-        if ($stage == '早期') {
-            $data->stage = 1;
-        } elseif ($stage == '成长早期') {
-            $data->stage = 2;
-        } else {
-            $data->stage = 3;
         }
         if ($trade == '医疗') {
             $data->trade = 1;
