@@ -212,9 +212,9 @@ class IndexController extends Controller
         if ($list) {
 
         } else {
-            $map['area'] = $w;
-            $map['stage'] = $w;
-            $map['_logic'] = 'OR';
+            $where['area'] = $w;
+            $where['stage'] = $w;
+            $where['_logic'] = 'OR';
             $map['_complex'] = $where;
             $map['show'] = 1;
             $list = D('Invest')->where($map)->select();
