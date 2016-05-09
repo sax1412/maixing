@@ -230,13 +230,6 @@ class IndexController extends Controller
     {
         $id = I('id');
         $invest = D('Invest')->where(['id' => $id])->find();
-        if ($invest['stage'] == 1) {
-            $invest['stage'] = '早期';
-        } elseif ($invest['stage'] == 2) {
-            $invest['stage'] = '成长早期';
-        } else {
-            $invest['stage'] = '成长期';
-        }
         if ($invest['exit'] == 0) {
             unset($invest['exit_time']);
             unset($invest['exit_way']);
