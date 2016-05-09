@@ -144,7 +144,6 @@ class NewsController extends Controller
             $data['auth'] = $auth;
             $data['from'] = $from;
             $data['link'] = $link;
-            $data['time'] = time();
             $res = D('News')->where(['id' => $id])->save($data);
             if ($res) {
                 json_ok();

@@ -113,28 +113,36 @@
                 }
             });
         }
-
+        $('#form').submit(function(){
+            search();
+            return false;
+        });
         $('#search').click(function () {
-            $('#news_list').empty();
-            var name = $('input[name=name]').val();
-            $.ajax({
-                "url": '/home/index/news',
-                "data": {
-                    "word": name
-                },
-                "dataType": 'json',
-                success: function (r) {
-                    var len = r.msg.length;
-                    for (var i = 0; i < len; i++) {
-                        $('#news_list').append("<div class='col-lg-1 col-lg-offset-1' style='text-align: center'><span style='font-size: 16px; color: #7c7c7c'>" + r.msg[i].time1 + "</span><br><span style='font-size: 14px; color: #7c7c7c'>" + r.msg[i].time2 + "</span></div>" +
-                        "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
-                        "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
-                        "<hr class='col-lg-9 col-lg-offset-2'>");
-                    }
-                }
-            });
+            search();
         });
     });
+
+    function search(){
+        $('#news_list').empty();
+        var name = $('input[name=name]').val();
+        $.ajax({
+            "url": '/home/index/news',
+            "data": {
+                "word": name
+            },
+            "dataType": 'json',
+            success: function (r) {
+                var len = r.msg.length;
+                for (var i = 0; i < len; i++) {
+                    $('#news_list').append("<div class='col-lg-1 col-lg-offset-1' style='text-align: center'><span style='font-size: 16px; color: #7c7c7c'>" + r.msg[i].time1 + "</span><br><span style='font-size: 14px; color: #7c7c7c'>" + r.msg[i].time2 + "</span></div>" +
+                    "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
+                    "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
+                    "<hr class='col-lg-9 col-lg-offset-2'>");
+                }
+            }
+        });
+    }
+
    function show(){
        $('#show').css('display','none');
        $('#news_list').css('overflow-y','scroll');
@@ -292,8 +300,8 @@
             <img src="/Public/home/images/news.jpg" style="opacity:0.9;-webkit-opacity:0.9;">
         </div>
         <div class="col-lg-3 col-lg-offset-4" style="margin-top: 80px;">
-            <form id="form" action="/home/index/news" method="post">
-                <input type="text" name="name" class="form-control">
+            <form id="form">
+                <input type="text" name="name"  class="form-control">
                 <span id="search" class="glyphicon glyphicon-search" style="font-size: 20px;color: #AAA"></span>
             </form>
         </div>
