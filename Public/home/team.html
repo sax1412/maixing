@@ -201,9 +201,6 @@
             $.ajax({
                 "url": '/home/index/member',
                 "dataType": 'json',
-                "data": {
-                    status: 1
-                },
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
