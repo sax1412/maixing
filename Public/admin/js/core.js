@@ -20,6 +20,7 @@ $(document).ready(function () {
             if (r.code == 200) {
                 $('#username').text(r.msg);
             } else {
+                window.location.href='/Public/admin/login.html';
             }
         }
     });

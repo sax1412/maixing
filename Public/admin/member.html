@@ -35,6 +35,7 @@
                     $('#img').val(r.msg.img);
                     $('#name').val(r.msg.name);
                     $('#position').val(r.msg.position);
+                    $('#position_en').val(r.msg.position_en);
                     $('#intro').val(r.msg.intro);
                     $('#intro_en').val(r.msg.intro_en);
                     $('#english').val(r.msg.english);
@@ -51,6 +52,7 @@
             var intro_en = $('#intro_en').val();
             var english = $('#english').val();
             var position = $('#position').val();
+            var position_en = $('#position_en').val();
             var show = $('#show').val();
             var zn_en = $('#zn_en').val();
             $.ajax({
@@ -62,6 +64,7 @@
                     "img": img,
                     "name": name,
                     "position": position,
+                    "position_en": position_en,
                     "english": english,
                     "intro": intro,
                     "intro_en":intro_en,
@@ -87,6 +90,7 @@
             var intro_en = $('#intro_en').val();
             var english = $('#english').val();
             var position = $('#position').val();
+            var position_en = $('#position_en').val();
             var show = $('#show').val();
             var zn_en = $('#zn_en').val();
             if (button == '保存') {
@@ -100,6 +104,7 @@
                         "img": img,
                         "name": name,
                         "position": position,
+                        "position_en": position_en,
                         "english": english,
                         "intro": intro,
                         "intro_en":intro_en,
@@ -286,8 +291,13 @@
                     <div class="form-group">
                         <label for="position" class="col-sm-1 control-label">职位</label>
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-4">
                             <input type="text" class="form-control" id="position" name="position">
+                        </div>
+                        <label for="position" class="col-sm-1 control-label">职位(英文)</label>
+
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="position_en" name="position">
                         </div>
                     </div>
                     <div class="form-group">

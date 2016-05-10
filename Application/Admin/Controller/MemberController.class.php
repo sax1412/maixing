@@ -17,6 +17,7 @@ class MemberController extends Controller
         $name = I('name');
         $english = I('english');
         $position = I('position');
+        $position_en = I('position_en');
         $img = I('img');
         $intro = I('intro');
         $intro_en = I('intro_en');
@@ -31,6 +32,7 @@ class MemberController extends Controller
             $data['name'] = $name;
             $data['english'] = $english;
             $data['position'] = $position;
+            $data['position_en'] = $position_en;
             $data['img'] = $img;
             $data['intro'] = $intro;
             $data['intro_en'] = $intro_en;
@@ -114,6 +116,7 @@ class MemberController extends Controller
         $name = I('name');
         $english = I('english');
         $position = I('position');
+        $position_en = I('position_en');
         $img = I('img');
         $intro = I('intro');
         $intro_en = I('intro_en');
@@ -128,6 +131,7 @@ class MemberController extends Controller
             $data['name'] = $name;
             $data['english'] = $english;
             $data['position'] = $position;
+            $data['position_en'] = $position_en;
             $data['img'] = $img;
             $data['intro'] = $intro;
             $data['intro_en'] = $intro_en;
