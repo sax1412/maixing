@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <title>麦星</title>
     <link rel="stylesheet" type="text/css" href="/Public/home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Public/home/css/jquery.mCustomScrollbar.css">
     <script type="text/javascript" src="/Public/home/js/jquery-2.0.min.js"></script>
     <script type="text/javascript" src="/Public/home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery-ui.min.js"></script>
 </head>
 <style>
     ul li {
@@ -94,6 +98,16 @@
         color: #FFFFFF !important;
         display: none;
     }
+
+    .mCSB_dragger_bar{
+        width: 3px !important;
+        background-color: #b0a065 !important;
+    }
+    .mCSB_draggerRail{
+        width: 1px !important;
+        background-color: #cccccc !important;
+    }
+
 </style>
 <script>
     $(function () {
@@ -101,6 +115,11 @@
         if (aQuery.indexOf("case") > 0) {
             $("#case").css('color', '#9b761d');
         }
+
+        $("#scroll").mCustomScrollbar({
+
+        });
+
         if (aQuery.indexOf("status") > 0) {
             $('#menu img').attr('src', '/Public/home/images/case_en.jpg');
             $('#menu img').click(function () {
@@ -611,27 +630,6 @@
         padding: 0;
     }
 
-    /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-
-    ::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
-    }
-
-    /*定义滚动条轨道 内阴影+圆角*/
-
-    ::-webkit-scrollbar-track {
-        border-radius: 10px;
-        background-color: #cccccc;
-    }
-
-    /*定义滑块 内阴影+圆角*/
-
-    ::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: #b0a065;
-    }
-
 
     .addr, .up_stock {
         display: none;
@@ -787,7 +785,7 @@
                 <img id="invest_img"
                      style="margin: -10px auto; width: 290px;height:220px;box-shadow: 0px 3px 6px #999;"/>
             </div>
-            <div class="col-lg-6" id="scroll" style="padding: 0;margin-top:10px;height:310px;overflow-y: auto;width: 47.4% !important;">
+            <div class="col-lg-6" id="scroll" style="padding: 0;margin-top:10px;height:310px;width: 47.4% !important;">
                 <div style="padding: 0;width: 100%;" id="ch">
                     <div class="col-lg-12" style="font-size: 14px;">投资阶段：<span id="invest_stage"></span></div>
                     <div class="col-lg-11" style="font-size: 14px;">投资时间：<span id="invest_time"></span></div>
