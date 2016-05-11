@@ -295,7 +295,7 @@
             },
             dataType: 'json',
             success: function (r) {
-                var content = '<pre>' + r.msg.description + '</pre>';
+                //var content = '<pre>' + r.msg.description + '</pre>';
                 $('#invest_img,#invest_img_en').attr('src', r.msg.img);
                 $('#invest_name,#invest_name_en').text(r.msg.company_all);
                 $('#invest_stage,#invest_stage_en').text(r.msg.stage);
@@ -307,7 +307,7 @@
                 $('#invest_reward,#invest_reward_en').text(r.msg.reward);
                 $('#invest_addr,#invest_addr_en').text(r.msg.addr);
                 $('#up_stock,#up_stock_en').text(r.msg.up_stock);
-                $('#invest_intro,#invest_intro_en').html(content);
+                $('#invest_intro,#invest_intro_en').text(r.msg.description);
                 if (r.msg.exit == 0) {
                     $('.exit').css('display', 'none');
                 }
@@ -365,9 +365,13 @@
         background-color: #ffffff;
         border: 0;
         padding: 0;
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
         font-family: 'Microsoft YaHei';
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
     }
 
     #menu {
