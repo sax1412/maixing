@@ -145,7 +145,7 @@
     pre {
         background-color: #ffffff;
         border: 0;
-        font-size: 16px;
+        font-size: 14px;
         text-align: left;
         font-family: 'Microsoft YaHei', sans-serif
     }
@@ -153,19 +153,6 @@
 </style>
 <script>
     $(function () {
-        var width = $(document).width();
-        if (width > 1800) {
-            $('#team_img div').height('350px');
-            $('#team_img div img').height('350px');
-        }
-        if (width > 1600) {
-            $('#detail').width('900px');
-            $('#detail').css('margin-left','3.33333333%');
-        }
-        if (width > 2000) {
-            $('#detail').width('900px');
-            $('#detail').css('margin-left','12%');
-        }
         var aQuery = window.location.href;
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
@@ -430,12 +417,15 @@
     #detail {
         position: fixed;
         z-index: 11;
-        top: 20%;
-        left: 20%;
-        width: 60%;
+        top: 0;
+        left:0;
+        right: 0;
+        bottom: 0;
+        width: 850px;
+        margin: auto;
         background-color: #FFFFFF;
         border-radius: 3px;
-        height: 420px;
+        height: 450px;
         display: none;
     }
 
@@ -468,6 +458,31 @@
 
 </style>
 <body>
+<div id="detail">
+    <img style="margin-left: 96%;margin-top: 15px;" src="images/off.jpg"
+         onclick="javascript:$('#detail').css('display','none');$('#mask').css('display','none');document.documentElement.style.overflow='';">
+
+    <div class="col-lg-6" style="text-align:center;margin-top: 60px;">
+        <img id="member_img"
+             style="margin: 0 auto; width: 290px;height: 220px;box-shadow: 0px 3px 6px #999;"/>
+    </div>
+    <div class="col-lg-6" style="padding: 0;margin-top:0px;width: 47.4% !important;  ">
+        <div class="col-lg-11" style="text-align: center"><span id="name"
+                                                                style="font-size: 24px;color: #4c4c4c;"></span></div>
+        <div style="height:300px;padding: 0;width: 100%;">
+            <div class="col-lg-11" style="text-align: center"><span id="en_name"
+                                                                    style="font-size: 14px;color: #4c4c4c;"></span>
+            </div>
+            <div class="col-lg-11 exit" style="text-align: center;margin-top: 15px;"><span id="position"
+                                                                                           style="font-size: 14px;color: #4c4c4c;"></span>
+            </div>
+            <div class="col-lg-1 col-lg-offset-5"
+                 style="margin-top: 15px;width:5% !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
+            <div class="col-lg-12" id="intro"
+                 style="margin-top:15px;color: #4c4c4c;overflow: auto;height: 215px;"></div>
+        </div>
+    </div>
+</div>
 <div id="mask"
      style="margin-top: -10px;position: absolute;z-index: 10;background-color: #000;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;">
 </div>
@@ -503,31 +518,6 @@
         </div>
         <div class="col-lg-6 " id="team_intro">
 
-        </div>
-    </div>
-</div>
-<div id="detail">
-    <img style="margin-left: 96%;margin-top: 15px;" src="images/off.jpg"
-         onclick="javascript:$('#detail').css('display','none');$('#mask').css('display','none');document.documentElement.style.overflow='';">
-
-    <div class="col-lg-6" style="text-align:center;margin-top: 60px;">
-        <img id="member_img"
-             style="margin: 0 auto; width: 290px;height: 220px;box-shadow: 0px 3px 6px #999;"/>
-    </div>
-    <div class="col-lg-6" style="padding: 0;margin-top:0px;width: 47.4% !important;  ">
-        <div class="col-lg-11" style="text-align: center"><span id="name"
-                                                                style="font-size: 24px;color: #4c4c4c;"></span></div>
-        <div style="height:300px;padding: 0;width: 100%;">
-            <div class="col-lg-11" style="text-align: center"><span id="en_name"
-                                                                    style="font-size: 14px;color: #4c4c4c;"></span>
-            </div>
-            <div class="col-lg-11 exit" style="text-align: center;margin-top: 15px;"><span id="position"
-                                                                                           style="font-size: 16px;color: #4c4c4c;"></span>
-            </div>
-            <div class="col-lg-1 col-lg-offset-5"
-                 style="margin-top: 15px;width:5% !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
-            <div class="col-lg-12" id="intro"
-                 style="margin-top:15px;font-size: 16px !important;color: #4c4c4c;overflow: auto;height: 215px;"></div>
         </div>
     </div>
 </div>
