@@ -110,9 +110,9 @@ class IndexController extends Controller
     {
         $status = I('status');
         if ($status == 1) {
-            $list = D('Member')->where(['show' => 1])->order('convert(name using gb2312) asc')->select();
+            $list = D('Member')->where(['show' => 1])->order('convert(name using gbk) asc')->select();
         } else {
-            $list = D('Member')->where(['show' => 1])->order('convert(name using gb2312) asc')->select();
+            $list = D('Member')->where(['show' => 1])->order('convert(name using gbk) asc')->select();
         }
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
