@@ -170,6 +170,9 @@
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
         }
+        $("#intro").mCustomScrollbar({
+
+        });
         var width = $(document.body).width();
         $('#img_div').css('margin-left', (width - 900) / 2 + 20);
         if (aQuery.indexOf("status") > 0) {
@@ -297,21 +300,18 @@
             success: function (r) {
                 var aQuery = window.location.href;  //取得Get参数
                 if (aQuery.indexOf("status") > 0) {
-                    var intro = '<pre>' + r.msg.intro_en + '</pre>';
+                    var intro = r.msg.intro_en ;
                     $('#name').text(r.msg.english);
                     $('#en_name').empty();
                     $('#position').text(r.msg.position_en);
                 }else{
-                    var intro = '<pre>' + r.msg.intro + '</pre>';
+                    var intro =  r.msg.intro ;
                     $('#name').text(r.msg.name);
                     $('#en_name').text(r.msg.english);
                     $('#position').text(r.msg.position);
                 }
                 $('#member_img').attr('src', '../..' + r.msg.img);
-                $('#intro').html(intro);
-                $("#intro").mCustomScrollbar({
-
-                });
+                $('#intro').text(intro);
             }
         });
     }
@@ -477,7 +477,7 @@
             <div class="col-lg-1 col-lg-offset-5"
                  style="margin-top: 15px;width:5% !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
             <div class="col-lg-12" id="intro"
-                 style="margin-top:15px;color: #4c4c4c;height: 250px;">
+                 style="margin-top:15px;color: #4c4c4c;height: 250px;line-height: 25px;">
             </div>
         </div>
     </div>
