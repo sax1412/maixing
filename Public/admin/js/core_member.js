@@ -80,7 +80,7 @@ function initTable() {
             {"mDataProp": "name"},
             {"mDataProp": "english"},
             {"mDataProp": "position"},
-            {"mDataProp": "time"},
+            {"mDataProp": "position_en"},
             {"mDataProp": "show"},
             {
                 "mDataProp": "intro",
