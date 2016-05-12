@@ -12,6 +12,12 @@ use Think\Controller;
 
 class ContactController extends Controller
 {
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
     public function contact_add()
     {
         $company = I('company');

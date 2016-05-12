@@ -12,6 +12,13 @@ use Think\Controller;
 
 class TeamController extends Controller
 {
+
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
     public function team_add()
     {
         $intro = I('intro');

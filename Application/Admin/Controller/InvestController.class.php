@@ -12,6 +12,12 @@ use Think\Controller;
 
 class InvestController extends Controller
 {
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
     public function add()
     {
         $data = D('Invest');

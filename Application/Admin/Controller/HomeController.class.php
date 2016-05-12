@@ -12,6 +12,12 @@ use Think\Controller;
 
 class HomeController extends Controller
 {
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
     public function banner_add()
     {
         $title = I('title');

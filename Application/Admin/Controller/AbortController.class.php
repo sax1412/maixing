@@ -12,6 +12,13 @@ use Think\Controller;
 
 class AbortController extends Controller
 {
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
+
     public function abort_add()
     {
         $content = I('content');

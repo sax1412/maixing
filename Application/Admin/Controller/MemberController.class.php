@@ -12,6 +12,12 @@ use Think\Controller;
 
 class MemberController extends Controller
 {
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
     public function member_add()
     {
         $name = I('name');

@@ -12,6 +12,13 @@ use Think\Controller;
 
 class MenuController extends Controller
 {
+
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
     public function menu_add()
     {
         $menu = I('menu');

@@ -12,6 +12,13 @@ use Think\Controller;
 
 class NewsController extends Controller
 {
+
+    public function __initialize()
+    {
+        if (!$_SESSION['auth']) {
+            redirect("/Public/admin/login.html");
+        }
+    }
     public function news_add()
     {
         $title = I('title');

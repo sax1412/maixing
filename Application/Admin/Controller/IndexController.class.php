@@ -25,7 +25,7 @@ class IndexController extends Controller {
         }else{
             $result=D('Role')->where($map)->find();
             if($result){
-                session('auth',$user);
+                session(array('auth'=>$user,'expire'=>3600*24));
                 json_ok();
             }else{
                 json_die('密码错误');
