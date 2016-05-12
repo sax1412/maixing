@@ -59,6 +59,9 @@
         font-family: "Microsoft YaHei";
     }
 
+    #img:hover{
+        cursor: pointer;
+    }
 </style>
 <script>
     $(function () {
@@ -124,6 +127,26 @@
             search();
         });
     });
+
+    function search_all() {
+        $('#news_list').empty();
+        $.ajax({
+            "url": '/home/index/news',
+            "data": {
+                "word": ''
+            },
+            "dataType": 'json',
+            success: function (r) {
+                var len = r.msg.length;
+                for (var i = 0; i < len; i++) {
+                    $('#news_list').append("<div class='col-lg-1 col-lg-offset-1' style='text-align: center'><span style='font-size: 16px; color: #7c7c7c'>" + r.msg[i].time1 + "</span><br><span style='font-size: 14px; color: #7c7c7c'>" + r.msg[i].time2 + "</span></div>" +
+                    "<div class='col-lg-9'><a href='news_detail.html?id=" + r.msg[i].id + "' class='title'>" + r.msg[i].title + "</a></div>" +
+                    "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
+                    "<hr class='col-lg-9 col-lg-offset-2'>");
+                }
+            }
+        });
+    }
 
     function search() {
         $('#news_list').empty();
@@ -321,7 +344,7 @@
 </div>
 <div class="container" style="margin-top: -50px;">
     <div class="row">
-        <div class="col-lg-3 col-lg-offset-1" id="img">
+        <div class="col-lg-3 col-lg-offset-1" id="img" onclick="search_all()">
             <img src="/Public/home/images/news.jpg" style="opacity:0.9;-webkit-opacity:0.9;">
         </div>
         <div class="col-lg-3 col-lg-offset-4" style="margin-top: 80px;">
