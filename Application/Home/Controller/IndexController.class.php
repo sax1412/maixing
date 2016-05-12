@@ -234,7 +234,11 @@ class IndexController extends Controller
             unset($invest['exit_time']);
             unset($invest['exit_way']);
             unset($invest['reward']);
-            unset($invest['stock']);
+            unset($invest['up_stock']);
+            unset($invest['addr']);
+        }
+        if($invest['exit'] == 1 && !strstr($invest['exit_way'],'上市')){
+            unset($invest['up_stock']);
             unset($invest['addr']);
         }
         if ($invest['trade'] == 1) {

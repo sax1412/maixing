@@ -99,11 +99,12 @@
         display: none;
     }
 
-    .mCSB_dragger_bar{
+    .mCSB_dragger_bar {
         width: 3px !important;
         background-color: #b0a065 !important;
     }
-    .mCSB_draggerRail{
+
+    .mCSB_draggerRail {
         width: 1px !important;
         background-color: #cccccc !important;
     }
@@ -115,9 +116,7 @@
             $("#case").css('color', '#9b761d');
         }
 
-        $("#scroll").mCustomScrollbar({
-
-        });
+        $("#scroll").mCustomScrollbar({});
 
         if (aQuery.indexOf("status") > 0) {
             $('#menu img').attr('src', '/Public/home/images/case_en.jpg');
@@ -313,21 +312,65 @@
             },
             dataType: 'json',
             success: function (r) {
-                //var content = '<pre>' + r.msg.description + '</pre>';
+                var content = '<pre>' + r.msg.description + '</pre>';
                 $('#invest_img,#invest_img_en').attr('src', r.msg.img);
-                $('#invest_name,#invest_name_en').text(r.msg.company_all);
-                $('#invest_stage,#invest_stage_en').text(r.msg.stage);
-                $('#invest_time,#invest_time_en').text(r.msg.length);
-                $('#areas,#areas_en').text(r.msg.area);
-                $('#trade,#trade_en').text(r.msg.trade);
-                $('#invest_exit_time,#invest_exit_time_en').text(r.msg.exit_time);
-                $('#invest_exit_way,#invest_exit_way_en').text(r.msg.exit_way);
-                $('#invest_web,#invest_web_en').text(r.msg.web);
-                $('#invest_web,#invest_web_en').attr('href', "https://" + r.msg.web);
-                $('#invest_reward,#invest_reward_en').text(r.msg.reward);
-                $('#invest_addr,#invest_addr_en').text(r.msg.addr);
-                $('#up_stock,#up_stock_en').text(r.msg.up_stock);
-                $('#invest_intro,#invest_intro_en').text(r.msg.description);
+                if (r.msg.company_all.length == 0) {
+                    $('#invest_name,#invest_name_en').remove();
+                } else {
+                    $('#invest_name,#invest_name_en').text(r.msg.company_all);
+                }
+                if (r.msg.stage.length == 0) {
+                    $('#invest_stage,#invest_stage_en').remove();
+                } else {
+                    $('#invest_stage,#invest_stage_en').text(r.msg.stage);
+                }
+                if (r.msg.length.length == 0) {
+                    $('#invest_time,#invest_time_en').remove();
+                } else {
+                    $('#invest_time,#invest_time_en').text(r.msg.length);
+                }
+                if (r.msg.area.length == 0) {
+                    $('#areas,#areas_en').remove();
+                } else {
+                    $('#areas,#areas_en').text(r.msg.area);
+                }
+                if (r.msg.trade.length == 0) {
+                    $('#trade,#trade_en').remove();
+                } else {
+                    $('#trade,#trade_en').text(r.msg.trade);
+                }
+                if (r.msg.exit_time.length == 0) {
+                    $('#invest_exit_time,#invest_exit_time_en').remove();
+                } else {
+                    $('#invest_exit_time,#invest_exit_time_en').text(r.msg.exit_time);
+                }
+                if (r.msg.exit_way.length == 0) {
+                    $('#invest_exit_way,#invest_exit_way_en').remove();
+                } else {
+                    $('#invest_exit_way,#invest_exit_way_en').text(r.msg.exit_way);
+                }
+                if (r.msg.web.length == 0) {
+                    $('#invest_web,#invest_web_en').remove();
+                } else {
+                    $('#invest_web,#invest_web_en').text(r.msg.web);
+                    $('#invest_web,#invest_web_en').attr('href', "https://" + r.msg.web);
+                }
+                if (r.msg.reward.length == 0) {
+                    $('#invest_reward,#invest_reward_en').remove();
+                } else {
+                    $('#invest_reward,#invest_reward_en').text(r.msg.reward);
+                }
+                if (r.msg.addr.length == 0) {
+                    $('#invest_addr,#invest_addr_en').remove();
+                } else {
+                    $('#invest_addr,#invest_addr_en').text(r.msg.addr);
+                }
+                if (r.msg.up_stock.length == 0) {
+                    $('#up_stock,#up_stock_en').remove();
+                } else {
+                    $('#up_stock,#up_stock_en').text(r.msg.up_stock);
+                }
+                $('#invest_intro,#invest_intro_en').html(content);
                 if (r.msg.exit == 0) {
                     $('.exit').css('display', 'none');
                 }
@@ -631,7 +674,6 @@
         padding: 0;
     }
 
-
     .addr, .up_stock {
         display: none;
     }
@@ -800,7 +842,8 @@
                     <div class="col-lg-11" style="font-size: 14px;">公司网站：
                         <a href="" id="invest_web"></a>
                     </div>
-                    <div class="col-lg-11" id="invest_intro" style="font-size: 14px;line-height: 2;padding-top: 30px;"></div>
+                    <div class="col-lg-11" id="invest_intro"
+                         style="font-size: 14px;line-height: 2;padding-top: 30px;"></div>
                 </div>
                 <div style="padding: 0;width: 100%" id="en">
                     <div class="col-lg-12" style="font-size: 14px;">Investment Staged：<span id="invest_stage_en"></span>
