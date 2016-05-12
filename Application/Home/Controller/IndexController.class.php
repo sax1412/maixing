@@ -237,6 +237,13 @@ class IndexController extends Controller
             unset($invest['stock']);
             unset($invest['addr']);
         }
+        if ($invest['trade'] == 1) {
+            $invest['trade'] = '医疗';
+        } elseif ($invest['trade'] == 2) {
+            $invest['trade'] = '消费';
+        } else {
+            $invest['trade'] = '高新技术';
+        }
         json_out_msg($invest);
     }
 

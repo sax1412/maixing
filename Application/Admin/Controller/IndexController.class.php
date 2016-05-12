@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index() {
-        if($_SESSION['auth']){
+        if($_SESSION['name']){
             redirect("/Public/admin/index.html");
         }else{
             redirect("/Public/admin/login.html");
@@ -25,7 +25,8 @@ class IndexController extends Controller {
         }else{
             $result=D('Role')->where($map)->find();
             if($result){
-                session(array('auth'=>$user,'expire'=>3600*24));
+                session('[start]');
+                session('name',$user);
                 json_ok();
             }else{
                 json_die('密码错误');
@@ -34,6 +35,10 @@ class IndexController extends Controller {
     }
 
     public function role(){
-        json_out_msg($_SESSION['auth']);
+        if($_SESSION['name']){
+            json_out_msg($_SESSION['name']);
+        }else{
+            json_die('400');
+        }
     }
 }

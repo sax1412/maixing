@@ -318,9 +318,11 @@
                 $('#invest_name,#invest_name_en').text(r.msg.company_all);
                 $('#invest_stage,#invest_stage_en').text(r.msg.stage);
                 $('#invest_time,#invest_time_en').text(r.msg.length);
+                $('#areas,#areas_en').text(r.msg.area);
+                $('#trade,#trade_en').text(r.msg.area);
                 $('#invest_exit_time,#invest_exit_time_en').text(r.msg.exit_time);
                 $('#invest_exit_way,#invest_exit_way_en').text(r.msg.exit_way);
-                $('#invest_web,#invest_web_en').text(r.msg.web);
+                $('#invest_web,#invest_web_en').text(r.msg.trade);
                 $('#invest_web,#invest_web_en').attr('href', "https://" + r.msg.web);
                 $('#invest_reward,#invest_reward_en').text(r.msg.reward);
                 $('#invest_addr,#invest_addr_en').text(r.msg.addr);
@@ -354,7 +356,7 @@
                 }
                 var height = $(document.body).height();
                 if (len < 7) {
-                    height = height + 300;
+                    height = height + 1000;
                 }
                 $('#mask').height(height);
             }
@@ -788,6 +790,8 @@
                 <div style="padding: 0;width: 100%;" id="ch">
                     <div class="col-lg-12" style="font-size: 14px;">投资阶段：<span id="invest_stage"></span></div>
                     <div class="col-lg-11" style="font-size: 14px;">投资时间：<span id="invest_time"></span></div>
+                    <div class="col-lg-11" style="font-size: 14px;">地域：<span id="areas"></span></div>
+                    <div class="col-lg-11" style="font-size: 14px;">行业：<span id="trade"></span></div>
                     <div class="col-lg-11 exit" style="font-size: 14px;">退出时间：<span id="invest_exit_time"></span></div>
                     <div class="col-lg-11 exit" style="font-size: 14px;">退出方式：<span id="invest_exit_way"></span></div>
                     <div class="col-lg-11 exit" style="font-size: 14px;">投资收益：<span id="invest_reward"></span></div>
@@ -801,7 +805,11 @@
                 <div style="padding: 0;width: 100%" id="en">
                     <div class="col-lg-12" style="font-size: 14px;">Investment Staged：<span id="invest_stage_en"></span>
                     </div>
-                    <div class="col-lg-11" style="font-size: 14px;">investment Time：<span id="invest_time_en"></span>
+                    <div class="col-lg-11" style="font-size: 14px;">Investment Time：<span id="invest_time_en"></span>
+                    </div>
+                    <div class="col-lg-11" style="font-size: 14px;">Area：<span id="areas_en"></span>
+                    </div>
+                    <div class="col-lg-11" style="font-size: 14px;">Sectors：<span id="trade_en"></span>
                     </div>
                     <div class="col-lg-11 exit" style="font-size: 14px;">Exit Time：<span
                             id="invest_exit_time_en"></span></div>

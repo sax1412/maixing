@@ -12,24 +12,13 @@ use Think\Controller;
 
 class TeamController extends Controller
 {
-
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
     public function team_add()
     {
         $intro = I('intro');
         $show = I('show');
         $zn_en = I('zn_en');
         if ($intro) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['intro'] = $intro;
             $data['time'] = time();
             if ($show == '是') {
@@ -110,11 +99,7 @@ class TeamController extends Controller
         $show = I('show');
         $zn_en = I('zn_en');
         if ($intro) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['intro'] = $intro;
             $data['time'] = time();
             if ($show == '是') {

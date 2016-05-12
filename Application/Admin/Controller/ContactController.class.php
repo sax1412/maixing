@@ -12,12 +12,6 @@ use Think\Controller;
 
 class ContactController extends Controller
 {
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
     public function contact_add()
     {
         $company = I('company');
@@ -29,11 +23,7 @@ class ContactController extends Controller
         $add = I('add');
         $zn_en = I('zn_en');
         if ($company && $tel && $fax && $img && $email && $add && $city) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             if ($zn_en == '中文') {
                 $data['zn_en'] = 1;
             } else {
@@ -117,11 +107,7 @@ class ContactController extends Controller
         $add = I('add');
         $zn_en = I('zn_en');
         if ($company && $tel && $fax && $img && $email && $add &&$city) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             if ($zn_en == '中文') {
                 $data['zn_en'] = 1;
             } else {

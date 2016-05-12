@@ -12,24 +12,13 @@ use Think\Controller;
 
 class AbortController extends Controller
 {
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
-
     public function abort_add()
     {
         $content = I('content');
         $show = I('show');
         $zn_en = I('zn_en');
         if ($content) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['content'] = $content;
             $data['time'] = time();
             if ($show == '是') {
@@ -63,7 +52,7 @@ class AbortController extends Controller
             $v['time'] = date('Y-m-d', $v['time']);
             if ($v['show'] == 1) {
                 $v['show'] = '是';
-            }else{
+            } else {
                 $v['show'] = '否';
             }
         }
@@ -112,11 +101,7 @@ class AbortController extends Controller
         $show = I('show');
         $zn_en = I('zn_en');
         if ($content) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['content'] = $content;
             $data['time'] = time();
             if ($show == '是') {

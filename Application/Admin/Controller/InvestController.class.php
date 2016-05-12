@@ -12,12 +12,6 @@ use Think\Controller;
 
 class InvestController extends Controller
 {
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
     public function add()
     {
         $data = D('Invest');
@@ -26,11 +20,7 @@ class InvestController extends Controller
         $show = I('show');
         $exit = I('exit');
         $trade = I('trade');
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        } else {
-            $data->admin = $_SESSION['auth'];
-        }
+        $data['admin'] = $_SESSION['name'];
         if ($zn_en == '中文') {
             $data->zn_en = 1;
         } else {
@@ -143,11 +133,7 @@ class InvestController extends Controller
         $exit = I('exit');
         $trade = I('trade');
         $area = I('area');
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        } else {
-            $data->admin = $_SESSION['auth'];
-        }
+        $data['admin'] = $_SESSION['name'];
         if ($zn_en == '中文') {
             $data->zn_en = 1;
         } else {

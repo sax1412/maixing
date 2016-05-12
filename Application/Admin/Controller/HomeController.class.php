@@ -12,12 +12,6 @@ use Think\Controller;
 
 class HomeController extends Controller
 {
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
     public function banner_add()
     {
         $title = I('title');
@@ -26,11 +20,7 @@ class HomeController extends Controller
         $show = I('show');
         $zn_en = I('zn_en');
         if ($title && $note && $content) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['title'] = $title;
             $data['content'] = $content;
             $data['note'] = $note;
@@ -117,11 +107,7 @@ class HomeController extends Controller
         $show = I('show');
         $zn_en = I('zn_en');
         if ($title && $note && $content) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['title'] = $title;
             $data['note'] = $note;
             $data['content'] = $content;

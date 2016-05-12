@@ -129,12 +129,14 @@
     });
 
     function search_all() {
+        var aQuery = window.location.href;
+        var url='/home/index/news';
+        if (aQuery.indexOf("status") > 0) {
+            url='/home/index/news?status=1';
+        }
         $('#news_list').empty();
         $.ajax({
-            "url": '/home/index/news',
-            "data": {
-                "word": ''
-            },
+            "url": url,
             "dataType": 'json',
             success: function (r) {
                 var len = r.msg.length;

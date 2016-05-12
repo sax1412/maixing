@@ -12,13 +12,6 @@ use Think\Controller;
 
 class NewsController extends Controller
 {
-
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
     public function news_add()
     {
         $title = I('title');
@@ -34,11 +27,7 @@ class NewsController extends Controller
         $link = I('link');
         $zn_en = I('zn_en');
         if ($title && $intro && $content1 && $auth && $from && $link) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             if ($zn_en == '中文') {
                 $data['zn_en'] = 1;
             } else {
@@ -130,11 +119,7 @@ class NewsController extends Controller
         $link = I('link');
         $zn_en = I('zn_en');
         if ($title && $intro && $content1 && $auth && $from && $link) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             if ($zn_en == '中文') {
                 $data['zn_en'] = 1;
             } else {

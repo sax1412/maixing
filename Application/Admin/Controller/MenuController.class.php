@@ -12,13 +12,6 @@ use Think\Controller;
 
 class MenuController extends Controller
 {
-
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
     public function menu_add()
     {
         $menu = I('menu');
@@ -31,11 +24,7 @@ class MenuController extends Controller
         $len = count($title);
         $str = "";
         if ($menu) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['menu'] = $menu;
             $data['english'] = $english;
             for ($i = 0; $i < $len; $i++) {
@@ -138,11 +127,7 @@ class MenuController extends Controller
         $len = count($title);
         $str = "";
         if ($title) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['menu'] = $menu;
             $data['english'] = $english;
             for ($i = 0; $i < $len; $i++) {

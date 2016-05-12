@@ -12,12 +12,6 @@ use Think\Controller;
 
 class MemberController extends Controller
 {
-    public function __initialize()
-    {
-        if (!$_SESSION['auth']) {
-            redirect("/Public/admin/login.html");
-        }
-    }
     public function member_add()
     {
         $name = I('name');
@@ -30,11 +24,7 @@ class MemberController extends Controller
         $show = I('show');
         $zn_en = I('zn_en');
         if ($name && $english && $position && $img) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
             $data['english'] = $english;
             $data['position'] = $position;
@@ -129,11 +119,7 @@ class MemberController extends Controller
         $show = I('show');
         $zn_en = I('zn_en');
         if ($name && $english && $position && $img && $intro) {
-            if (!$_SESSION['auth']) {
-                redirect("/Public/admin/login.html");
-            } else {
-                $data['admin'] = $_SESSION['auth'];
-            }
+            $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
             $data['english'] = $english;
             $data['position'] = $position;
