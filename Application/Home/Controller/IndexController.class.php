@@ -174,7 +174,7 @@ class IndexController extends Controller
             $list = D('Invest')->where(['show' => 1, 'zn_en' => 1])->select();
         }
         if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
-            $list['agent'] = 1;
+            //$list['agent'] = 1;
         }
         json_out_msg($list);
     }
