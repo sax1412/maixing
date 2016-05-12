@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <title>麦星</title>
     <link rel="stylesheet" type="text/css" href="/Public/home/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Public/home/css/jquery.mCustomScrollbar.css">
     <script type="text/javascript" src="/Public/home/js/jquery-2.0.min.js"></script>
     <script type="text/javascript" src="/Public/home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="/Public/home/js/jquery-ui.min.js"></script>
 </head>
 <style>
     ul li {
@@ -150,6 +154,15 @@
         font-family: 'Microsoft YaHei', sans-serif
     }
 
+    .mCSB_dragger_bar{
+        width: 3px !important;
+        background-color: #b0a065 !important;
+    }
+    .mCSB_draggerRail{
+        width: 1px !important;
+        background-color: #cccccc !important;
+    }
+
 </style>
 <script>
     $(function () {
@@ -157,7 +170,6 @@
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
         }
-
         var width = $(document.body).width();
         $('#img_div').css('margin-left', (width - 900) / 2 + 20);
         if (aQuery.indexOf("status") > 0) {
@@ -297,6 +309,9 @@
                 }
                 $('#member_img').attr('src', '../..' + r.msg.img);
                 $('#intro').html(intro);
+                $("#intro").mCustomScrollbar({
+
+                });
             }
         });
     }
@@ -438,23 +453,6 @@
 
     }
 
-    /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-    ::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
-    }
-
-    /*定义滚动条轨道 内阴影+圆角*/
-    ::-webkit-scrollbar-track {
-        border-radius: 10px;
-        background-color: #cccccc;
-    }
-
-    /*定义滑块 内阴影+圆角*/
-    ::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: #b0a065;
-    }
 
 </style>
 <body>
@@ -479,7 +477,8 @@
             <div class="col-lg-1 col-lg-offset-5"
                  style="margin-top: 15px;width:5% !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
             <div class="col-lg-12" id="intro"
-                 style="margin-top:15px;color: #4c4c4c;overflow: auto;height: 250px;"></div>
+                 style="margin-top:15px;color: #4c4c4c;height: 250px;">
+            </div>
         </div>
     </div>
 </div>
