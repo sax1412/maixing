@@ -242,11 +242,23 @@ class IndexController extends Controller
             unset($invest['addr']);
         }
         if ($invest['trade'] == 1) {
-            $invest['trade'] = '医疗';
+            if ($invest['zn_en'] == 1) {
+                $invest['trade'] = '医疗';
+            } else {
+                $invest['trade'] = 'Healthcare';
+            }
         } elseif ($invest['trade'] == 2) {
-            $invest['trade'] = '消费';
+            if ($invest['zn_en'] == 1) {
+                $invest['trade'] = '消费';
+            } else {
+                $invest['trade'] = 'Consumption';
+            }
         } else {
-            $invest['trade'] = '高新技术';
+            if ($invest['zn_en'] == 1) {
+                $invest['trade'] = '高新技术';
+            } else {
+                $invest['trade'] = 'High technologies';
+            }
         }
         json_out_msg($invest);
     }
