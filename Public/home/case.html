@@ -315,58 +315,58 @@
                 var content = '<pre>' + r.msg.description + '</pre>';
                 $('#invest_img,#invest_img_en').attr('src', r.msg.img);
                 if (r.msg.company_all.length == 0) {
-                    $('#invest_name,#invest_name_en').remove();
+                    $('#invest_name,#invest_name_en').parent().remove();
                 } else {
                     $('#invest_name,#invest_name_en').text(r.msg.company_all);
                 }
                 if (r.msg.stage.length == 0) {
-                    $('#invest_stage,#invest_stage_en').remove();
+                    $('#invest_stage,#invest_stage_en').parent().remove();
                 } else {
                     $('#invest_stage,#invest_stage_en').text(r.msg.stage);
                 }
                 if (r.msg.length.length == 0) {
-                    $('#invest_time,#invest_time_en').remove();
+                    $('#invest_time,#invest_time_en').parent().remove();
                 } else {
                     $('#invest_time,#invest_time_en').text(r.msg.length);
                 }
                 if (r.msg.area.length == 0) {
-                    $('#areas,#areas_en').remove();
+                    $('#areas,#areas_en').parent().remove();
                 } else {
                     $('#areas,#areas_en').text(r.msg.area);
                 }
                 if (r.msg.trade.length == 0) {
-                    $('#trade,#trade_en').remove();
+                    $('#trade,#trade_en').parent().remove();
                 } else {
                     $('#trade,#trade_en').text(r.msg.trade);
                 }
                 if (r.msg.exit_time.length == 0) {
-                    $('#invest_exit_time,#invest_exit_time_en').remove();
+                    $('#invest_exit_time,#invest_exit_time_en').parent().remove();
                 } else {
                     $('#invest_exit_time,#invest_exit_time_en').text(r.msg.exit_time);
                 }
                 if (r.msg.exit_way.length == 0) {
-                    $('#invest_exit_way,#invest_exit_way_en').remove();
+                    $('#invest_exit_way,#invest_exit_way_en').parent().remove();
                 } else {
                     $('#invest_exit_way,#invest_exit_way_en').text(r.msg.exit_way);
                 }
                 if (r.msg.web.length == 0) {
-                    $('#invest_web,#invest_web_en').remove();
+                    $('#invest_web,#invest_web_en').parent().remove();
                 } else {
                     $('#invest_web,#invest_web_en').text(r.msg.web);
                     $('#invest_web,#invest_web_en').attr('href', "https://" + r.msg.web);
                 }
                 if (r.msg.reward.length == 0) {
-                    $('#invest_reward,#invest_reward_en').remove();
+                    $('#invest_reward,#invest_reward_en').parent().remove();
                 } else {
                     $('#invest_reward,#invest_reward_en').text(r.msg.reward);
                 }
                 if (r.msg.addr.length == 0) {
-                    $('#invest_addr,#invest_addr_en').remove();
+                    $('#invest_addr,#invest_addr_en').parent().remove();
                 } else {
                     $('#invest_addr,#invest_addr_en').text(r.msg.addr);
                 }
                 if (r.msg.up_stock.length == 0) {
-                    $('#up_stock,#up_stock_en').remove();
+                    $('#up_stock,#up_stock_en').parent().remove();
                 } else {
                     $('#up_stock,#up_stock_en').text(r.msg.up_stock);
                 }
