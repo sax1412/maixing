@@ -110,7 +110,7 @@ class IndexController extends Controller
     {
         $status = I('status');
         if ($status == 1) {
-            $list = D('Member')->where(['show' => 1])->order('convert(name using gbk) asc')->select();
+            $list = D('Member')->where(['show_en' => 1])->order('convert(name using gbk) asc')->select();
         } else {
             $list = D('Member')->where(['show' => 1])->order('convert(name using gbk) asc')->select();
         }
@@ -255,12 +255,6 @@ class IndexController extends Controller
     {
         $id = I('id');
         $invest = D('Member')->where(['id' => $id])->find();
-        if ($invest['intro_show'] == 0) {
-            $invest['intro'] = '';
-        }
-        if ($invest['intro_en_show'] == 0) {
-            $invest['intro_en'] = '';
-        }
         json_out_msg($invest);
     }
 }

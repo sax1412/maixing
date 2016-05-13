@@ -82,6 +82,7 @@ function initTable() {
             {"mDataProp": "position"},
             {"mDataProp": "position_en"},
             {"mDataProp": "show"},
+            {"mDataProp": "show_en"},
             {
                 "mDataProp": "intro",
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {

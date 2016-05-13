@@ -41,10 +41,8 @@
                     $('#intro').val(r.msg.intro);
                     $('#intro_en').val(r.msg.intro_en);
                     $('#english').val(r.msg.english);
-                    $('#zn_en').val(r.msg.zn_en);
                     $('#show').val(r.msg.show);
-                    $('#intro_show').val(r.msg.intro_show);
-                    $('#intro_en_show').val(r.msg.intro_en_show);
+                    $('#show_en').val(r.msg.show_en);
                     $('#insert').text('保存');
                 }
             })
@@ -58,9 +56,7 @@
             var position = $('#position').val();
             var position_en = $('#position_en').val();
             var show = $('#show').val();
-            var intro_show = $('#intro_show').val();
-            var intro_en_show = $('#intro_en_show').val();
-            var zn_en = $('#zn_en').val();
+            var show_en = $('#show_en').val();
             $.ajax({
                 url: '/admin/member/member_save',
                 type: 'POST',
@@ -75,9 +71,7 @@
                     "intro": intro,
                     "intro_en":intro_en,
                     "show":show,
-                    "intro_show":intro_show,
-                    "intro_en_show":intro_en_show,
-                    "zn_en":zn_en
+                    "show_en":show_en,
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -100,9 +94,7 @@
             var position = $('#position').val();
             var position_en = $('#position_en').val();
             var show = $('#show').val();
-            var intro_show = $('#intro_show').val();
-            var intro_en_show = $('#intro_en_show').val();
-            var zn_en = $('#zn_en').val();
+            var show_en = $('#show_en').val();
             if (button == '保存') {
                 save(this_id);
             } else {
@@ -119,9 +111,7 @@
                         "intro": intro,
                         "intro_en":intro_en,
                         "show":show,
-                        "intro_show":intro_show,
-                        "intro_en_show":intro_en_show,
-                        "zn_en":zn_en
+                        "show_en":show_en,
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -345,25 +335,18 @@
                                 <option>英文</option>
                             </select>
                         </div>-->
-                        <label for="show" class="col-sm-1 control-label">展示</label>
-                        <div class="col-sm-1">
+                        <label for="show" class="col-sm-1 control-label">中文展示</label>
+                        <div class="col-sm-2">
                             <select class="form-control" id="show" name="show">
                                 <option>是</option>
                                 <option>否</option>
                             </select>
                         </div>
-                        <label for="show" class="col-sm-1 control-label">中文简介</label>
-                        <div class="col-sm-1">
-                            <select class="form-control" id="intro_show" name="show">
-                                <option>展示</option>
-                                <option>不展示</option>
-                            </select>
-                        </div>
-                        <label for="show" class="col-sm-1 control-label">英文简介</label>
-                        <div class="col-sm-1">
-                            <select class="form-control" id="intro_en_show" name="show">
-                                <option>展示</option>
-                                <option>不展示</option>
+                        <label for="show" class="col-sm-1 control-label">英文展示</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="show_en" name="show">
+                                <option>是</option>
+                                <option>否</option>
                             </select>
                         </div>
                     </div>
@@ -389,12 +372,13 @@
                                     <th class="visible-lg" style="width: 6%">编号</th>
                                     <!--<th class="visible-lg" style="width: 8%">管理员</th>-->
                                     <th class="visible-lg" style="width: 12%">头像</th>
-                                    <th class="visible-lg" style="width: 9%">姓名</th>
-                                    <th class="visible-lg" style="width: 9%">英文名</th>
-                                    <th class="visible-lg" style="width: 9%">职位</th>
-                                    <th class="visible-lg" style="width: 11%">职位(英文)</th>
-                                    <th class="visible-lg" style="width: 6%">展示</th>
-                                    <th class="visible-lg" style="width: 22%">简介</th>
+                                    <th class="visible-lg" style="width: 8%">姓名</th>
+                                    <th class="visible-lg" style="width: 8%">英文名</th>
+                                    <th class="visible-lg" style="width: 8%">职位</th>
+                                    <th class="visible-lg" style="width: 10%">职位(英文)</th>
+                                    <th class="visible-lg" style="width: 6%">中文展示</th>
+                                    <th class="visible-lg" style="width: 6%">英文展示</th>
+                                    <th class="visible-lg" style="width: 20%">简介</th>
                                     <th class="visible-lg" style="width: 14%">操作</th>
                                 </tr>
                                 </thead>

@@ -22,9 +22,7 @@ class MemberController extends Controller
         $intro = I('intro');
         $intro_en = I('intro_en');
         $show = I('show');
-        $intro_show = I('intro_show');
-        $intro_en_show = I('intro_en_show');
-        $zn_en = I('zn_en');
+        $show_en = I('show_en');
         if ($name && $english && $position && $img) {
             $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
@@ -40,20 +38,10 @@ class MemberController extends Controller
             } else {
                 $data['show'] = 0;
             }
-            if ($intro_show == '展示') {
-                $data['intro_show'] = 1;
+            if ($show_en == '是') {
+                $data['show_en'] = 1;
             } else {
-                $data['intro_show'] = 0;
-            }
-            if ($intro_en_show == '展示') {
-                $data['intro_en_show'] = 1;
-            } else {
-                $data['intro_en_show'] = 0;
-            }
-            if ($zn_en == '中文') {
-                $data['zn_en'] = 1;
-            } else {
-                $data['zn_en'] = 0;
+                $data['show_en'] = 0;
             }
             $title = M('Member');
             $res = $title->data($data)->add();
@@ -78,6 +66,11 @@ class MemberController extends Controller
                 $v['show'] = '是';
             }else{
                 $v['show'] = '否';
+            }
+            if ($v['show_en'] == 1) {
+                $v['show_en'] = '是';
+            }else{
+                $v['show_en'] = '否';
             }
         }
         $out['aaData'] = $res;
@@ -107,20 +100,10 @@ class MemberController extends Controller
             } else {
                 $res['show'] = '否';
             }
-            if ($res['intro_show'] == 1) {
-                $res['intro_show'] = '展示';
+            if ($res['show_en'] == 1) {
+                $res['show_en'] = '是';
             } else {
-                $res['intro_show'] = '不展示';
-            }
-            if ($res['intro_en_show'] == 1) {
-                $res['intro_en_show'] = '展示';
-            } else {
-                $res['intro_en_show'] = '不展示';
-            }
-            if ($res['zn_en'] == 1) {
-                $res['zn_en'] = '中文';
-            } else {
-                $res['zn_en'] = '英文';
+                $res['show_en'] = '否';
             }
             json_out_msg($res);
         } else {
@@ -139,9 +122,7 @@ class MemberController extends Controller
         $intro = I('intro');
         $intro_en = I('intro_en');
         $show = I('show');
-        $intro_show = I('intro_show');
-        $intro_en_show = I('intro_en_show');
-        $zn_en = I('zn_en');
+        $show_en = I('show_en');
         if ($name && $english && $position && $img && $intro) {
             $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
@@ -157,20 +138,10 @@ class MemberController extends Controller
             } else {
                 $data['show'] = 0;
             }
-            if ($intro_show == '展示') {
-                $data['intro_show'] = 1;
+            if ($show_en == '是') {
+                $data['show_en'] = 1;
             } else {
-                $data['intro_show'] = 0;
-            }
-            if ($intro_en_show == '展示') {
-                $data['intro_en_show'] = 1;
-            } else {
-                $data['intro_en_show'] = 0;
-            }
-            if ($zn_en == '中文') {
-                $data['zn_en'] = 1;
-            } else {
-                $data['zn_en'] = 0;
+                $data['show_en'] = 0;
             }
             $res = D('Member')->where(['id' => $id])->save($data);
             if ($res) {
