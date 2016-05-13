@@ -230,6 +230,11 @@ class IndexController extends Controller
     {
         $id = I('id');
         $invest = D('Invest')->where(['id' => $id])->find();
+        foreach ($invest as $key => &$value) {
+            if (empty($value)) {
+                unset($key);
+            }
+        }
         if ($invest['exit'] == 0) {
             unset($invest['exit_time']);
             unset($invest['exit_way']);
