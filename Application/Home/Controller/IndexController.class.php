@@ -232,7 +232,7 @@ class IndexController extends Controller
         $invest = D('Invest')->where(['id' => $id])->find();
         foreach ($invest as $key => &$value) {
             if (empty($value)) {
-                unset($key);
+                unset($invest[$key]);
             }
         }
         if ($invest['exit'] == 0) {
