@@ -73,7 +73,7 @@
                     "status": 1
                 },
                 success: function (r) {
-                    var content = '<pre style="line-height: 34px; text-align: left">' + r.msg.content + '</pre>';
+                    var content = '<pre style="line-height: 34px; text-align: left;padding-left: 20px;">' + r.msg.content + '</pre>';
                     $('#content').html(content);
                     if (r.msg.agent == 1) {
                         $('#title').css('margin-left', '8.33333333%');
