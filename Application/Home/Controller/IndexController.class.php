@@ -221,7 +221,7 @@ class IndexController extends Controller
         }
         $str = $_SERVER['HTTP_USER_AGENT'];
         if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
-            $list['agent'] = 1;
+            //$list['agent'] = 1;
         }
         json_out_msg($list);
     }
@@ -237,7 +237,7 @@ class IndexController extends Controller
             unset($invest['up_stock']);
             unset($invest['addr']);
         }
-        if($invest['exit'] == 1 && !strstr($invest['exit_way'],'上市')){
+        if ($invest['exit'] == 1 && !strstr($invest['exit_way'], '上市')) {
             unset($invest['up_stock']);
             unset($invest['addr']);
         }
@@ -255,6 +255,12 @@ class IndexController extends Controller
     {
         $id = I('id');
         $invest = D('Member')->where(['id' => $id])->find();
+        if ($invest['intro_show'] == 0) {
+            $invest['intro'] = '';
+        }
+        if ($invest['intro_en_show'] == 0) {
+            $invest['intro_en'] = '';
+        }
         json_out_msg($invest);
     }
 }

@@ -22,6 +22,8 @@ class MemberController extends Controller
         $intro = I('intro');
         $intro_en = I('intro_en');
         $show = I('show');
+        $intro_show = I('intro_show');
+        $intro_en_show = I('intro_en_show');
         $zn_en = I('zn_en');
         if ($name && $english && $position && $img) {
             $data['admin'] = $_SESSION['name'];
@@ -37,6 +39,16 @@ class MemberController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($intro_show == '展示') {
+                $data['intro_show'] = 1;
+            } else {
+                $data['intro_show'] = 0;
+            }
+            if ($intro_en_show == '展示') {
+                $data['intro_en_show'] = 1;
+            } else {
+                $data['intro_en_show'] = 0;
             }
             if ($zn_en == '中文') {
                 $data['zn_en'] = 1;
@@ -95,6 +107,16 @@ class MemberController extends Controller
             } else {
                 $res['show'] = '否';
             }
+            if ($res['intro_show'] == 1) {
+                $res['intro_show'] = '展示';
+            } else {
+                $res['intro_show'] = '不展示';
+            }
+            if ($res['intro_en_show'] == 1) {
+                $res['intro_en_show'] = '展示';
+            } else {
+                $res['intro_en_show'] = '不展示';
+            }
             if ($res['zn_en'] == 1) {
                 $res['zn_en'] = '中文';
             } else {
@@ -117,6 +139,8 @@ class MemberController extends Controller
         $intro = I('intro');
         $intro_en = I('intro_en');
         $show = I('show');
+        $intro_show = I('intro_show');
+        $intro_en_show = I('intro_en_show');
         $zn_en = I('zn_en');
         if ($name && $english && $position && $img && $intro) {
             $data['admin'] = $_SESSION['name'];
@@ -132,6 +156,16 @@ class MemberController extends Controller
                 $data['show'] = 1;
             } else {
                 $data['show'] = 0;
+            }
+            if ($intro_show == '展示') {
+                $data['intro_show'] = 1;
+            } else {
+                $data['intro_show'] = 0;
+            }
+            if ($intro_en_show == '展示') {
+                $data['intro_en_show'] = 1;
+            } else {
+                $data['intro_en_show'] = 0;
             }
             if ($zn_en == '中文') {
                 $data['zn_en'] = 1;

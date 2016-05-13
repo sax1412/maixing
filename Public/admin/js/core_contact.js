@@ -79,7 +79,18 @@ function initTable() {
             {"mDataProp": "tel"},
             {"mDataProp": "fax"},
             {"mDataProp": "email"},
-            {"mDataProp": "add"},
+            {
+                "mDataProp": "add",
+                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    var text = sData;
+                    $.trim(text);
+                    var len = text.length;
+                    if (len > 20) {
+                        text = text.substring(0, 19) + '...';
+                    }
+                    $(nTd).html("<span>" + text + "</span>");
+                }
+            },
             {"mDataProp": "time"},
             //{"mDataProp": "img"},
 
