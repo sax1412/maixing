@@ -372,13 +372,6 @@
                     $('#up_stock,#up_stock_en').text(r.msg.up_stock);
                 }
                 $('#invest_intro,#invest_intro_en').html(content);
-                if (r.msg.exit == 0) {
-                    $('.exit').css('display', 'none');
-                }
-                if (r.msg.exit_way == '上市') {
-                    $('.up_stock').css('display', 'block');
-                    $('.addr').css('display', 'block');
-                }
             }
         });
     }
