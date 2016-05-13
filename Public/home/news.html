@@ -130,6 +130,7 @@
 
     function search_all() {
         var aQuery = window.location.href;
+        $('input[name=name]').val('');
         var url='/home/index/news';
         if (aQuery.indexOf("status") > 0) {
             url='/home/index/news?status=1';
