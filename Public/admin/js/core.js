@@ -18,7 +18,10 @@ $(document).ready(function () {
         data: {},
         success: function (r) {
             if (r.code == 200) {
-                $('#username').text(r.msg);
+                $('#username').text(r.msg.name);
+                if(r.msg.auth==2){
+                    $(".nav-list").children().last().css('display','none');
+                }
             } else {
                 window.location.href='/Public/admin/login.html';
             }

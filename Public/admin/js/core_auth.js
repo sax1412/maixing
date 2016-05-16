@@ -52,7 +52,7 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "/admin/menu/menu_list",
+        "sAjaxSource": "/admin/auth/auth_list",
         "bAutoWidth": false,
         'bPaginate': true,
         "bDestory": true,
@@ -68,33 +68,9 @@ function initTable() {
                 }
             },
             {"mDataProp": "id"},
-            {"mDataProp": "admin"},
-            {
-                "mDataProp": "menu",
-                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                    var text = sData;
-                    $.trim(text);
-                    var len = text.length;
-                    if (len > 15) {
-                        text = text.substring(0, 11) + '...';
-                    }
-                    $(nTd).html("<span>" + text + "</span>");
-                }
-            },
-            {
-                "mDataProp": "content",
-                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                    var text = sData;
-                    $.trim(text);
-                    var len = text.length;
-                    if (len > 40) {
-                        text = text.substring(0, 36) + '...';
-                    }
-                    $(nTd).html("<span>" + text + "</span>");
-                }
-            },
-            {"mDataProp": "show"},
-            {"mDataProp": "time"},
+            {"mDataProp": "user"},
+            {"mDataProp": "password"},
+            {"mDataProp": "auth"},
             {
                 "mDataProp": "id",
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
@@ -102,7 +78,6 @@ function initTable() {
                         .append("<a href='javascript:void(0);' class='btn btn-success' style='padding:2px 10px;' onclick='edit(" + oData.id + ")'>编辑</a>&nbsp;").append("<a href='javascript:void(0);' class='btn btn-danger' style='padding:2px 10px;' onclick='_deleteFun(" + oData.id + ")'>删除</a>");
                 }
             },
-
         ],
         "sDom": "<'row-fluid'<'span6 float' l><'span6 float position myBtnBox'><'span6'f>r>t<'row-fluid'<'span6 float top1'i><'span6 top'p>>",
         "fnCreatedRow": function (nRow, aData, iDataIndex) {
@@ -147,7 +122,7 @@ function _deleteFun(id) {
     });
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "/admin/menu/menu_delete",
+            url: "/admin/auth/delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',
@@ -203,3 +178,6 @@ function _deleteList() {
 $('document').ready(function () {
     $('ul.nav-list').accordion();
 });
+
+
+
