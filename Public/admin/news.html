@@ -24,6 +24,7 @@
             $('#insert').text('提交');
         }
         function edit(id) {
+            auth();
             this_id = id;
             $.ajax({
                 url: '/admin/news/news_find',
@@ -51,6 +52,7 @@
             })
         }
         function save(id) {
+            auth();
             var title = $('#title').val();
             var intro = $('#intro').val();
             var img1 = $('#img1').val();
@@ -94,6 +96,7 @@
             })
         }
         function insert() {
+            auth();
             var button = $('#insert').text();
             var title = $('#title').val();
             var intro = $('#intro').val();
@@ -142,6 +145,23 @@
         }
         function width() {
             $('#example').css('width', '100%');
+        }
+
+        function auth(){
+            $.ajax({
+                url: '/admin/index/role',
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                data: {},
+                success: function (r) {
+                    if (r.code == 200) {
+                        $('#username').text(r.msg);
+                    } else {
+                        window.location.href='/Public/admin/login.html';
+                    }
+                }
+            });
         }
     </script>
 </head>

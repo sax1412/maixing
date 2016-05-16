@@ -24,6 +24,7 @@
             $('#insert').text('提交');
         }
         function edit(id) {
+            auth();
             this_id = id;
             $.ajax({
                 url: '/admin/invest/find',
@@ -56,6 +57,7 @@
             })
         }
         function save(id) {
+            auth();
             var img = $('#img').val();
             var company = $('#company').val();
             var company_all = $('#company_all').val();
@@ -109,6 +111,7 @@
             })
         }
         function insert() {
+            auth();
             var button = $('#insert').text();
             var img = $('#img').val();
             var company = $('#company').val();
@@ -167,6 +170,23 @@
         }
         function width() {
             $('#example').css('width', '100%');
+        }
+
+        function auth(){
+            $.ajax({
+                url: '/admin/index/role',
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                data: {},
+                success: function (r) {
+                    if (r.code == 200) {
+                        $('#username').text(r.msg);
+                    } else {
+                        window.location.href='/Public/admin/login.html';
+                    }
+                }
+            });
         }
     </script>
 </head>

@@ -129,6 +129,20 @@ function initTable() {
  * @private
  */
 function _deleteFun(id) {
+    $.ajax({
+        url: '/admin/index/role',
+        type: 'POST',
+        dataType: 'json',
+        data: {},
+        async: false,
+        success: function (r) {
+            if (r.code == 200) {
+                $('#username').text(r.msg);
+            } else {
+                window.location.href='/Public/admin/login.html';
+            }
+        }
+    });
     if (confirm('确认删除吗？')) {
         $.ajax({
             url: "/admin/contact/contact_delete",

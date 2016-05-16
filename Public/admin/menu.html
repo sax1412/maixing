@@ -26,6 +26,7 @@
             title_num = 0;
         }
         function edit(id) {
+            auth();
             this_id = id;
             $.ajax({
                 url: '/admin/menu/menu_find',
@@ -57,6 +58,7 @@
             });
         }
         function save(id) {
+            auth();
             var lenth = $('#row_title .status').children('.form-group').length / 2;
             var menu = $('#menu').val();
             var english = $('#english').val();
@@ -97,6 +99,7 @@
             })
         }
         function insert() {
+            auth();
             var lenth = $('#row_title .status').children('.form-group').length / 2;
             var button = $('#insert').text();
             var menu = $('#menu').val();
@@ -160,6 +163,23 @@
         function title_remove() {
             $('#row_title .status:last').remove();
             title_num--;
+        }
+
+        function auth(){
+            $.ajax({
+                url: '/admin/index/role',
+                type: 'POST',
+                dataType: 'json',
+                async: false,
+                data: {},
+                success: function (r) {
+                    if (r.code == 200) {
+                        $('#username').text(r.msg);
+                    } else {
+                        window.location.href='/Public/admin/login.html';
+                    }
+                }
+            });
         }
     </script>
 </head>
