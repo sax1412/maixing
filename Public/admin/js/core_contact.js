@@ -140,7 +140,7 @@ function _deleteFun(id) {
         async: false,
         success: function (r) {
             if (r.code == 200) {
-                $('#username').text(r.msg);
+
             } else {
                 window.location.href='/Public/admin/login.html';
             }
