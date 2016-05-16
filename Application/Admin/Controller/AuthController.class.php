@@ -58,7 +58,7 @@ class AuthController extends Controller
         if ($admin && $password) {
             $data['user'] = $admin;
             $data['password'] = $password;
-            $data['auth'] = 2;
+            //$data['auth'] = 2;
             $res = D('Role')->where(['id' => $id])->save($data);
             if ($res) {
                 json_ok();
