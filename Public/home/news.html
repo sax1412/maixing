@@ -104,14 +104,16 @@
                         "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
                         "<hr class='col-lg-9 col-lg-offset-2'>");
                     }
-                    $("div.holder").jPages({
-                        containerID: "news_list",
-                        pause: 4000,
-                        previous : "← previous",
-                        next : "next →",
-                        delay: 30,
-                        clickStop: true
-                    });
+                    if (len > 0) {
+                        $("div.holder").jPages({
+                            containerID: "news_list",
+                            pause: 4000,
+                            previous: "previous",
+                            next: "next",
+                            delay: 30,
+                            clickStop: true
+                        });
+                    }
                 }
             });
         } else {
@@ -126,14 +128,16 @@
                         "<div class='col-lg-9 col-lg-offset-2 content'>" + r.msg[i].intro + "</div>" +
                         "<hr class='col-lg-9 col-lg-offset-2'>");
                     }
-                    $("div.holder").jPages({
-                        containerID: "news_list",
-                        pause: 4000,
-                        previous : "← 上一页",
-                        next : "下一页 →",
-                        delay: 30,
-                        clickStop: true
-                    });
+                    if (len > 0) {
+                        $("div.holder").jPages({
+                            containerID: "news_list",
+                            pause: 4000,
+                            previous: "上一页",
+                            next: "下一页",
+                            delay: 30,
+                            clickStop: true
+                        });
+                    }
                 }
             });
         }
@@ -328,9 +332,8 @@
         margin-left: 8.33333333%
     }
 
-    .holder{
-        margin-left: 8.333333333%;
-        width: 91.666666666%;
+    .holder {
+        width: 100%;
         text-align: center;
     }
 </style>
