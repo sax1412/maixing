@@ -16,11 +16,15 @@
 
         function add() {
             $('#form').css('display', 'block');
+            $('#mask').css('display','block');
+            document.documentElement.style.overflow = "hidden";
             $('input').val('');
             $('textarea').val('');
         }
         function form_close() {
             $('#form').css('display', 'none');
+            $('#mask').css('display','none');
+            document.documentElement.style.overflow = "";
             $('#insert').text('提交');
         }
         function edit(id) {
@@ -35,6 +39,8 @@
                 },
                 success: function (r) {
                     $('#form').css('display', 'block');
+                    $('#mask').css('display','block');
+                    document.documentElement.style.overflow = "hidden";
                     $('#intro').val(r.msg.intro);
                     $('#zn_en').val(r.msg.zn_en);
                     $('#show').val(r.msg.show);
@@ -61,6 +67,8 @@
                     if (r.code == 200) {
                         oTable.fnReloadAjax();
                         $('#form').css('display', 'none');
+                        $('#mask').css('display','none');
+                        document.documentElement.style.overflow = "";
                         $('#insert').text('提交');
                     } else {
                         alert(r.msg);
@@ -89,6 +97,8 @@
                     success: function (r) {
                         if (r.code == 200) {
                             $('#form').css('display', 'none');
+                            $('#mask').css('display','none');
+                            document.documentElement.style.overflow = "";
                             //oTable.fnReloadAjax('http://localhost:60/admin/home/banner_list');
                             oTable.fnReloadAjax(); //使用默认
                         } else {
@@ -121,6 +131,17 @@
     </script>
 </head>
 <style>
+    #form{
+        position: fixed;
+        z-index: 10;
+        top: 100px ;
+        left: 0 ;
+        right: 0 ;
+        margin:auto !important;
+        width: 1000px !important;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+    }
     #add:hover {
         cursor: pointer !important;
     }
@@ -161,6 +182,7 @@
     }
 </style>
 <body>
+<div id="mask" style="position: absolute;z-index: 3;background-color: #000;height:100%;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;"></div>
 <div class="site-holder">
     <nav class="navbar" role="navigation">
         <div class="navbar-header">

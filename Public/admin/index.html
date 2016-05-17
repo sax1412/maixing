@@ -15,11 +15,16 @@
     <script>
 
         function add() {
+            $('#mask').css('display','block');
+            document.documentElement.style.overflow = "hidden";
             $('#form').css('display', 'block');
             $('input').val('');
             $('textarea').val('');
+
         }
         function form_close() {
+            $('#mask').css('display','none');
+            document.documentElement.style.overflow = "";
             $('#form').css('display', 'none');
             $('#insert').text('提交');
         }
@@ -35,6 +40,8 @@
                 },
                 success: function (r) {
                     $('#form').css('display', 'block');
+                    $('#mask').css('display','block');
+                    document.documentElement.style.overflow = "hidden";
                     $('#title').val(r.msg.title);
                     $('#note').val(r.msg.note);
                     $('#content').val(r.msg.content);
@@ -67,6 +74,8 @@
                     if (r.code == 200) {
                         oTable.fnReloadAjax();
                         $('#form').css('display', 'none');
+                        $('#mask').css('display','none');
+                        document.documentElement.style.overflow = "";
                         $('#insert').text('提交');
                     } else {
                         alert(r.msg);
@@ -99,6 +108,8 @@
                     success: function (r) {
                         if (r.code == 200) {
                             $('#form').css('display', 'none');
+                            $('#mask').css('display','none');
+                            document.documentElement.style.overflow = "";
                             //oTable.fnReloadAjax('http://localhost:60/admin/home/banner_list');
                             oTable.fnReloadAjax(); //使用默认
                         } else {
@@ -179,8 +190,21 @@
         padding-left: 30px !important;
     }
 
+    #form{
+        position: fixed;
+        z-index: 10;
+        top: 100px ;
+        left: 0 ;
+        right: 0 ;
+        margin:auto !important;
+        width: 1000px !important;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+    }
+
 </style>
 <body style="background-color: #FFFFFF !important;">
+<div id="mask" style="position: absolute;z-index: 3;background-color: #000;height:100%;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;"></div>
 <div class="site-holder">
     <nav class="navbar" role="navigation">
         <div class="navbar-header">
