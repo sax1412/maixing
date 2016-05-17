@@ -72,7 +72,14 @@ function initTable() {
             {"mDataProp": "id"},
             {"mDataProp": "user"},
             {"mDataProp": "password"},
-            {"mDataProp": "auth"},
+            {
+                "mDataProp": "auth",
+                "fnCreatedCell":function(nTd, sData, oData, iRow, iCol){
+                    if(sData=='超级管理员'){
+                        $(nTd).css('color','red');
+                    }
+                }
+            },
             {
                 "mDataProp": "id",
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
