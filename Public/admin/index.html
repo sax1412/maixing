@@ -201,7 +201,9 @@
         background-color: #FFFFFF;
         border-radius: 5px;
     }
-
+    #form div img:hover{
+        cursor: pointer;
+    }
 </style>
 <body style="background-color: #FFFFFF !important;">
 <div id="mask" style="position: absolute;z-index: 3;background-color: #000;height:100%;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;"></div>
@@ -312,6 +314,7 @@
                 </div>
             </div>
             <div class="row" id="form" style="width: 97%;margin-bottom: 30px; margin-left: 1%;display: none;">
+                <div style="position: absolute;right: 10px;top: 8px;z-index: 11;" onclick="form_close()"><img src="/Public/home/images/off.jpg"/></div>
                 <form class="form-horizontal" role="form"
                       style="border:1px #fff solid; border-radius: 3px;-webkit-box-shadow: 0 0 6px #333;">
                     <div class="form-group" style="margin-top: 20px;">
