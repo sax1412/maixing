@@ -54,6 +54,8 @@ $(document).ready(function () {
             }
         });
     });
+    var len=$(document.body).height();
+    $('#mask').height(len);
 });
 
 /**

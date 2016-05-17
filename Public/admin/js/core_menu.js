@@ -27,6 +27,8 @@ $(document).ready(function () {
             }
         }
     });
+    var len=$(document.body).height();
+    $('#mask').height(len);
 });
 
 /**
@@ -35,7 +37,7 @@ $(document).ready(function () {
  */
 function initTable() {
     var table = $("#example").dataTable({
-        //"iDisplayLength":10,
+        //"iDisplayLength":20,
         "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "oLanguage": {
             "sLengthMenu": "每页显示 _MENU_ 条记录",
