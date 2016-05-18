@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>麦星</title>
+    <title>麦星投资</title>
     <link rel="stylesheet" type="text/css" href="/Public/home/css/bootstrap.min.css">
     <link rel="icon" href="/Public/home/images/icon.png" type="image/x-icon">
     <script type="text/javascript" src="/Public/home/js/jquery-2.0.min.js"></script>
@@ -57,6 +57,7 @@
             $("#abort").css('color', '#9b761d');
         }
         if (aQuery.indexOf("status") > 0) {
+            document.title='Maison Capital';
             $('#menu img').attr('src','/Public/home/images/abort_us_en.jpg');
             $('#menu img').click(function(){
                 window.location.href='abort.html?status=1';

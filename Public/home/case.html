@@ -3,7 +3,7 @@
 
 <head lang="en">
     <meta charset="UTF-8">
-    <title>麦星</title>
+    <title>麦星投资</title>
     <link rel="stylesheet" type="text/css" href="/Public/home/css/bootstrap.min.css">
     <link rel="icon" href="/Public/home/images/icon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/Public/home/css/jquery.mCustomScrollbar.css">
@@ -120,6 +120,7 @@
         $("#scroll").mCustomScrollbar({});
 
         if (aQuery.indexOf("status") > 0) {
+            document.title='Maison Capital';
             $('#menu img').attr('src', '/Public/home/images/case_en.jpg');
             $('#menu img').click(function () {
                 window.location.href = 'case.html?status=1';
