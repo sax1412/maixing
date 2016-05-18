@@ -60,7 +60,7 @@ class NewsController extends Controller
 
     public function news_list()
     {
-        $res = D('News')->order('id asc')->select();
+        $res = D('News')->order('time desc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
             $v['time'] = date('Y-m-d', $v['time']);
