@@ -36,9 +36,9 @@ class InvestController extends Controller
         } else {
             $data->exit = 0;
         }
-        if ($trade == '医疗') {
+        if ($trade == '生活') {
             $data->trade = 1;
-        } elseif ($trade == '消费') {
+        } elseif ($trade == '服务') {
             $data->trade = 2;
         } else {
             $data->trade = 3;
@@ -67,11 +67,11 @@ class InvestController extends Controller
                 $v['show'] = '否';
             }
             if ($v['trade'] == 1) {
-                $v['trade'] = '医疗';
+                $v['trade'] = '生活';
             } elseif($v['trade'] == 2){
-                $v['trade'] = '消费';
+                $v['trade'] = '服务';
             }else {
-                $v['trade'] = '高新技术';
+                $v['trade'] = '科技';
             }
         }
         $out['aaData'] =  $res;
@@ -112,11 +112,11 @@ class InvestController extends Controller
                 $res['show'] = '否';
             }
             if ($res['trade'] == 1) {
-                $res['trade'] = '医疗';
+                $res['trade'] = '生活';
             } elseif($res['trade'] == 2){
-                $res['trade'] = '消费';
+                $res['trade'] = '服务';
             }else {
-                $res['trade'] = '高新技术';
+                $res['trade'] = '科技';
             }
             json_out_msg($res);
         } else {
@@ -149,9 +149,9 @@ class InvestController extends Controller
         } else {
             $data->exit = 0;
         }
-        if ($trade == '医疗') {
+        if ($trade == '生活') {
             $data->trade = 1;
-        } elseif ($trade == '消费') {
+        } elseif ($trade == '服务') {
             $data->trade = 2;
         } else {
             $data->trade = 3;

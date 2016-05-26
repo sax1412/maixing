@@ -190,22 +190,22 @@ class IndexController extends Controller
     {
         $w = I('w');
         switch ($w) {
-            case '医疗':
+            case '生活':
                 $list = D('Invest')->where(['zn_en' => 1, 'trade' => 1, 'show' => 1])->select();
                 break;
-            case '消费':
+            case '服务':
                 $list = D('Invest')->where(['zn_en' => 1, 'trade' => 2, 'show' => 1])->select();
                 break;
-            case '高新技术':
+            case '科技':
                 $list = D('Invest')->where(['zn_en' => 1, 'trade' => 3, 'show' => 1])->select();
                 break;
-            case 'Medical care':
+            case 'Lifestyle':
                 $list = D('Invest')->where(['zn_en' => 0, 'trade' => 1, 'show' => 1])->select();
                 break;
-            case 'Consumption':
+            case 'Service':
                 $list = D('Invest')->where(['zn_en' => 0, 'trade' => 2, 'show' => 1])->select();
                 break;
-            case 'Hign technology':
+            case 'Technology':
                 $list = D('Invest')->where(['zn_en' => 0, 'trade' => 3, 'show' => 1])->select();
                 break;
         }
