@@ -15,6 +15,7 @@ class MemberController extends Controller
     public function member_add()
     {
         $name = I('name');
+        $category = I('category');
         $english = I('english');
         $position = I('position');
         $position_en = I('position_en');
@@ -26,6 +27,7 @@ class MemberController extends Controller
         if ($name && $english && $position && $img) {
             $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
+            $data['category'] = $category;
             $data['english'] = $english;
             $data['position'] = $position;
             $data['position_en'] = $position_en;
@@ -115,6 +117,7 @@ class MemberController extends Controller
     {
         $id = I('id');
         $name = I('name');
+        $category = I('category');
         $english = I('english');
         $position = I('position');
         $position_en = I('position_en');
@@ -126,6 +129,7 @@ class MemberController extends Controller
         if ($name && $english && $position && $img && $intro) {
             $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
+            $data['category'] = $category;
             $data['english'] = $english;
             $data['position'] = $position;
             $data['position_en'] = $position_en;

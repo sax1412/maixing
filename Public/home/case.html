@@ -53,11 +53,11 @@
         width: 27%;
         position: relative;
         float: left;
-        padding-top: 10px;
+        padding-bottom: 20px;
     }
 
     #detail div img {
-        height: 130px;
+        height: 100px;
         border-radius: 2px;
         box-shadow: 0px 3px 6px #999;
     }
@@ -76,10 +76,10 @@
 
     .mask {
         padding: 0 !important;
-        height: 130px;
+        height: 100px;
         border-radius: 2px;
         position: absolute !important;
-        width: 100% !important;
+        width: 80% !important;
         margin-left: 0 !important;
         z-index: 3;
         background-color: #525c75;
@@ -89,8 +89,8 @@
     }
 
     #detail div p {
-        width: 100%;
-        margin: 50px auto;
+        width: 80%;
+        margin: 35px auto;
         font-family: "Microsoft YaHei";
         font-size: 16px;
         position: absolute;
@@ -120,7 +120,7 @@
         $("#scroll").mCustomScrollbar({});
 
         if (aQuery.indexOf("status") > 0) {
-            document.title='Maison Capital';
+            document.title = 'Maison Capital';
             $('#menu img').attr('src', '/Public/home/images/case_en.jpg');
             $('#menu img').click(function () {
                 window.location.href = 'case.html?status=1';
@@ -272,8 +272,8 @@
             success: function (r) {
                 var len = r.msg.length;
                 for (var i = 0; i < len; i++) {
-                    $('#detail').append("<div onclick='detail(this)' onmouseover='show(this)' onmouseout='hide(this)' style='padding-bottom: 10px;'><div class='mask'></div><p>" + r.msg[i].company + "</p>" +
-                    "<img style='width: 100%' src='../.." + r.msg[i].img + "' > <p style='font-size:18px;'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
+                    $('#detail').append("<div onclick='detail(this)' onmouseover='show(this)' onmouseout='hide(this)'><div class='mask'></div><p>" + r.msg[i].company + "</p>" +
+                    "<img style='width: 80%' src='../.." + r.msg[i].img + "' > <p style='font-size:18px;'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
                 }
                 var height = $(document.body).height();
                 if (len < 7) {
@@ -296,7 +296,7 @@
 
     function detail(id) {
         document.documentElement.style.overflow = "hidden";
-        $('#ch,#en').children('div').css('display','block');
+        $('#ch,#en').children('div').css('display', 'block');
         $('#invest').css('display', 'block');
         $('#mask').css('display', 'block');
         var id = $(id).children('p').children('span').text();
@@ -318,58 +318,58 @@
                 var content = '<pre>' + r.msg.description + '</pre>';
                 $('#invest_img,#invest_img_en').attr('src', r.msg.img);
                 if (r.msg.company_all == null) {
-                    $('#invest_name,#invest_name_en').parent().css('display','none');
+                    $('#invest_name,#invest_name_en').parent().css('display', 'none');
                 } else {
                     $('#invest_name,#invest_name_en').text(r.msg.company_all);
                 }
                 if (r.msg.stage == null) {
-                    $('#invest_stage,#invest_stage_en').parent().css('display','none');
+                    $('#invest_stage,#invest_stage_en').parent().css('display', 'none');
                 } else {
                     $('#invest_stage,#invest_stage_en').text(r.msg.stage);
                 }
                 if (r.msg.length == null) {
-                    $('#invest_time,#invest_time_en').parent().css('display','none');
+                    $('#invest_time,#invest_time_en').parent().css('display', 'none');
                 } else {
                     $('#invest_time,#invest_time_en').text(r.msg.length);
                 }
                 if (r.msg.area == null) {
-                    $('#areas,#areas_en').parent().css('display','none');
+                    $('#areas,#areas_en').parent().css('display', 'none');
                 } else {
                     $('#areas,#areas_en').text(r.msg.area);
                 }
                 if (r.msg.trade == null) {
-                    $('#trade,#trade_en').parent().css('display','none');
+                    $('#trade,#trade_en').parent().css('display', 'none');
                 } else {
                     $('#trade,#trade_en').text(r.msg.trade);
                 }
                 if (r.msg.exit_time == null) {
-                    $('#invest_exit_time,#invest_exit_time_en').parent().css('display','none');
+                    $('#invest_exit_time,#invest_exit_time_en').parent().css('display', 'none');
                 } else {
                     $('#invest_exit_time,#invest_exit_time_en').text(r.msg.exit_time);
                 }
                 if (r.msg.exit_way == null) {
-                    $('#invest_exit_way,#invest_exit_way_en').parent().css('display','none');
+                    $('#invest_exit_way,#invest_exit_way_en').parent().css('display', 'none');
                 } else {
                     $('#invest_exit_way,#invest_exit_way_en').text(r.msg.exit_way);
                 }
                 if (r.msg.web == null) {
-                    $('#invest_web,#invest_web_en').parent().css('display','none');
+                    $('#invest_web,#invest_web_en').parent().css('display', 'none');
                 } else {
                     $('#invest_web,#invest_web_en').text(r.msg.web);
                     $('#invest_web,#invest_web_en').attr('href', "https://" + r.msg.web);
                 }
                 if (r.msg.reward == null) {
-                    $('#invest_reward,#invest_reward_en').parent().css('display','none');
+                    $('#invest_reward,#invest_reward_en').parent().css('display', 'none');
                 } else {
                     $('#invest_reward,#invest_reward_en').text(r.msg.reward);
                 }
                 if (r.msg.addr == null) {
-                    $('#invest_addr,#invest_addr_en').parent().css('display','none');
+                    $('#invest_addr,#invest_addr_en').parent().css('display', 'none');
                 } else {
                     $('#invest_addr,#invest_addr_en').text(r.msg.addr);
                 }
                 if (r.msg.up_stock == null) {
-                    $('#up_stock,#up_stock_en').parent().css('display','none');
+                    $('#up_stock,#up_stock_en').parent().css('display', 'none');
                 } else {
                     $('#up_stock,#up_stock_en').text(r.msg.up_stock);
                 }
@@ -391,7 +391,7 @@
                 var len = r.msg.length;
                 for (var i = 0; i < len; i++) {
                     $('#detail').append("<div onclick='detail(this)' onmouseover='show(this)' onmouseout='hide(this)'><div class='mask'></div><p>" + r.msg[i].company + "</p>" +
-                    "<img style='width: 100%' src='../.." + r.msg[i].img + "'><p onclick='detail(this)'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
+                    "<img style='width: 80%' src='../.." + r.msg[i].img + "'><p onclick='detail(this)'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
                 }
                 var height = $(document.body).height();
                 if (len < 7) {
@@ -649,7 +649,7 @@
     #invest {
         position: fixed;
         z-index: 4;
-        width: 850px;
+        width: 900px;
         top: 0;
         left: 0;
         right: 0;
@@ -657,7 +657,7 @@
         margin: auto;
         background-color: #FFFFFF;
         border-radius: 3px;
-        height: 450px;
+        height: 470px;
         display: none;
     }
 
@@ -816,17 +816,19 @@
             <img style="margin-left: 96%;margin-top: 15px;" src="images/off.jpg"
                  onclick="javascript:$('#invest').css('display','none');$('#mask').css('display','none');document.documentElement.style.overflow='';">
 
-            <div class="col-lg-6 col-lg-offset-6" id="invest_name"
+            <div class="col-lg-7 col-lg-offset-5" id="invest_name"
                  style="padding: 0;font-size: 24px;font-family: 'Microsoft YaHei';color: #4c4c4c">
 
             </div>
-            <div class=" col-lg-offset-6"
-                 style="position: relative;float: left;margin-top: 15px;width:30px !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
-            <div class="col-lg-6" style="text-align:center;margin-top: 50px">
-                <img id="invest_img"
-                     style="margin: -10px auto; width: 290px;height:220px;box-shadow: 0px 3px 6px #999;"/>
+            <div class="col-lg-offset-5 col-lg-7" style="padding: 0;">
+                <div style="position: relative;float: left;margin-top: 15px;width:30px !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
             </div>
-            <div class="col-lg-6" id="scroll" style="padding: 0;margin-top:30px;height:310px;width: 47.4% !important;">
+            <div class="col-lg-5" style="text-align:center;margin-top: 50px;">
+                <img id="invest_img"
+                     style="margin: -10px auto; width: 250px;height:190px;box-shadow: 0px 3px 6px #999;"/>
+            </div>
+            <div class="col-lg-7" id="scroll"
+                 style="padding: 0;margin-top:30px;height:330px;width: 55.777% !important;">
                 <div style="padding: 0;width: 100%;" id="ch">
                     <div class="col-lg-12" style="font-size: 14px;">投资阶段：<span id="invest_stage"></span></div>
                     <div class="col-lg-11" style="font-size: 14px;">投资时间：<span id="invest_time"></span></div>
@@ -840,7 +842,7 @@
                     <div class="col-lg-11" style="font-size: 14px;">公司网站：
                         <a href="" id="invest_web"></a>
                     </div>
-                    <div class="col-lg-11" id="invest_intro"
+                    <div class="col-lg-12" id="invest_intro"
                          style="font-size: 14px;line-height: 2;padding-top: 30px;"></div>
                 </div>
                 <div style="padding: 0;width: 100%" id="en">
