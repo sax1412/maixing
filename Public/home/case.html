@@ -57,18 +57,11 @@
     }
 
     #detail div img {
-        height: 100px;
+        height: 130px;
         border-radius: 2px;
         box-shadow: 0px 3px 6px #999;
     }
 
-    #detail div p {
-        text-align: center;
-        font-size: 24px;
-        font-family: "Microsoft YaHei";
-        color: #7c7c7c;
-        margin-top: 15px;
-    }
 
     #detail div p:hover {
         cursor: pointer;
@@ -76,10 +69,10 @@
 
     .mask {
         padding: 0 !important;
-        height: 100px;
+        height: 130px;
         border-radius: 2px;
         position: absolute !important;
-        width: 80% !important;
+        width: 100% !important;
         margin-left: 0 !important;
         z-index: 3;
         background-color: #525c75;
@@ -89,10 +82,10 @@
     }
 
     #detail div p {
-        width: 80%;
-        margin: 35px auto;
+        width: 100%;
+        margin: 50px auto;
         font-family: "Microsoft YaHei";
-        font-size: 16px;
+        font-size: 20px;
         position: absolute;
         z-index: 6;
         text-align: center;
@@ -273,7 +266,7 @@
                 var len = r.msg.length;
                 for (var i = 0; i < len; i++) {
                     $('#detail').append("<div onclick='detail(this)' onmouseover='show(this)' onmouseout='hide(this)'><div class='mask'></div><p>" + r.msg[i].company + "</p>" +
-                    "<img style='width: 80%' src='../.." + r.msg[i].img + "' > <p style='font-size:18px;'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
+                    "<img style='width: 100%' src='../.." + r.msg[i].img + "' > <p style='font-size:18px;'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
                 }
                 var height = $(document.body).height();
                 if (len < 7) {
@@ -391,7 +384,7 @@
                 var len = r.msg.length;
                 for (var i = 0; i < len; i++) {
                     $('#detail').append("<div onclick='detail(this)' onmouseover='show(this)' onmouseout='hide(this)'><div class='mask'></div><p>" + r.msg[i].company + "</p>" +
-                    "<img style='width: 80%' src='../.." + r.msg[i].img + "'><p onclick='detail(this)'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
+                    "<img style='width: 100%' src='../.." + r.msg[i].img + "'><p onclick='detail(this)'><span style='display: none'>" + r.msg[i].id + "</span></p></div>");
                 }
                 var height = $(document.body).height();
                 if (len < 7) {
