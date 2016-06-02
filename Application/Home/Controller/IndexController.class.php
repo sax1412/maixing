@@ -118,6 +118,19 @@ class IndexController extends Controller
         json_out_msg($list);
     }
 
+    public function member_cate()
+    {
+        $list = D('Member')->distinct(true)->field('category')->select();
+        json_out_msg($list);
+    }
+
+    public function member_find()
+    {
+        $w = I('w');
+        $list = D('Member')->where(['category' => $w])->select();
+        json_out_msg($list);
+    }
+
     public function abort()
     {
         $str = $_SERVER['HTTP_USER_AGENT'];

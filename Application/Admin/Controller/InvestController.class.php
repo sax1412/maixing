@@ -20,7 +20,7 @@ class InvestController extends Controller
         $show = I('show');
         $exit = I('exit');
         $trade = I('trade');
-        $data['admin'] = $_SESSION['name'];
+        $data->admin = $_SESSION['name'];
         if ($zn_en == '中文') {
             $data->zn_en = 1;
         } else {

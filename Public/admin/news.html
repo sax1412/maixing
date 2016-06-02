@@ -27,7 +27,7 @@
             $('#insert').text('提交');
         }
         function edit(id) {
-            auth();
+            auth1();
             this_id = id;
             $.ajax({
                 url: '/admin/news/news_find',
@@ -57,7 +57,7 @@
             })
         }
         function save(id) {
-            auth();
+            auth1();
             var title = $('#title').val();
             var intro = $('#intro').val();
             var img1 = $('#img1').val();
@@ -103,7 +103,7 @@
             })
         }
         function insert() {
-            auth();
+            auth1();
             var button = $('#insert').text();
             var title = $('#title').val();
             var intro = $('#intro').val();
@@ -156,7 +156,7 @@
             $('#example').css('width', '100%');
         }
 
-        function auth(){
+        function auth1(){
             $.ajax({
                 url: '/admin/index/role',
                 type: 'POST',
