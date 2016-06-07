@@ -15,6 +15,8 @@ class NewsController extends Controller
     public function news_add()
     {
         $title = I('title');
+        $time = I('time');
+        $sort = I('sort');
         $intro = I('intro');
         $content1 = I('content1');
         $content2 = I('content2');
@@ -44,11 +46,13 @@ class NewsController extends Controller
             $data['auth'] = $auth;
             $data['from'] = $from;
             $data['link'] = $link;
-            $data['time'] = time();
+            $data['time'] = $time;
+            $data['sort'] = $sort;
             $title = M('News');
             $res = $title->data($data)->add();
             if ($res) {
                 json_ok();
+                //json_out_msg($data);
             } else {
                 json_die('未知错误');
             }
@@ -63,7 +67,7 @@ class NewsController extends Controller
         $res = D('News')->order('time desc')->select();
         $res = array_values($res);
         foreach ($res as &$v) {
-            $v['time'] = date('Y-m-d', $v['time']);
+            $v['time'] = str_replace('T', ' ', $v['time']);
         }
         $out['aaData'] = $res;
         echo json_encode($out);
@@ -107,6 +111,8 @@ class NewsController extends Controller
     {
         $id = I('id');
         $title = I('title');
+        $time = I('time');
+        $sort = I('sort');
         $intro = I('intro');
         $content1 = I('content1');
         $content2 = I('content2');
@@ -136,6 +142,8 @@ class NewsController extends Controller
             $data['auth'] = $auth;
             $data['from'] = $from;
             $data['link'] = $link;
+            $data['time'] = $time;
+            $data['sort'] = $sort;
             $res = D('News')->where(['id' => $id])->save($data);
             if ($res) {
                 json_ok();

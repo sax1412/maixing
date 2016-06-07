@@ -48,11 +48,12 @@ class IndexController extends Controller
         $map['intro'] = ['like', '%' . $word . '%'];
         $map['_logic'] = 'OR';
         if ($word) {
-            $list = D('News')->where($map)->order('time desc')->select();
+            $list = D('News')->where($map)->order('sort asc')->select();
             $list = array_values($list);
             foreach ($list as &$v) {
-                $time = date('Y/m/d', $v['time']);
-                $time1 = explode('/', $time);
+                //$time = date('Y/m/d', $v['time']);
+                $v['time'] = str_replace('T', ' ', $v['time']);
+                $time1 = explode('-', $v['time']);
                 $v['time1'] = $time1[0];
                 $v['time2'] = $time1[1] . '/' . $time1[2];
             }
@@ -65,8 +66,10 @@ class IndexController extends Controller
 
             $list = array_values($list);
             foreach ($list as &$v) {
-                $time = date('Y/m/d', $v['time']);
-                $time1 = explode('/', $time);
+                //$time = date('Y/m/d', $v['time']);
+                $v['time'] = explode('T', $v['time']);
+                $v['time'] = $v['time'][0];
+                $time1 = explode('-', $v['time']);
                 $v['time1'] = $time1[0];
                 $v['time2'] = $time1[1] . '/' . $time1[2];
             }
@@ -79,7 +82,8 @@ class IndexController extends Controller
         $id = I('id/d');
         if ($id) {
             $list = D('News')->where(['id' => $id])->find();
-            $list['time'] = date('Y/m/d H:i:s', $list['time']);
+            $list['time'] = str_replace('T', ' ', $list['time']);
+            //$list['time'] = date('Y/m/d H:i:s', $list['time']);
             if ($list) {
                 json_out_msg($list);
             } else {

@@ -109,6 +109,11 @@
         if (aQuery.indexOf("case") > 0) {
             $("#case").css('color', '#9b761d');
         }
+        var width = $(document.body).width();
+        if (width > 1800) {
+            $('#case_img div').height('350px');
+            $('#case_img div img').height('350px');
+        }
 
         $("#scroll").mCustomScrollbar({});
 

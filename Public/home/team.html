@@ -177,10 +177,15 @@
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
         }
+
         $("#scroll").mCustomScrollbar({
 
         });
         var width = $(document.body).width();
+        if (width > 1800) {
+            $('#team_img div').height('350px');
+            $('#team_img div img').height('350px');
+        }
         $('#img_div').css('margin-left', (width - 900) / 2 + 20);
         if (aQuery.indexOf("status") > 0) {
             document.title='Maison Capital';
