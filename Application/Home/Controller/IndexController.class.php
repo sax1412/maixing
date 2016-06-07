@@ -59,9 +59,9 @@ class IndexController extends Controller
             }
         } else {
             if ($status) {
-                $list = D('News')->where(['zn_en' => 0])->order('time desc')->select();
+                $list = D('News')->where(['zn_en' => 0])->order('sort asc')->select();
             } else {
-                $list = D('News')->where(['zn_en' => 1])->order('time desc')->select();
+                $list = D('News')->where(['zn_en' => 1])->order('sort asc')->select();
             }
 
             $list = array_values($list);

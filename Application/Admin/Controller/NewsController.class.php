@@ -144,12 +144,8 @@ class NewsController extends Controller
             $data['link'] = $link;
             $data['time'] = $time;
             $data['sort'] = $sort;
-            $res = D('News')->where(['id' => $id])->save($data);
-            if ($res) {
-                json_ok();
-            } else {
-                json_die('未知错误');
-            }
+            D('News')->where(['id' => $id])->save($data);
+            json_ok();
         } else {
             json_die('内容不得为空');
         }
