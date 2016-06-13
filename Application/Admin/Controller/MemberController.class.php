@@ -16,6 +16,18 @@ class MemberController extends Controller
     {
         $name = I('name');
         $category = I('category');
+
+        switch ($category) {
+            case '管理团队':
+                $category = 1;
+                break;
+            case '专业团队':
+                $category = 2;
+                break;
+            case '合伙人':
+                $category = 3;
+                break;
+        }
         $english = I('english');
         $position = I('position');
         $position_en = I('position_en');
@@ -48,7 +60,8 @@ class MemberController extends Controller
             $title = M('Member');
             $res = $title->data($data)->add();
             if ($res) {
-                json_ok();
+                //json_ok();
+                json_out_msg($category);
             } else {
                 json_die('未知错误');
             }
@@ -66,12 +79,12 @@ class MemberController extends Controller
             $v['time'] = date('Y-m-d', $v['time']);
             if ($v['show'] == 1) {
                 $v['show'] = '是';
-            }else{
+            } else {
                 $v['show'] = '否';
             }
             if ($v['show_en'] == 1) {
                 $v['show_en'] = '是';
-            }else{
+            } else {
                 $v['show_en'] = '否';
             }
         }
@@ -107,6 +120,15 @@ class MemberController extends Controller
             } else {
                 $res['show_en'] = '否';
             }
+
+            if ($res['category'] == 1) {
+                $res['category'] = '管理团队';
+            } elseif ($res['category'] == 2) {
+                $res['category'] = '专业团队';
+            } else {
+                $res['category'] = '合伙人';
+            }
+
             json_out_msg($res);
         } else {
             json_die('未知错误');
@@ -118,6 +140,17 @@ class MemberController extends Controller
         $id = I('id');
         $name = I('name');
         $category = I('category');
+        switch ($category) {
+            case '管理团队':
+                $category = 1;
+                break;
+            case '专业团队':
+                $category = 2;
+                break;
+            case '合伙人':
+                $category = 3;
+                break;
+        }
         $english = I('english');
         $position = I('position');
         $position_en = I('position_en');
@@ -161,16 +194,16 @@ class MemberController extends Controller
     public function upload()
     {
         $upload = new \Think\Upload();
-        $upload->maxSize   =     3145728 ;
-        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');
-        $upload->rootPath  =     './Uploads/';
-        $upload->savePath  =     '';
+        $upload->maxSize = 3145728;
+        $upload->exts = array('jpg', 'gif', 'png', 'jpeg');
+        $upload->rootPath = './Uploads/';
+        $upload->savePath = '';
         // 上传文件
-        $info   =   $upload->upload();
-        $path='/Uploads/'.$info['upload']['savepath'].$info['upload']['savename'];
-        if(!$info) {
+        $info = $upload->upload();
+        $path = '/Uploads/' . $info['upload']['savepath'] . $info['upload']['savename'];
+        if (!$info) {
             json_die('上传失败');
-        }else{// 上传成功
+        } else {// 上传成功
             json_out_msg($path);
         }
     }

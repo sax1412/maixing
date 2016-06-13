@@ -161,11 +161,12 @@
         font-family: 'Microsoft YaHei', sans-serif
     }
 
-    .mCSB_dragger_bar{
+    .mCSB_dragger_bar {
         width: 3px !important;
         background-color: #b0a065 !important;
     }
-    .mCSB_draggerRail{
+
+    .mCSB_draggerRail {
         width: 1px !important;
         background-color: #cccccc !important;
     }
@@ -173,14 +174,17 @@
 </style>
 <script>
     $(function () {
+        /*$('.p1').hover(function () {
+            $(this).next().css('display', 'block');
+        });
+        $('.p1').mouseout(function () {
+            $(this).next().css('display', 'none');
+        });*/
         var aQuery = window.location.href;
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
         }
-
-        $("#scroll").mCustomScrollbar({
-
-        });
+        $("#scroll").mCustomScrollbar({});
         var width = $(document.body).width();
         if (width > 1800) {
             $('#team_img div').height('350px');
@@ -188,7 +192,10 @@
         }
         $('#img_div').css('margin-left', (width - 900) / 2 + 20);
         if (aQuery.indexOf("status") > 0) {
-            document.title='Maison Capital';
+            $('#p1').text('Manage');
+            $('#p2').text('Specialty');
+            $('#p3').text('Partner');
+            document.title = 'Maison Capital';
             $('#img img').attr('src', '/Public/home/images/team_en.jpg');
             $('#bottom').empty();
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
@@ -215,9 +222,9 @@
             });
             $.ajax({
                 "url": '/home/index/member',
-                "dataType":  'json',
-                "data":{
-                    status:1
+                "dataType": 'json',
+                "data": {
+                    status: 1
                 },
                 success: function (r) {
                     var len = r.msg.length;
@@ -302,6 +309,35 @@
         }
     }
 
+    function search(id) {
+        var w = $(id).text();
+        $('.p1').css('color','#4c4c4c');
+        $('.p1').next().css('display','none');
+        $(id).css('color','#9b761d');
+        $(id).next().css('display','block');
+        $('#imgs').empty();
+        $.ajax({
+            "url": '/home/index/member',
+            'data': {
+                'w': w
+            },
+            "dataType": 'json',
+            success: function (r) {
+                var len = r.msg.length;
+                for (var i = 0; i < len; i++) {
+                    $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                    "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                    "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
+                    "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                    "<p id='position'>" + r.msg[i].position + "</p></div>" +
+                    "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                }
+                var height = $(document.body).height();
+                $('#mask').height(height);
+            }
+        });
+    }
+
     function detail(e) {
         document.documentElement.style.overflow = "hidden";
         $('#detail').css('display', 'block');
@@ -320,7 +356,7 @@
                     $('#name').text(r.msg.english);
                     $('#en_name').empty();
                     $('#position').text(r.msg.position_en);
-                }else{
+                } else {
                     var intro = '<pre>' + r.msg.intro + '</pre>';
                     $('#name').text(r.msg.name);
                     $('#en_name').text(r.msg.english);
@@ -449,7 +485,7 @@
         position: fixed;
         z-index: 11;
         top: 0;
-        left:0;
+        left: 0;
         right: 0;
         bottom: 0;
         width: 900px;
@@ -469,6 +505,27 @@
 
     }
 
+    .p1 {
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        color: #4c4c4c;
+        font-family: 'Microsoft YaHei';
+        padding: 0;
+    }
+
+    .p2 {
+        width: 30px;
+        margin: -4px auto;
+        border: 1px #9b761d solid;
+        height: 0px;
+        display: none;
+    }
+
+    .p1:hover {
+        color: #9b761d !important;
+        cursor: pointer;
+    }
 
 </style>
 <body>
@@ -476,24 +533,23 @@
     <img style="margin-left: 96%;margin-top: 15px;" src="images/off.jpg"
          onclick="javascript:$('#detail').css('display','none');$('#mask').css('display','none');document.documentElement.style.overflow='';">
 
-    <div class="col-lg-4" style="text-align:center;margin-top: 100px;">
-        <img id="member_img"
-             style="margin: 0 auto; width: 250px;height: 190px;"/>
+    <div class="col-lg-4" style="text-align:center;margin-top: 50px;">
+        <img id="member_img" style="margin: 0 auto; width: 250px;height: 190px;"/>
+        <div class="col-lg-11" style="text-align: center;margin-top: 20px;"><span id="name" style="font-size: 24px;color: #4c4c4c;"></span></div>
+        <div class="col-lg-11" style="text-align: center"><span id="en_name" style="font-size: 14px;color: #4c4c4c;"></span>
+
+        </div>
+        <div class="col-lg-11 exit" style="text-align: center;margin-top: 15px;"><span id="position" style="font-size: 14px;color: #4c4c4c;"></span>
+        </div>
     </div>
     <div class="col-lg-8" style="padding: 0;margin-top:0px;width: 64% !important;">
-        <div class="col-lg-11" style="text-align: center"><span id="name"
-                                                                style="font-size: 24px;color: #4c4c4c;"></span></div>
-        <div style="height:300px;padding: 0;width: 100%;">
-            <div class="col-lg-11" style="text-align: center"><span id="en_name"
-                                                                    style="font-size: 14px;color: #4c4c4c;"></span>
-            </div>
-            <div class="col-lg-11 exit" style="text-align: center;margin-top: 15px;"><span id="position"
-                                                                                           style="font-size: 14px;color: #4c4c4c;"></span>
-            </div>
-            <div class="col-lg-1 col-lg-offset-5"
-                 style="margin-top: 15px;width:5% !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>
+
+        <div style="height:400px;padding: 0;width: 100%;">
+
+            <!--<div class="col-lg-1 col-lg-offset-5"
+                 style="margin-top: 15px;width:5% !important;border: 2px #b0a065 solid;border-radius: 3px;"></div>-->
             <div class="col-lg-12" id="scroll"
-                 style="margin-top:15px;height: 300px;padding: 0">
+                 style="margin-top:15px;height: 400px;padding: 0">
                 <div style="padding: 0;color: #4c4c4c;" class="col-lg-12" id="intro"></div>
             </div>
         </div>
@@ -538,7 +594,26 @@
     </div>
 </div>
 </div>
-<div class="container" id="img_div" style="width:900px;margin-top: 20px;">
+<div class="container">
+    <div class="row" style="margin-top: -20px;">
+        <div class="col-lg-1 col-lg-offset-7">
+            <p class="p1" onclick="search(this)" id="p1">管理团队</p>
+
+            <p class="p2"></p>
+        </div><div style="width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;"></div>
+        <div class="col-lg-1">
+            <p class="p1" onclick="search(this)" id="p2">专业团队</p>
+
+            <p class="p2"></p>
+        </div><div style="width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;"></div>
+        <div class="col-lg-1">
+            <p class="p1" onclick="search(this)" id="p3">合伙人</p>
+
+            <p class="p2"></p>
+        </div>
+    </div>
+</div>
+<div class="container" id="img_div" style="width:900px;margin-top: 50px;">
     <div class="row" id="imgs">
 
     </div>

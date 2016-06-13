@@ -48,7 +48,7 @@ class IndexController extends Controller
         $map['intro'] = ['like', '%' . $word . '%'];
         $map['_logic'] = 'OR';
         if ($word) {
-            $list = D('News')->where($map)->order('sort asc')->select();
+            $list = D('News')->where($map)->order('sort desc')->select();
             $list = array_values($list);
             foreach ($list as &$v) {
                 //$time = date('Y/m/d', $v['time']);
@@ -59,9 +59,9 @@ class IndexController extends Controller
             }
         } else {
             if ($status) {
-                $list = D('News')->where(['zn_en' => 0])->order('sort asc')->select();
+                $list = D('News')->where(['zn_en' => 0])->order('sort desc')->select();
             } else {
-                $list = D('News')->where(['zn_en' => 1])->order('sort asc')->select();
+                $list = D('News')->where(['zn_en' => 1])->order('sort desc')->select();
             }
 
             $list = array_values($list);
@@ -113,11 +113,39 @@ class IndexController extends Controller
     public function member()
     {
         $status = I('status');
-        if ($status == 1) {
-            $list = D('Member')->where(['show_en' => 1])->order('convert(name using gbk) asc')->select();
-        } else {
-            $list = D('Member')->where(['show' => 1])->order('convert(name using gbk) asc')->select();
+        $w = I('w');
+        $map = [];
+        switch ($w) {
+            case '管理团队':
+                $w = 1;
+                break;
+            case '专业团队':
+                $w = 2;
+                break;
+            case '合伙人':
+                $w = 3;
+                break;
+            case 'Manage':
+                $w = 1;
+                break;
+            case 'Specialty':
+                $w = 2;
+                break;
+            case 'Partner ':
+                $w = 3;
+                break;
         }
+        if ($status == 1) {
+            $map['show_en'] = 1;
+        } else {
+            $map['show'] = 1;
+        }
+        if ($w) {
+            $map['category'] = $w;
+        }
+
+        $list = D('Member')->where($map)->order('convert(name using gbk) asc')->select();
+
         //$list['content']="<pre>".$list['content']."</pre>";
         json_out_msg($list);
     }
