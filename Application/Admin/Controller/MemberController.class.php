@@ -16,18 +16,7 @@ class MemberController extends Controller
     {
         $name = I('name');
         $category = I('category');
-
-        switch ($category) {
-            case '管理团队':
-                $category = 1;
-                break;
-            case '专业团队':
-                $category = 2;
-                break;
-            case '合伙人':
-                $category = 3;
-                break;
-        }
+        $category_en = I('category_en');
         $english = I('english');
         $position = I('position');
         $position_en = I('position_en');
@@ -40,6 +29,7 @@ class MemberController extends Controller
             $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
             $data['category'] = $category;
+            $data['category_en'] = $category_en;
             $data['english'] = $english;
             $data['position'] = $position;
             $data['position_en'] = $position_en;
@@ -121,14 +111,6 @@ class MemberController extends Controller
                 $res['show_en'] = '否';
             }
 
-            if ($res['category'] == 1) {
-                $res['category'] = '管理团队';
-            } elseif ($res['category'] == 2) {
-                $res['category'] = '专业团队';
-            } else {
-                $res['category'] = '合伙人';
-            }
-
             json_out_msg($res);
         } else {
             json_die('未知错误');
@@ -140,17 +122,7 @@ class MemberController extends Controller
         $id = I('id');
         $name = I('name');
         $category = I('category');
-        switch ($category) {
-            case '管理团队':
-                $category = 1;
-                break;
-            case '专业团队':
-                $category = 2;
-                break;
-            case '合伙人':
-                $category = 3;
-                break;
-        }
+        $category_en = I('category_en');
         $english = I('english');
         $position = I('position');
         $position_en = I('position_en');
@@ -163,6 +135,7 @@ class MemberController extends Controller
             $data['admin'] = $_SESSION['name'];
             $data['name'] = $name;
             $data['category'] = $category;
+            $data['category_en'] = $category_en;
             $data['english'] = $english;
             $data['position'] = $position;
             $data['position_en'] = $position_en;

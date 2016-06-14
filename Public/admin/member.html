@@ -44,6 +44,7 @@
                     $('#img').val(r.msg.img);
                     $('#name').val(r.msg.name);
                     $('#category').val(r.msg.category);
+                    $('#category_en').val(r.msg.category_en);
                     $('#position').val(r.msg.position);
                     $('#position_en').val(r.msg.position_en);
                     $('#intro').val(r.msg.intro);
@@ -60,6 +61,7 @@
             var img = $('#img').val();
             var name = $('#name').val();
             var category = $('#category').val();
+            var category_en = $('#category_en').val();
             var intro = $('#intro').val();
             var intro_en = $('#intro_en').val();
             var english = $('#english').val();
@@ -76,13 +78,14 @@
                     "img": img,
                     "name": name,
                     "category":category,
+                    "category_en":category_en,
                     "position": position,
                     "position_en": position_en,
                     "english": english,
                     "intro": intro,
                     "intro_en":intro_en,
                     "show":show,
-                    "show_en":show_en,
+                    "show_en":show_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
@@ -103,6 +106,7 @@
             var img = $('#img').val();
             var name = $('#name').val();
             var category = $('#category').val();
+            var category_en = $('#category_en').val();
             var intro = $('#intro').val();
             var intro_en = $('#intro_en').val();
             var english = $('#english').val();
@@ -121,13 +125,14 @@
                         "img": img,
                         "name": name,
                         "category":category,
+                        "category_en":category_en,
                         "position": position,
                         "position_en": position_en,
                         "english": english,
                         "intro": intro,
                         "intro_en":intro_en,
                         "show":show,
-                        "show_en":show_en,
+                        "show_en":show_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
@@ -349,16 +354,16 @@
                     <div class="form-group" style="margin-top: 20px;">
                         <label for="english" class="col-sm-1 control-label">英文名</label>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <input type="text" class="form-control" id="english" name="english">
                         </div>
                         <label class="col-sm-1 control-label">类别</label>
-                        <div class="col-sm-5">
-                            <select class="form-control" id="category" name="category">
-                                <option>管理团队</option>
-                                <option>专业团队</option>
-                                <option>合伙人</option>
-                            </select>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="category" name="category">
+                        </div>
+                        <label class="col-sm-1 control-label">类别(英文)</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="category_en" name="category">
                         </div>
                     </div>
                     <div class="form-group">

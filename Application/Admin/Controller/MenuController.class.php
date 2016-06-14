@@ -15,6 +15,7 @@ class MenuController extends Controller
     public function menu_add()
     {
         $menu = I('menu');
+        $menu_en = I('menu_en');
         $english = I('english');
         $title = I('title');
         $content = I('content');
@@ -26,6 +27,7 @@ class MenuController extends Controller
         if ($menu) {
             $data['admin'] = $_SESSION['name'];
             $data['menu'] = $menu;
+            $data['menu_en'] = $menu_en;
             $data['english'] = $english;
             for ($i = 0; $i < $len; $i++) {
                 $str .= $title[$i] . "&" . $content[$i] . "&" . $en[$i] . "*";
@@ -118,6 +120,7 @@ class MenuController extends Controller
     {
         $id = I('id');
         $menu = I('menu');
+        $menu_en = I('menu_en');
         $english = I('english');
         $title = I('title');
         $content = I('content');
@@ -129,6 +132,7 @@ class MenuController extends Controller
         if ($title) {
             $data['admin'] = $_SESSION['name'];
             $data['menu'] = $menu;
+            $data['menu_en'] = $menu_en;
             $data['english'] = $english;
             for ($i = 0; $i < $len; $i++) {
                 $str .= $title[$i] . "&" . $content[$i] . "&" . $en[$i] . "*";

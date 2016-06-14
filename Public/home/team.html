@@ -174,12 +174,6 @@
 </style>
 <script>
     $(function () {
-        /*$('.p1').hover(function () {
-            $(this).next().css('display', 'block');
-        });
-        $('.p1').mouseout(function () {
-            $(this).next().css('display', 'none');
-        });*/
         var aQuery = window.location.href;
         if (aQuery.indexOf("team") > 0) {
             $("#team").css('color', '#9b761d');
@@ -221,10 +215,27 @@
                 }
             });
             $.ajax({
-                "url": '/home/index/member',
+                "url": '/home/index/member_cate',
                 "dataType": 'json',
                 "data": {
                     status: 1
+                },
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#category').append("<div class='col-lg-1'><p class='p1' onclick='search(this)' id='p1'>"+r.msg[i].category_en+"</p><p class='p2'></p>" +
+                        "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
+                }
+            });
+            $.ajax({
+                "url": '/home/index/member',
+                "dataType": 'json',
+                "data": {
+                    status: 1,
+                    "w":'合伙人'
                 },
                 success: function (r) {
                     var len = r.msg.length;
@@ -252,9 +263,24 @@
                     //$('#team_intro').text(r.msg.intro);
                 }
             });
-
+            $.ajax({
+                "url": '/home/index/member_cate',
+                "dataType": 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#category').append("<div class='col-lg-1'><p class='p1' onclick='search(this)' id='p1'>"+r.msg[i].category+"</p><p class='p2'></p>" +
+                        "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
+                }
+            });
             $.ajax({
                 "url": '/home/index/member',
+                "data":{
+                    "w":'Partner'
+                },
                 "dataType": 'json',
                 success: function (r) {
                     var len = r.msg.length;
@@ -595,22 +621,8 @@
 </div>
 </div>
 <div class="container">
-    <div class="row" style="margin-top: -20px;">
-        <div class="col-lg-1 col-lg-offset-7">
-            <p class="p1" onclick="search(this)" id="p1">管理团队</p>
-
-            <p class="p2"></p>
-        </div><div style="width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;"></div>
-        <div class="col-lg-1">
-            <p class="p1" onclick="search(this)" id="p2">专业团队</p>
-
-            <p class="p2"></p>
-        </div><div style="width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;"></div>
-        <div class="col-lg-1">
-            <p class="p1" onclick="search(this)" id="p3">合伙人</p>
-
-            <p class="p2"></p>
-        </div>
+    <div class="row" style="margin-top: -20px;" id="category">
+        <div class="col-lg-5"></div>
     </div>
 </div>
 <div class="container" id="img_div" style="width:900px;margin-top: 50px;">

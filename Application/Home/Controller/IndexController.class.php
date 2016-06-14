@@ -115,26 +115,6 @@ class IndexController extends Controller
         $status = I('status');
         $w = I('w');
         $map = [];
-        switch ($w) {
-            case '管理团队':
-                $w = 1;
-                break;
-            case '专业团队':
-                $w = 2;
-                break;
-            case '合伙人':
-                $w = 3;
-                break;
-            case 'Manage':
-                $w = 1;
-                break;
-            case 'Specialty':
-                $w = 2;
-                break;
-            case 'Partner ':
-                $w = 3;
-                break;
-        }
         if ($status == 1) {
             $map['show_en'] = 1;
         } else {
@@ -152,7 +132,13 @@ class IndexController extends Controller
 
     public function member_cate()
     {
-        $list = D('Member')->distinct(true)->field('category')->select();
+        $status = I('status');
+        if ($status ==1) {
+            $list = D('Member')->distinct(true)->field('category_en')->select();
+        }else{
+            $list = D('Member')->distinct(true)->field('category')->select();
+        }
+
         json_out_msg($list);
     }
 

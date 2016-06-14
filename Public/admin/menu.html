@@ -44,6 +44,7 @@
                     $('#mask').css('display','block');
                     document.documentElement.style.overflow = "hidden";
                     $('#menu').val(r.msg.menu);
+                    $('#menu_en').val(r.msg.menu_en);
                     $('#show').val(r.msg.show);
                     $('#zn_en').val(r.msg.zn_en);
                     $('#insert').text('保存');
@@ -67,6 +68,7 @@
             auth();
             var lenth = $('#row_title .status').children('.form-group').length / 2;
             var menu = $('#menu').val();
+            var menu_en = $('#menu_en').val();
             var english = $('#english').val();
             var title = [];
             var content = [];
@@ -85,6 +87,7 @@
                 data: {
                     "id": id,
                     "menu": menu,
+                    "menu_en": menu_en,
                     "english": english,
                     "title": title,
                     "content": content,
@@ -111,6 +114,7 @@
             var lenth = $('#row_title .status').children('.form-group').length / 2;
             var button = $('#insert').text();
             var menu = $('#menu').val();
+            var menu_en = $('#menu_en').val();
             var english = $('#english').val();
             var title = [];
             var content = [];
@@ -131,6 +135,7 @@
                     dataType: 'json',
                     data: {
                         "menu": menu,
+                        "menu_en": menu_en,
                         "title": title,
                         "english": english,
                         "content": content,
@@ -377,8 +382,13 @@
                     <div class="form-group" style="margin-top: 20px;">
                         <label class="col-sm-1 control-label">菜单</label>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <input type="text" class="form-control" id="menu">
+                        </div>
+                        <label class="col-sm-1 control-label">菜单(英文)</label>
+
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="menu_en">
                         </div>
                     </div>
                     <div id="row_title" style="width: 100%;">
