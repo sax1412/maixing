@@ -117,13 +117,15 @@ class IndexController extends Controller
         $map = [];
         if ($status == 1) {
             $map['show_en'] = 1;
+            if ($w) {
+                $map['category_en'] = $w;
+            }
         } else {
             $map['show'] = 1;
+            if ($w) {
+                $map['category'] = $w;
+            }
         }
-        if ($w) {
-            $map['category'] = $w;
-        }
-
         $list = D('Member')->where($map)->order('convert(name using gbk) asc')->select();
 
         //$list['content']="<pre>".$list['content']."</pre>";
