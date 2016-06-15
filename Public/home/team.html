@@ -224,11 +224,11 @@
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
                         if (r.msg[i].category_en == 'Partner') {
-                            $('#category').append("<div class='' style='float: left'><p class='p1' style='color: #9b761d' onclick='search(this)' id='p1'>" + r.msg[i].category_en + "</p><p class='p2' style='display: block'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        }else{
-                            $('#category').append("<div class='' style='float: left'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category_en + "</p><p class='p2'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
+                            $('#category').append("<div class='fl'><p class='p1' style='color: #9b761d' onclick='search(this)' id='p1'>" + r.msg[i].category_en + "</p><p class='p2' style='display: block'></p>" +
+                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
+                        } else {
+                            $('#category').append("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category_en + "</p><p class='p2'></p>" +
+                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
                         }
 
                     }
@@ -277,11 +277,11 @@
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
                         if (r.msg[i].category == '合伙人') {
-                            $('#category').append("<div class='' style='float: left'><p class='p1' style='color: #9b761d' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2' style='display: block'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        }else{
-                            $('#category').append("<div class='' style='float: left'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: left;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
+                            $('#category').prepend("<div class='fl'><p class='p1' style='color: #9b761d' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2' style='display: block'></p>" +
+                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
+                        } else {
+                            $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
+                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
                         }
                     }
                     var height = $(document.body).height();
@@ -349,16 +349,22 @@
     }
 
     function search(id) {
+        var aQuery = window.location.href;
         var w = $(id).text();
+        var status = 0;
         $('.p1').css('color', '#4c4c4c');
         $('.p1').next().css('display', 'none');
         $(id).css('color', '#9b761d');
         $(id).next().css('display', 'block');
         $('#imgs').empty();
+        if (aQuery.indexOf("status") > 0) {
+            status = 1;
+        }
         $.ajax({
             "url": '/home/index/member',
             'data': {
-                'w': w
+                'w': w,
+                'status': status
             },
             "dataType": 'json',
             success: function (r) {
@@ -553,10 +559,13 @@
         padding: 0;
     }
 
+    .fl {
+        float: right;
+    }
+
     .p2 {
         width: 30px;
         margin: -4px auto;
-        border: 1px #9b761d solid;
         height: 0px;
         display: none;
     }
@@ -639,8 +648,8 @@
 </div>
 </div>
 <div class="container">
-    <div class="row" style="margin-top: -20px;" id="category">
-        <div class="col-lg-6"></div>
+    <div class="row" style="margin-top: -20px;width:88%;" id="category">
+
     </div>
 </div>
 <div class="container" id="img_div" style="width:900px;margin-top: 50px;">
