@@ -21,9 +21,14 @@ class CategoryController extends Controller
         }
         if ($defaults == '是') {
             $defaults = 1;
+            $list=D('Category')->where(['zn'=>$zn,'defaults'=>1])->find();
+            if($list){
+                json_die('已有缺省选项');
+            }
         } else {
             $defaults = 2;
         }
+
         if ($category) {
             $data->sort = $sort;
             $data->defaults = $defaults;
@@ -111,6 +116,10 @@ class CategoryController extends Controller
         }
         if ($defaults == '是') {
             $defaults = 1;
+            $list=D('Category')->where(['zn'=>$zn,'defaults'=>1])->find();
+            if($list){
+                json_die('已有缺省选项');
+            }
         } else {
             $defaults = 2;
         }
@@ -118,6 +127,7 @@ class CategoryController extends Controller
             $data->sort = $sort;
             $data->defaults = $defaults;
             $data->zn = $zn;
+            $data->ct = time();
             $data->admin = $_SESSION['name'];
             $res = $data->save();
             if ($res) {
