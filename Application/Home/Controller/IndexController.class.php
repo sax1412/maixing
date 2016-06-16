@@ -114,16 +114,22 @@ class IndexController extends Controller
     {
         $status = I('status');
         $w = I('w');
+        $category=D('Category')->where(['defaults'=>1,'zn'=>1])->find();
+        $category_en=D('Category')->where(['defaults'=>1,'zn'=>2])->find();
         $map = [];
         if ($status == 1) {
             $map['show_en'] = 1;
             if ($w) {
                 $map['category_en'] = $w;
+            }else{
+                $map['category_en'] = $category_en['category'];
             }
         } else {
             $map['show'] = 1;
             if ($w) {
                 $map['category'] = $w;
+            }else{
+                $map['category'] = $category['category'];
             }
         }
         $list = D('Member')->where($map)->order('convert(name using gbk) asc')->select();
@@ -136,9 +142,9 @@ class IndexController extends Controller
     {
         $status = I('status');
         if ($status ==1) {
-            $list = D('Member')->distinct(true)->field('category_en')->select();
+            $list = D('Category')->where(['zn'=>2])->order('sort desc')->select();
         }else{
-            $list = D('Member')->distinct(true)->field('category')->select();
+            $list = D('Category')->where(['zn'=>1])->order('sort desc')->select();
         }
 
         json_out_msg($list);

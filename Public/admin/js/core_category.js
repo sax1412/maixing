@@ -11,9 +11,6 @@ $(document).ready(function () {
             $("input[name='checkList']").attr("checked", false);
         }
     });
-
-
-
     $.ajax({
         url: '/admin/index/role',
         type: 'POST',
@@ -22,27 +19,15 @@ $(document).ready(function () {
         success: function (r) {
             if (r.code == 200) {
                 $('#username').text(r.msg.name);
-                if (r.msg.auth == 2) {
-                    $(".nav-list").children().last().css('display', 'none');
+                if(r.msg.auth==2){
+                    $(".nav-list").children().last().css('display','none');
                 }
             } else {
-                window.location.href = '/Public/admin/login.html';
+                window.location.href='/Public/admin/login.html';
             }
         }
     });
-
-
-    $("input[id=lefile]").wrap("<form id='myupload' action='/admin/member/upload' method='post' enctype='multipart/form-data'></form>");
-    $('input[id=lefile]').change(function () {
-        $('#img').val("<span style='color: darkgreen'>上传中···</span>");
-        $('#myupload').ajaxSubmit({
-            dataType: "json",
-            success: function (data) {
-                $('#img').val(data.msg);
-            }
-        });
-    });
-    var len = $(document.body).height();
+    var len=$(document.body).height();
     $('#mask').height(len);
 });
 
@@ -69,7 +54,8 @@ function initTable() {
         },
         "pagingType": "full_numbers",
         "searching": true,
-        "sAjaxSource": "/admin/member/member_list",
+        "sAjaxSource": "/admin/category/category_list",
+        "bAutoWidth": false,
         'bPaginate': true,
         "bDestory": true,
         "bRetrieve": true,
@@ -81,30 +67,14 @@ function initTable() {
                 "mDataProp": "id",
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                     $(nTd).html("<input type='checkbox' name='checkList' value='" + sData + "'>");
-
                 }
             },
             {"mDataProp": "id"},
-            //{"mDataProp": "admin"},
-            {"mDataProp": "img"},
-            {"mDataProp": "name"},
-            {"mDataProp": "english"},
-            {"mDataProp": "position"},
-            {"mDataProp": "position_en"},
-            {"mDataProp": "show"},
-            {"mDataProp": "show_en"},
-            {
-                "mDataProp": "intro",
-                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                    var text = sData;
-                    $.trim(text);
-                    var len = text.length;
-                    if (len > 20) {
-                        text = text.substring(0, 16) + '...';
-                    }
-                    $(nTd).html("<span>" + text + "</span>");
-                }
-            },
+            {"mDataProp": "admin"},
+            {"mDataProp": "category"},
+            {"mDataProp": "sort"},
+            {"mDataProp": "defaults"},
+            {"mDataProp": "zn"},
             {
                 "mDataProp": "id",
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
@@ -112,6 +82,7 @@ function initTable() {
                         .append("<a href='javascript:void(0);' class='btn btn-success' style='padding:2px 10px;' onclick='edit(" + oData.id + ")'>编辑</a>&nbsp;").append("<a href='javascript:void(0);' class='btn btn-danger' style='padding:2px 10px;' onclick='_deleteFun(" + oData.id + ")'>删除</a>");
                 }
             },
+
         ],
         "sDom": "<'row-fluid'<'span6 float' l><'span6 float position myBtnBox'><'span6'f>r>t<'row-fluid'<'span6 float top1'i><'span6 top'p>>",
         "fnCreatedRow": function (nRow, aData, iDataIndex) {
@@ -150,13 +121,13 @@ function _deleteFun(id) {
             if (r.code == 200) {
 
             } else {
-                window.location.href = '/Public/admin/login.html';
+                window.location.href='/Public/admin/login.html';
             }
         }
     });
     if (confirm('确认删除吗？')) {
         $.ajax({
-            url: "/admin/member/member_delete",
+            url: "/admin/category/category_delete",
             data: {"id": id},
             type: "post",
             dataType: 'json',

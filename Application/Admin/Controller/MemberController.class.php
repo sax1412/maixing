@@ -50,8 +50,8 @@ class MemberController extends Controller
             $title = M('Member');
             $res = $title->data($data)->add();
             if ($res) {
-                //json_ok();
-                json_out_msg($category);
+                json_ok();
+                //json_out_msg($category);
             } else {
                 json_die('未知错误');
             }

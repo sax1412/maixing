@@ -14,21 +14,72 @@
     <link rel="shortcut icon" href="images/favicon.ico">
     <script>
 
+
         function add() {
             $('#form').css('display', 'block');
-            $('#mask').css('display','block');
+            $('#mask').css('display', 'block');
             document.documentElement.style.overflow = "hidden";
             $('input').val('');
             $('textarea').val('');
+            $('#category').empty();
+            $('#category_en').empty();
+            $.ajax({
+                url: '/admin/category/lists',
+                type: 'POST',
+                dataType: 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#category').append("<option>" + r.msg[i].category + "</option>");
+                    }
+                }
+            });
+
+            $.ajax({
+                url: '/admin/category/lists_en',
+                type: 'POST',
+                dataType: 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#category_en').append("<option>" + r.msg[i].category + "</option>");
+                    }
+                }
+            });
         }
         function form_close() {
             $('#form').css('display', 'none');
-            $('#mask').css('display','none');
+            $('#mask').css('display', 'none');
             document.documentElement.style.overflow = "";
             $('#insert').text('提交');
         }
         function edit(id) {
             auth();
+            $('#category').empty();
+            $('#category_en').empty();
+            $.ajax({
+                url: '/admin/category/lists',
+                type: 'POST',
+                dataType: 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#category').append("<option>" + r.msg[i].category + "</option>");
+                    }
+                }
+            });
+
+            $.ajax({
+                url: '/admin/category/lists_en',
+                type: 'POST',
+                dataType: 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#category_en').append("<option>" + r.msg[i].category + "</option>");
+                    }
+                }
+            });
             this_id = id;
             $.ajax({
                 url: '/admin/member/member_find',
@@ -39,7 +90,7 @@
                 },
                 success: function (r) {
                     $('#form').css('display', 'block');
-                    $('#mask').css('display','block');
+                    $('#mask').css('display', 'block');
                     document.documentElement.style.overflow = "hidden";
                     $('#img').val(r.msg.img);
                     $('#name').val(r.msg.name);
@@ -77,21 +128,21 @@
                     "id": id,
                     "img": img,
                     "name": name,
-                    "category":category,
-                    "category_en":category_en,
+                    "category": category,
+                    "category_en": category_en,
                     "position": position,
                     "position_en": position_en,
                     "english": english,
                     "intro": intro,
-                    "intro_en":intro_en,
-                    "show":show,
-                    "show_en":show_en
+                    "intro_en": intro_en,
+                    "show": show,
+                    "show_en": show_en
                 },
                 success: function (r) {
                     if (r.code == 200) {
                         oTable.fnReloadAjax();
                         $('#form').css('display', 'none');
-                        $('#mask').css('display','none');
+                        $('#mask').css('display', 'none');
                         document.documentElement.style.overflow = "";
                         $('#insert').text('提交');
                     } else {
@@ -124,20 +175,20 @@
                     data: {
                         "img": img,
                         "name": name,
-                        "category":category,
-                        "category_en":category_en,
+                        "category": category,
+                        "category_en": category_en,
                         "position": position,
                         "position_en": position_en,
                         "english": english,
                         "intro": intro,
-                        "intro_en":intro_en,
-                        "show":show,
-                        "show_en":show_en
+                        "intro_en": intro_en,
+                        "show": show,
+                        "show_en": show_en
                     },
                     success: function (r) {
                         if (r.code == 200) {
                             $('#form').css('display', 'none');
-                            $('#mask').css('display','none');
+                            $('#mask').css('display', 'none');
                             document.documentElement.style.overflow = "";
                             //oTable.fnReloadAjax('http://localhost:60/admin/home/banner_list');
                             oTable.fnReloadAjax(); //使用默认
@@ -152,7 +203,7 @@
             $('#example').css('width', '100%');
         }
 
-        function auth(){
+        function auth() {
             $.ajax({
                 url: '/admin/index/role',
                 type: 'POST',
@@ -163,7 +214,7 @@
                     if (r.code == 200) {
 
                     } else {
-                        window.location.href='/Public/admin/login.html';
+                        window.location.href = '/Public/admin/login.html';
                     }
                 }
             });
@@ -171,13 +222,13 @@
     </script>
 </head>
 <style>
-    #form{
+    #form {
         position: fixed;
         z-index: 10;
-        top: 100px ;
-        left: 0 ;
-        right: 0 ;
-        margin:auto !important;
+        top: 100px;
+        left: 0;
+        right: 0;
+        margin: auto !important;
         width: 1100px !important;
         max-height: 450px;
         overflow-y: auto;
@@ -185,6 +236,7 @@
         background-color: #FFFFFF;
         border-radius: 5px;
     }
+
     #add:hover {
         cursor: pointer !important;
     }
@@ -213,26 +265,29 @@
         text-align: center
     }
 
-    textarea{
+    textarea {
         height: 200px !important;
     }
 
-    pre{
+    pre {
         padding: 0;
     }
 
-    .submenu ul li a{
+    .submenu ul li a {
         padding-left: 30px !important;
     }
-    .active ul li a{
+
+    .active ul li a {
         padding-left: 30px !important;
     }
-    #form div img:hover{
+
+    #form div img:hover {
         cursor: pointer;
     }
 </style>
 <body>
-<div id="mask" style="position: absolute;z-index: 3;background-color: #000;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;"></div>
+<div id="mask"
+     style="position: absolute;z-index: 3;background-color: #000;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;"></div>
 <div class="site-holder">
     <nav class="navbar" role="navigation">
         <div class="navbar-header">
@@ -263,7 +318,8 @@
                         </button>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  首页管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="index.html" data-original-title="Basic"><i
@@ -272,7 +328,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  关于我们 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <li><a href="abort.html" data-original-title="Basic"><i
@@ -284,8 +341,9 @@
                         </ul>
                     </li>
                     <li class="active">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
-                                class="hidden-minibar"> 投资团队 <span class="badge bg-primary pull-right">1</span></a>
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
+                                class="hidden-minibar"> 投资团队 <span class="badge bg-primary pull-right">2</span></a>
                         <ul>
                             <!--<li><a href="team.html" data-original-title="Basic"><i
                                     class="fa fa-table"></i><span>  团队简介</span></a>
@@ -293,10 +351,14 @@
                             <li><a href="member.html" data-original-title="Editable"><i
                                     class="fa fa-table"></i><span>  人员管理</span></a>
                             </li>
+                            <li><a href="category.html" data-original-title="Editable"><i
+                                    class="fa fa-table"></i><span>  类别管理</span></a>
+                            </li>
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  投资案例 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="invest.html" data-original-title="Basic"><i
@@ -305,7 +367,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  新闻动态 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="news.html" data-original-title="Basic"><i
@@ -314,7 +377,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 联系我们 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="contact.html" data-original-title="Basic"><i
@@ -323,7 +387,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 角色管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="auth.html" data-original-title="Basic"><i
@@ -341,7 +406,8 @@
                 </div>
             </div>
             <div class="row" id="form" style="width: 97%;margin-bottom: 30px; margin-left: 1%;display: none;">
-                <div style="position: fixed;margin-left:1060px;top: 105px;z-index: 50;" onclick="form_close()"><img src="/Public/home/images/off.jpg"/></div>
+                <div style="position: fixed;margin-left:1060px;top: 105px;z-index: 50;" onclick="form_close()"><img
+                        src="/Public/home/images/off.jpg"/></div>
                 <form class="form-horizontal" role="form"
                       style="border:1px #fff solid; border-radius: 3px;-webkit-box-shadow: 0 0 6px #333;">
                     <div class="form-group" style="margin-top: 20px;">
@@ -358,12 +424,18 @@
                             <input type="text" class="form-control" id="english" name="english">
                         </div>
                         <label class="col-sm-1 control-label">类别</label>
+
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" id="category" name="category">
+                            <select class="form-control" id="category">
+
+                            </select>
                         </div>
-                        <label class="col-sm-1 control-label">类别(英文)</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="category_en" name="category">
+                        <label class="col-sm-2 control-label">类别(英文)</label>
+
+                        <div class="col-sm-2">
+                            <select class="form-control" id="category_en">
+
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -372,9 +444,9 @@
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="position" name="position">
                         </div>
-                        <label for="position" class="col-sm-1 control-label">职位(英文)</label>
+                        <label for="position" class="col-sm-2 control-label">职位(英文)</label>
 
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <input type="text" class="form-control" id="position_en" name="position">
                         </div>
                     </div>
@@ -400,7 +472,7 @@
                         <div class="col-sm-4">
                             <input id="lefile" type="file" name="upload" style="display:none">
                             <input id="img" class="form-control" style="width: 80% !important; float: left"
-                                   type="text" >
+                                   type="text">
                             <a class="btn btn-success" style="float: left"
                                onclick="$('input[id=lefile]').click();">上传</a>
                         </div>
@@ -412,6 +484,7 @@
                             </select>
                         </div>-->
                         <label for="show" class="col-sm-1 control-label">中文展示</label>
+
                         <div class="col-sm-2">
                             <select class="form-control" id="show" name="show">
                                 <option>是</option>
@@ -419,6 +492,7 @@
                             </select>
                         </div>
                         <label for="show" class="col-sm-1 control-label">英文展示</label>
+
                         <div class="col-sm-2">
                             <select class="form-control" id="show_en" name="show">
                                 <option>是</option>

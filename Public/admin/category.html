@@ -15,101 +15,63 @@
     <script>
 
         function add() {
-            $('#mask').css('display','block');
+            $('#mask').css('display', 'block');
             document.documentElement.style.overflow = "hidden";
             $('#form').css('display', 'block');
             $('input').val('');
             $('textarea').val('');
+
         }
         function form_close() {
-            $('#form').css('display', 'none');
-            $('#mask').css('display','none');
+            $('#mask').css('display', 'none');
             document.documentElement.style.overflow = "";
+            $('#form').css('display', 'none');
             $('#insert').text('提交');
         }
         function edit(id) {
             auth();
             this_id = id;
             $.ajax({
-                url: '/admin/invest/find',
+                url: '/admin/category/category_find',
                 type: 'POST',
                 dataType: 'json',
                 data: {
                     "id": id
                 },
                 success: function (r) {
-                    $('#mask').css('display','block');
-                    document.documentElement.style.overflow = "hidden";
                     $('#form').css('display', 'block');
-                    $('#img').val(r.msg.img);
-                    $('#company').val(r.msg.company);
-                    $('#company_all').val(r.msg.company_all);
-                    $('#area').val(r.msg.area);
-                    $('#trade').val(r.msg.trade);
-                    $('#stage').val(r.msg.stage);
-                    $('#length').val(r.msg.length);
-                    $('#web').val(r.msg.web);
-                    $('#addr').val(r.msg.addr);
-                    $('#description').val(r.msg.description);
-                    $('#exit').val(r.msg.exit);
-                    $('#exit_time').val(r.msg.exit_time);
-                    $('#exit_way').val(r.msg.exit_way);
-                    $('#reward').val(r.msg.reward);
-                    $('#up_stock').val(r.msg.up_stock);
-                    $('#show').val(r.msg.show);
-                    $('#zn_en').val(r.msg.zn_en);
+                    $('#mask').css('display', 'block');
+                    document.documentElement.style.overflow = "hidden";
+                    $('#category').val(r.msg.category);
+                    $('#sort').val(r.msg.sort);
+                    $('#zn').val(r.msg.zn);
+                    $('#defaults').val(r.msg.defaults);
                     $('#insert').text('保存');
                 }
             })
         }
         function save(id) {
             auth();
-            var img = $('#img').val();
-            var company = $('#company').val();
-            var company_all = $('#company_all').val();
-            var area = $('#area').val();
-            var trade = $('#trade').val();
-            var stage = $('#stage').val();
-            var length = $('#length').val();
-            var web = $('#web').val();
-            var addr = $('#addr').val();
-            var description = $('#description').val();
-            var exit = $('#exit').val();
-            var exit_time = $('#exit_time').val();
-            var exit_way = $('#exit_way').val();
-            var reward = $('#reward').val();
-            var up_stock = $('#up_stock').val();
-            var show = $('#show').val();
-            var zn_en = $('#zn_en').val();
+            var category = $('#category').val();
+            var sort = $('#sort').val();
+            var zn = $('#zn').val();
+            var defaults = $('#defaults').val();
             $.ajax({
-                url: '/admin/invest/save',
+                url: '/admin/category/category_save',
                 type: 'POST',
                 dataType: 'json',
                 data: {
                     "id": id,
-                    "img": img,
-                    "company": company,
-                    "company_all": company_all,
-                    "area": area,
-                    "trade": trade,
-                    "stage": stage,
-                    "length": length,
-                    "web": web,
-                    "addr": addr,
-                    "description": description,
-                    "exit": exit,
-                    "exit_time": exit_time,
-                    "exit_way": exit_way,
-                    "reward": reward,
-                    "up_stock":up_stock,
-                    "show": show,
-                    "zn_en": zn_en
+                    "category": category,
+                    "sort": sort,
+                    "zn": zn,
+                    "defaults": defaults
                 },
                 success: function (r) {
                     if (r.code == 200) {
                         oTable.fnReloadAjax();
                         $('#form').css('display', 'none');
-                        $('#mask').css('display','none');
+                        $('#mask').css('display', 'none');
                         document.documentElement.style.overflow = "";
                         $('#insert').text('提交');
                     } else {
@@ -121,53 +83,27 @@
         function insert() {
             auth();
             var button = $('#insert').text();
-            var img = $('#img').val();
-            var company = $('#company').val();
-            var company_all = $('#company_all').val();
-            var area = $('#area').val();
-            var trade = $('#trade').val();
-            var stage = $('#stage').val();
-            var length = $('#length').val();
-            var web = $('#web').val();
-            var addr = $('#addr').val();
-            var description = $('#description').val();
-            var exit = $('#exit').val();
-            var exit_time = $('#exit_time').val();
-            var exit_way = $('#exit_way').val();
-            var reward = $('#reward').val();
-            var up_stock = $('#up_stock').val();
-            var show = $('#show').val();
-            var zn_en = $('#zn_en').val();
+            var category = $('#category').val();
+            var sort = $('#sort').val();
+            var zn = $('#zn').val();
+            var defaults = $('#defaults').val();
             if (button == '保存') {
                 save(this_id);
             } else {
                 $.ajax({
-                    url: '/admin/invest/add',
+                    url: '/admin/category/category_add',
                     type: 'POST',
                     dataType: 'json',
                     data: {
-                        "img": img,
-                        "company": company,
-                        "company_all": company_all,
-                        "area": area,
-                        "trade": trade,
-                        "stage": stage,
-                        "length": length,
-                        "web": web,
-                        "addr": addr,
-                        "description": description,
-                        "exit": exit,
-                        "up_stock":up_stock,
-                        "exit_time": exit_time,
-                        "exit_way": exit_way,
-                        "reward": reward,
-                        "show": show,
-                        "zn_en": zn_en
+                        "category": category,
+                        "sort": sort,
+                        "zn": zn,
+                        "defaults": defaults
                     },
                     success: function (r) {
                         if (r.code == 200) {
                             $('#form').css('display', 'none');
-                            $('#mask').css('display','none');
+                            $('#mask').css('display', 'none');
                             document.documentElement.style.overflow = "";
                             //oTable.fnReloadAjax('http://localhost:60/admin/home/banner_list');
                             oTable.fnReloadAjax(); //使用默认
@@ -182,7 +118,7 @@
             $('#example').css('width', '100%');
         }
 
-        function auth(){
+        function auth() {
             $.ajax({
                 url: '/admin/index/role',
                 type: 'POST',
@@ -193,7 +129,7 @@
                     if (r.code == 200) {
 
                     } else {
-                        window.location.href='/Public/admin/login.html';
+                        window.location.href = '/Public/admin/login.html';
                     }
                 }
             });
@@ -201,20 +137,6 @@
     </script>
 </head>
 <style>
-    #form{
-        position: fixed;
-        z-index: 10;
-        top: 95px ;
-        left: 0 ;
-        right: 0 ;
-        margin:auto !important;
-        max-height: 450px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        width: 1100px !important;
-        background-color: #FFFFFF;
-        border-radius: 5px;
-    }
     #add:hover {
         cursor: pointer !important;
     }
@@ -240,29 +162,50 @@
     }
 
     #example tr td {
-        text-align: center
+        text-align: center;
+    }
+
+    #example tbody tr td {
+        white-space: nowrap !important;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+    }
+
+    pre {
+        padding: 0;
     }
 
     textarea {
         height: 200px !important;
     }
 
-    pre{
-        padding: 0;
+    .submenu ul li a {
+        padding-left: 30px !important;
     }
 
-    .submenu ul li a{
+    .active ul li a {
         padding-left: 30px !important;
     }
-    .active ul li a{
-        padding-left: 30px !important;
+
+    #form {
+        position: fixed;
+        z-index: 10;
+        top: 100px;
+        left: 0;
+        right: 0;
+        margin: auto !important;
+        width: 1000px !important;
+        background-color: #FFFFFF;
+        border-radius: 5px;
     }
-    #form div img:hover{
+
+    #form div img:hover {
         cursor: pointer;
     }
 </style>
-<body>
-<div id="mask" style="position: absolute;z-index: 3;background-color: #000;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;"></div>
+<body style="background-color: #FFFFFF !important;">
+<div id="mask"
+     style="position: absolute;z-index: 3;background-color: #000;width: 100%;opacity:0.5;-webkit-opacity:0.5;display: none;"></div>
 <div class="site-holder">
     <nav class="navbar" role="navigation">
         <div class="navbar-header">
@@ -292,8 +235,9 @@
                                 class="fa fa-angle-double-left toggle-left"></i>
                         </button>
                     </li>
-                    <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                    <li class="active">
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  首页管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="index.html" data-original-title="Basic"><i
@@ -330,7 +274,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li class="submenu">
                         <a class="dropdown" href="#" data-original-title="Tables"><i
                                 class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar">  投资案例 <span class="badge bg-primary pull-right">1</span></a>
@@ -361,7 +305,8 @@
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a class="dropdown" href="#" data-original-title="Tables"><i class="glyphicon glyphicon-th-list"></i><span
+                        <a class="dropdown" href="#" data-original-title="Tables"><i
+                                class="glyphicon glyphicon-th-list"></i><span
                                 class="hidden-minibar"> 角色管理 <span class="badge bg-primary pull-right">1</span></a>
                         <ul>
                             <li><a href="auth.html" data-original-title="Basic"><i
@@ -375,150 +320,46 @@
         <div class="content">
             <div class="row">
                 <div class="col-mod-12">
-                    <h4 class="page-header"><i class="fa fa fa-dashboard"></i> 投资案例 》投资管理</h4>
+                    <h4 class="page-header"><i class="fa fa fa-dashboard"></i> 首页 》内容管理</h4>
                 </div>
             </div>
             <div class="row" id="form" style="width: 97%;margin-bottom: 30px; margin-left: 1%;display: none;">
-                <div style="position: fixed;margin-left:1060px;top: 103px;z-index: 50;" onclick="form_close()"><img src="/Public/home/images/off.jpg"/></div>
+                <div style="position: absolute;right: 10px;top: 8px;z-index: 11;" onclick="form_close()"><img
+                        src="/Public/home/images/off.jpg"/></div>
                 <form class="form-horizontal" role="form"
-                      style="border:1px #fff solid; border-radius: 3px;-webkit-box-shadow: 0 0 6px #333;">
-                    <div class="form-group" style="margin-top: 20px;">
-                        <label class="col-sm-2 control-label">公司名称(缩写)</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="company" name="company">
-                        </div>
-                        <label class="col-sm-1 control-label">公司全称</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="company_all" name="company_all">
-                        </div>
-                    </div>
+                      style="border:1px #fff solid;padding-top: 10px;  border-radius: 3px;-webkit-box-shadow: 0 0 6px #333;">
                     <div class="form-group">
-                        <label for="img" class="col-sm-2 control-label">公司标志</label>
+                        <label class="col-sm-1 control-label">类别</label>
 
                         <div class="col-sm-4">
-                            <input id="lefile" type="file" name="upload" style="display:none">
-                            <input id="img" class="form-control" style="width: 75% !important; float: left"
-                                   type="text">
-                            <a class="btn btn-success" style="float: left"
-                               onclick="$('input[id=lefile]').click();">上传</a>
+                            <input type="text" class="form-control" id="category">
                         </div>
-                    </div>
-                    <div class="form-group" style="margin-top: 20px;">
-                        <label class="col-sm-2 control-label">地域</label>
+                        <label class="col-sm-2 control-label">首页缺省</label>
 
-                        <div class="col-sm-4">
-                            <!--<select class="form-control" id="area">
-                                <option>中国</option>
-                                <option>美国</option>
-                            </select>-->
-                            <input type="text" class="form-control" id="area">
-                        </div>
-                        <label class="col-sm-1 control-label">行业</label>
-
-                        <div class="col-sm-4">
-                            <select class="form-control" id="trade">
-                                <option>生活</option>
-                                <option>服务</option>
-                                <option>科技</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">投资阶段</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="stage" name="stage">
-                            <!--<select class="form-control" id="stage">
-                                <option>早期</option>
-                                <option>成长早期</option>
-                                <option>成长期</option>
-                            </select>-->
-                        </div>
-                        <label class="col-sm-1 control-label">投资时间</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="length" name="length">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">公司网站</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="web" name="web">
-                        </div>
-                        <label class="col-sm-1 control-label">上市地点</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="addr" name="addr">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">项目描述</label>
-
-                        <div class="col-sm-9">
-                            <pre><textarea class="form-control" id="description" name="description"></textarea></pre>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">退出</label>
-
-                        <div class="col-sm-4">
-                            <select class="form-control" id="exit">
+                        <div class="col-sm-2">
+                            <select class="form-control" id="defaults">
                                 <option>是</option>
                                 <option>否</option>
                             </select>
                         </div>
-                        <label class="col-sm-1 control-label">退出时间</label>
-
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="exit_time" name="exit_time">
-                        </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">退出方式</label>
+                        <label class="col-sm-1 control-label">序号</label>
 
                         <div class="col-sm-4">
-                            <!--<select class="form-control" id="exit_way">
-                                <option>上市</option>
-                                <option>被强生公司收购</option>
-                            </select>-->
-                            <input type="text" class="form-control" id="exit_way">
+                            <input type="text" class="form-control" id="sort">
                         </div>
-                        <label class="col-sm-1 control-label">上市股票</label>
+                        <label class="col-sm-2 control-label">版式</label>
 
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="up_stock">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">首页展示</label>
-
-                        <div class="col-sm-4">
-                            <select class="form-control" id="show">
-                                <option>是</option>
-                                <option>否</option>
-                            </select>
-                        </div>
-                        <label class="col-sm-1 control-label">版式</label>
-
-                        <div class="col-sm-4">
-                            <select class="form-control" id="zn_en">
+                        <div class="col-sm-2">
+                            <select class="form-control" id="zn">
                                 <option>中文</option>
                                 <option>英文</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">投资收益</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="reward" name="reward">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-8">
+                        <div class="col-sm-offset-1 col-sm-8">
                             <div id="insert" class="btn btn-success" onclick="insert()">提交</div>
                             <div class="btn btn-default" onclick="form_close()">取消</div>
                         </div>
@@ -537,16 +378,12 @@
                                         <input style="text-align: center" type='checkbox' id="checkAll"/>
                                     </th>
                                     <th class="visible-lg" style="width: 6%">编号</th>
-                                    <!--<th class="visible-lg" style="width: 8%">管理员</th>-->
-                                    <th class="visible-lg" style="width: 15%">公司</th>
-                                    <th class="visible-lg" style="width: 11%">展示</th>
-                                    <th class="visible-lg" style="width: 11%">地域</th>
-                                    <th class="visible-lg" style="width: 11%">投资阶段</th>
-                                    <th class="visible-lg" style="width: 21%">行业</th>
-                                    <th class="visible-lg" style="width: 10%">退出</th>
-
-                                    <!--<th class="visible-lg" style="width: 10%">地图</th>-->
-                                    <th class="visible-lg" style="width: 13%">操作</th>
+                                    <th class="visible-lg" style="width: 19%">管理员</th>
+                                    <th class="visible-lg" style="width: 20%">类别名称</th>
+                                    <th class="visible-lg" style="width: 15%">序号</th>
+                                    <th class="visible-lg" style="width: 15%">缺省</th>
+                                    <th class="visible-lg" style="width: 15%">版式</th>
+                                    <th class="visible-lg" style="width: 20%">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -565,11 +402,10 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
 <script src="js/fnReloadAjax.js"></script>
-<script src="js/core_invest.js"></script>
+<script src="js/core_category.js"></script>
 <script src="js/jquery.nicescroll.min.js"></script>
 <script src="js/jquery.accordion.js"></script>
 <script src="js/skylo.js"></script>
-<script src="js/jquery-form.js"></script>
 </body>
 
 </html>
