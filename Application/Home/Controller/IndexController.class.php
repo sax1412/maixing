@@ -142,9 +142,9 @@ class IndexController extends Controller
     {
         $status = I('status');
         if ($status ==1) {
-            $list = D('Category')->where(['zn'=>2])->order('sort desc')->select();
+            $list = D('Category')->where(['zn'=>2])->order('sort asc')->select();
         }else{
-            $list = D('Category')->where(['zn'=>1])->order('sort desc')->select();
+            $list = D('Category')->where(['zn'=>1])->order('sort asc')->select();
         }
 
         json_out_msg($list);

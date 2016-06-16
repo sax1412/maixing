@@ -223,13 +223,8 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        if (r.msg[i].category_en == 'Partner') {
-                            $('#category').append("<div class='fl'><p class='p1' style='color: #9b761d' onclick='search(this)' id='p1'>" + r.msg[i].category_en + "</p><p class='p2' style='display: block'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        } else {
-                            $('#category').append("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category_en + "</p><p class='p2'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        }
+                        $('#category').append("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
+                        "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
 
                     }
                     var height = $(document.body).height();
@@ -241,8 +236,7 @@
                 "url": '/home/index/member',
                 "dataType": 'json',
                 "data": {
-                    status: 1,
-                    "w": 'Partner'
+                    status: 1
                 },
                 success: function (r) {
                     var len = r.msg.length;
@@ -276,13 +270,8 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        if (r.msg[i].category == '合伙人') {
-                            $('#category').prepend("<div class='fl'><p class='p1' style='color: #9b761d' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2' style='display: block'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        } else {
-                            $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
-                            "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        }
+                        $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
+                        "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
                     }
                     var height = $(document.body).height();
                     $('#mask').height(height);
@@ -291,9 +280,6 @@
             });
             $.ajax({
                 "url": '/home/index/member',
-                "data": {
-                    "w": '合伙人'
-                },
                 "dataType": 'json',
                 success: function (r) {
                     var len = r.msg.length;
