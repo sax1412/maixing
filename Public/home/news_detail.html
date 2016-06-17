@@ -87,21 +87,42 @@
                     $('#img3').css('display', 'none');
                 }
                 $('#content3').html(content3);
-                var img1_h = $('#img1').height();
-                if (img1_h > 500) {
-                    $('#img1').height(500);
-                }
-                var img2_h = $('#img2').height();
-                if (img2_h > 500) {
-                    $('#img2').height(500);
-                }
-                var img3_h = $('#img3').height();
-                if (img3_h > 500) {
-                    $('#img3').height(500);
-                }
             }
         });
+        $('#img1,#img2,#img3').load(function() {
+            adjustImgSize($(this), $(this).parent().width(), $(this).parent().height());
+        });
     });
+
+    function adjustImgSize(img, boxWidth, boxHeight) {
+
+        var tempImg = new Image();
+        tempImg.src = img.attr('src');
+        var imgWidth=tempImg.width;
+        var imgHeight=tempImg.height;
+
+        //比较imgBox的长宽比与img的长宽比大小
+        if((boxWidth/boxHeight)>=(imgWidth/imgHeight))
+        {
+            //重新设置img的width和height
+            img.width((boxHeight*imgWidth)/imgHeight);
+            img.height(boxHeight);
+            //让图片居中显示
+            var margin=(boxWidth-img.width())/2;
+            img.css("margin-left",margin);
+        }
+        else
+        {
+            //重新设置img的width和height
+            img.width(boxWidth);
+            img.height((boxWidth*imgHeight)/imgWidth);
+            //让图片居中显示
+            var margin=(boxHeight-img.height())/2;
+            img.css("margin-top",margin);
+        }
+    };
+
+
     function chinese() {
         $('#bottom').empty();
         $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
@@ -324,7 +345,7 @@
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-lg-10 col-lg-offset-1">
-            <img style="width: 100%;" id="img1" src=""/>
+            <img style="" id="img1" src=""/>
         </div>
     </div>
     <div class="row" style="margin-top: 10px;">
@@ -334,7 +355,7 @@
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-lg-10 col-lg-offset-1">
-            <img style="width: 100%;" id="img2" src=""/>
+            <img style="" id="img2" src=""/>
         </div>
     </div>
     <div class="row" style="margin-top: 10px;">
@@ -344,7 +365,7 @@
     </div>
     <div class="row" style="margin-top: 10px;">
         <div class="col-lg-10 col-lg-offset-1">
-            <img style="width: 100%;" id="img3" src=""/>
+            <img style="" id="img3" src=""/>
         </div>
     </div>
     <div class="row" style="margin-top: 10px;">
