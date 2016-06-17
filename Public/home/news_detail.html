@@ -42,6 +42,23 @@
         var aQuery = window.location.href;  //取得Get参数
         if (aQuery.indexOf("status") > 0) {
             $('#imgs').attr('src','/Public/home/images/news_en.jpg');
+            $('#from1').empty();
+            $('#from1').append("origin：<span id='from'></span>");
+            $('#auth1').empty();
+            $('#auth1').append("auth：<span id='auth'></span>");
+            document.title='Maison Capital';
+            $('#bottom').empty();
+            $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
+            "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
+            $('#top').empty();
+            $('#top').append("<div style='text-align: right'><a href='index.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='index.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
+            "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>CONTACTS</a></li>" +
+            "<li><a href='news.html?status=1' style='text-decoration: none;color: #9b761d''  id='news'>NEWS</a></li>" +
+            "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTMENTS</a></li>" +
+            "<li><a href='team.html?status=1' style='text-decoration: none;' id='team'>TEAM</a></li>" +
+            "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>ABOUT US</a></li></ul>");
+        }else{
+
         }
         var width = $(document).width();
         if (width > 1800) {
