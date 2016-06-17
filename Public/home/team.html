@@ -223,10 +223,10 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        if(r.msg[i].defaults == 1){
+                        if (r.msg[i].defaults == 1) {
                             $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' style='color: #9b761d' id='p1'>" + r.msg[i].category + "</p><p class='p2' style='display: block'></p>" +
                             "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        }else{
+                        } else {
                             $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
                             "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
                         }
@@ -275,10 +275,10 @@
                 success: function (r) {
                     var len = r.msg.length;
                     for (var i = 0; i < len; i++) {
-                        if(r.msg[i].defaults == 1){
+                        if (r.msg[i].defaults == 1) {
                             $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' style='color: #9b761d' id='p1'>" + r.msg[i].category + "</p><p class='p2' style='display: block'></p>" +
                             "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
-                        }else{
+                        } else {
                             $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
                             "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
                         }
@@ -348,36 +348,55 @@
     function search(id) {
         var aQuery = window.location.href;
         var w = $(id).text();
-        var status = 0;
         $('.p1').css('color', '#4c4c4c');
         $('.p1').next().css('display', 'none');
         $(id).css('color', '#9b761d');
         $(id).next().css('display', 'block');
         $('#imgs').empty();
         if (aQuery.indexOf("status") > 0) {
-            status = 1;
-        }
-        $.ajax({
-            "url": '/home/index/member',
-            'data': {
-                'w': w,
-                'status': status
-            },
-            "dataType": 'json',
-            success: function (r) {
-                var len = r.msg.length;
-                for (var i = 0; i < len; i++) {
-                    $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
-                    "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
-                    "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
-                    "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
-                    "<p id='position'>" + r.msg[i].position + "</p></div>" +
-                    "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+            $.ajax({
+                "url": '/home/index/member',
+                "dataType": 'json',
+                "data": {
+                    'w': w,
+                    status: 1
+                },
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                        "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                        "<p style='margin-top: 80px;' id='name'>" + r.msg[i].english + "</p>" +
+                        "<p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                        "<p id='position'>" + r.msg[i].position_en + "</p></div>" +
+                        "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
                 }
-                var height = $(document.body).height();
-                $('#mask').height(height);
-            }
-        });
+            });
+        }else{
+            $.ajax({
+                "url": '/home/index/member',
+                'data': {
+                    'w': w
+                },
+                "dataType": 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                        "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                        "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
+                        "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                        "<p id='position'>" + r.msg[i].position + "</p></div>" +
+                        "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
+                }
+            });
+        }
     }
 
     function detail(e) {
@@ -408,6 +427,78 @@
                 $('#intro').html(intro);
             }
         });
+    }
+
+    function index() {
+        $('#category').empty();
+        $('#imgs').empty();
+        var aQuery = window.location.href;
+        var status = 0;
+        if (aQuery.indexOf("status") > 0) {
+            status = 1;
+            $.ajax({
+                "url": '/home/index/member',
+                "dataType": 'json',
+                "data": {
+                    status: 1
+                },
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                        "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                        "<p style='margin-top: 80px;' id='name'>" + r.msg[i].english + "</p>" +
+                        "<p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                        "<p id='position'>" + r.msg[i].position_en + "</p></div>" +
+                        "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
+                }
+            });
+        }else{
+            $.ajax({
+                "url": '/home/index/member',
+                "dataType": 'json',
+                success: function (r) {
+                    var len = r.msg.length;
+                    for (var i = 0; i < len; i++) {
+                        $('#imgs').append("<div class='col-lg-4' onmouseover='show(this)' onmouseout='hide(this)' onclick='detail(this)' style='padding:0;width:280px !important;margin-top: 10px;text-align:center;height: 200px'>" +
+                        "<div class='new'><p style='display: none'>" + r.msg[i].id + "</p>" +
+                        "<p style='margin-top: 80px;' id='name'>" + r.msg[i].name + "</p>" +
+                        "<p id='english'>" + r.msg[i].english + "</p><p id='hr' style='width: 20% !important;margin-left: 40%'></p>" +
+                        "<p id='position'>" + r.msg[i].position + "</p></div>" +
+                        "<img src='../.." + r.msg[i].img + "' style='width:95%;height:200px;'></div>");
+                    }
+                    var height = $(document.body).height();
+                    $('#mask').height(height);
+                }
+            });
+        }
+        $.ajax({
+            "url": '/home/index/member_cate',
+            "data":{
+                status:status
+            },
+            "dataType": 'json',
+            success: function (r) {
+                var len = r.msg.length;
+                for (var i = 0; i < len; i++) {
+                    if (r.msg[i].defaults == 1) {
+                        $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' style='color: #9b761d' id='p1'>" + r.msg[i].category + "</p><p class='p2' style='display: block'></p>" +
+                        "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
+                    } else {
+                        $('#category').prepend("<div class='fl'><p class='p1' onclick='search(this)' id='p1'>" + r.msg[i].category + "</p><p class='p2'></p>" +
+                        "</div><div style='width: 1px;height: 15px;background-color: #4c4c4c;float: right;margin-top: 5px;margin-left: 15px;margin-right: 15px;'></div>");
+                    }
+
+                }
+                var height = $(document.body).height();
+                $('#mask').height(height);
+                $('#category').children().last().remove();
+            }
+        });
+
     }
 </script>
 <style>
@@ -574,6 +665,10 @@
         cursor: pointer;
     }
 
+    #img:hover {
+        cursor: pointer;
+    }
+
 </style>
 <body>
 <div id="detail">
@@ -638,7 +733,7 @@
 <div class="container" style="margin-top: -50px;">
     <div class="row">
         <div class="col-lg-3 col-lg-offset-1" id="img">
-            <img src="/Public/home/images/team.jpg" style="opacity:0.9;-webkit-opacity:0.9;">
+            <img src="/Public/home/images/team.jpg" onclick="index()" style="opacity:0.9;-webkit-opacity:0.9;">
         </div>
         <div class="col-lg-6 " id="team_intro">
 

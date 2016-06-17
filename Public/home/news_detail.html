@@ -39,6 +39,10 @@
 </style>
 <script>
     $(function () {
+        var aQuery = window.location.href;  //取得Get参数
+        if (aQuery.indexOf("status") > 0) {
+            $('#imgs').attr('src','/Public/home/images/news_en.jpg');
+        }
         var width = $(document).width();
         if (width > 1800) {
             $('#news_detail_img div').height('350px');
@@ -304,7 +308,7 @@
 <div class="container" style="margin-top: -50px;">
     <div class="row">
         <div class="col-lg-3 col-lg-offset-1" id="img">
-            <img src="/Public/home/images/news.jpg" onclick="javascript:history.go(-1)"
+            <img id="imgs" src="/Public/home/images/news.jpg" onclick="javascript:history.go(-1)"
                  style="opacity:0.9;-webkit-opacity:0.9;">
         </div>
     </div>
