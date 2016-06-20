@@ -54,6 +54,24 @@ $(document).ready(function () {
             }
         });
     });
+    $("input[id=lefile4]").wrap("<form id='myupload4' action='/admin/contact/upload' method='post' enctype='multipart/form-data'></form>");
+    $('input[id=lefile4]').change(function() {
+        $('#myupload4').ajaxSubmit({
+            dataType:"json",
+            success:function(data){
+                $('#img4').val(data.msg);
+            }
+        });
+    });
+    $("input[id=lefile5]").wrap("<form id='myupload5' action='/admin/contact/upload' method='post' enctype='multipart/form-data'></form>");
+    $('input[id=lefile5]').change(function() {
+        $('#myupload5').ajaxSubmit({
+            dataType:"json",
+            success:function(data){
+                $('#img5').val(data.msg);
+            }
+        });
+    });
     var len=$(document.body).height();
     $('#mask').height(len);
 });

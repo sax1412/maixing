@@ -51,7 +51,7 @@
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
             "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
             $('#top').empty();
-            $('#top').append("<div style='text-align: right'><a href='index.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='index.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
+            $('#top').append("<div style='text-align: right'><a href='news.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='news.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
             "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>CONTACTS</a></li>" +
             "<li><a href='news.html?status=1' style='text-decoration: none;color: #9b761d''  id='news'>NEWS</a></li>" +
             "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTMENTS</a></li>" +
@@ -79,10 +79,19 @@
                 var content1 = '<pre>' + r.msg.content1 + '</pre>';
                 var content2 = '<pre>' + r.msg.content2 + '</pre>';
                 var content3 = '<pre>' + r.msg.content3 + '</pre>';
+                var content4 = '<pre>' + r.msg.content4 + '</pre>';
+                var content5 = '<pre>' + r.msg.content5 + '</pre>';
                 $('#title').text(r.msg.title);
                 $('#time').text(r.msg.time);
                 $('#from').text(r.msg.from);
                 $('#auth').text(r.msg.auth);
+                if(r.msg.link){
+
+                }else{
+                    $('#link').css('display','none');
+                }
+                $('#url').text(r.msg.link);
+                $('#url').attr('href',r.msg.link);
                 if (r.msg.img1) {
                     $('#img1').attr('src', '../..' + r.msg.img1);
                 }
@@ -104,9 +113,23 @@
                     $('#img3').css('display', 'none');
                 }
                 $('#content3').html(content3);
+                if (r.msg.img4) {
+                    $('#img4').attr('src', '../..' + r.msg.img4);
+                }
+                else {
+                    $('#img4').css('display', 'none');
+                }
+                $('#content5').html(content5);
+                if (r.msg.img5) {
+                    $('#img5').attr('src', '../..' + r.msg.img5);
+                }
+                else {
+                    $('#img5').css('display', 'none');
+                }
+                $('#content5').html(content5);
             }
         });
-        $('#img1,#img2,#img3').load(function () {
+        $('#img1,#img2,#img3,#img4,#img5').load(function () {
             adjustImgSize($(this), $(this).parent().width(), $(this).parent().height());
         });
     });
@@ -388,6 +411,29 @@
 
         </div>
     </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-10 col-lg-offset-1">
+            <img style="margin-top: 0px !important;" id="img4" src=""/>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-10 col-lg-offset-1" id="content4">
+
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-10 col-lg-offset-1">
+            <img style="margin-top: 0px !important;" id="img5" src=""/>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-10 col-lg-offset-1" id="content5">
+
+        </div>
+    </div>
+    <div class="row" id="link" style="margin-top: 10px;">
+        <div class="col-lg-10 col-lg-offset-1"><span style="font-family: 'Microsoft YaHei';font-size: 14px;">来源链接:</span><a href="" id="url"></a></div>
+</div>
 </div>
 <div class="container" style="margin-top: 50px;width:100%;background-color: #525c75;">
     <div class="row" id="bottom">

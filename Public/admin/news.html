@@ -47,10 +47,14 @@
                     $('#content1').val(r.msg.content1);
                     $('#content2').val(r.msg.content2);
                     $('#content3').val(r.msg.content3);
+                    $('#content4').val(r.msg.content4);
+                    $('#content5').val(r.msg.content5);
                     $('#zn_en').val(r.msg.zn_en);
                     $('#img1').val(r.msg.img1);
                     $('#img2').val(r.msg.img2);
                     $('#img3').val(r.msg.img3);
+                    $('#img4').val(r.msg.img4);
+                    $('#img5').val(r.msg.img5);
                     $('#auth').val(r.msg.auth);
                     $('#from').val(r.msg.from);
                     $('#link').val(r.msg.link);
@@ -66,10 +70,14 @@
             var intro = $('#intro').val();
             var img1 = $('#img1').val();
             var img2 = $('#img2').val();
-            var img3= $('#img3').val();
+            var img3 = $('#img3').val();
+            var img4 = $('#img4').val();
+            var img5 = $('#img5').val();
             var content1 = $('#content1').val();
             var content2 = $('#content2').val();
             var content3 = $('#content3').val();
+            var content4 = $('#content4').val();
+            var content5 = $('#content5').val();
             var auth = $('#auth').val();
             var from = $('#from').val();
             var link = $('#link').val();
@@ -87,9 +95,13 @@
                     "content1": content1,
                     "content2": content2,
                     "content3": content3,
+                    "content4": content4,
+                    "content5": content5,
                     "img1":img1,
                     "img2":img2,
                     "img3":img3,
+                    "img4":img4,
+                    "img5":img5,
                     "auth":auth,
                     "from":from,
                     "link":link,
@@ -118,9 +130,13 @@
             var img1 = $('#img1').val();
             var img2 = $('#img2').val();
             var img3= $('#img3').val();
+            var img4 = $('#img4').val();
+            var img5 = $('#img5').val();
             var content1 = $('#content1').val();
             var content2 = $('#content2').val();
             var content3 = $('#content3').val();
+            var content4 = $('#content4').val();
+            var content5 = $('#content5').val();
             var auth = $('#auth').val();
             var from = $('#from').val();
             var link = $('#link').val();
@@ -140,9 +156,13 @@
                         "content1": content1,
                         "content2": content2,
                         "content3": content3,
+                        "content4": content4,
+                        "content5": content5,
                         "img1":img1,
                         "img2":img2,
                         "img3":img3,
+                        "img4":img4,
+                        "img5":img5,
                         "auth":auth,
                         "from":from,
                         "link":link,
@@ -440,6 +460,42 @@
                         <label for="content3" class="col-sm-1 control-label">内容3</label>
                         <div class="col-sm-10">
                         <textarea class=" form-control" id="content3" name="content3">
+                        </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="img3" class="col-sm-1 control-label">图片4</label>
+
+                        <div class="col-sm-6">
+                            <input id="lefile4" type="file" name="upload" style="display:none">
+                            <input id="img4" class="form-control" style="width: 85% !important; float: left"
+                                   type="text">
+                            <a class="btn btn-success" style="float: left"
+                               onclick="$('input[id=lefile4]').click();">上传</a>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="content3" class="col-sm-1 control-label">内容4</label>
+                        <div class="col-sm-10">
+                        <textarea class=" form-control" id="content4" name="content3">
+                        </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="img3" class="col-sm-1 control-label">图片5</label>
+
+                        <div class="col-sm-6">
+                            <input id="lefile5" type="file" name="upload" style="display:none">
+                            <input id="img5" class="form-control" style="width: 85% !important; float: left"
+                                   type="text">
+                            <a class="btn btn-success" style="float: left"
+                               onclick="$('input[id=lefile5]').click();">上传</a>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="content3" class="col-sm-1 control-label">内容5</label>
+                        <div class="col-sm-10">
+                        <textarea class=" form-control" id="content5" name="content3">
                         </textarea>
                         </div>
                     </div>
