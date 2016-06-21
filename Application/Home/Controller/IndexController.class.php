@@ -295,7 +295,7 @@ class IndexController extends Controller
             if ($invest['zn_en'] == 1) {
                 $invest['trade'] = '消费';
             } else {
-                $invest['trade'] = 'Consumption';
+                $invest['trade'] = 'Service';
             }
         } else {
             if ($invest['zn_en'] == 1) {
