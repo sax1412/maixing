@@ -289,7 +289,7 @@ class IndexController extends Controller
             if ($invest['zn_en'] == 1) {
                 $invest['trade'] = '医疗';
             } else {
-                $invest['trade'] = 'Healthcare';
+                $invest['trade'] = 'Lifestyle';
             }
         } elseif ($invest['trade'] == 2) {
             if ($invest['zn_en'] == 1) {
@@ -301,7 +301,7 @@ class IndexController extends Controller
             if ($invest['zn_en'] == 1) {
                 $invest['trade'] = '高新技术';
             } else {
-                $invest['trade'] = 'High technologies';
+                $invest['trade'] = 'Technology';
             }
         }
         json_out_msg($invest);
