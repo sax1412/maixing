@@ -287,13 +287,13 @@ class IndexController extends Controller
         }
         if ($invest['trade'] == 1) {
             if ($invest['zn_en'] == 1) {
-                $invest['trade'] = '医疗';
+                $invest['trade'] = '生活';
             } else {
                 $invest['trade'] = 'Lifestyle';
             }
         } elseif ($invest['trade'] == 2) {
             if ($invest['zn_en'] == 1) {
-                $invest['trade'] = '消费';
+                $invest['trade'] = '服务';
             } else {
                 $invest['trade'] = 'Service';
             }
