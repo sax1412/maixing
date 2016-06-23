@@ -299,7 +299,7 @@ class IndexController extends Controller
             }
         } else {
             if ($invest['zn_en'] == 1) {
-                $invest['trade'] = '高新技术';
+                $invest['trade'] = '科技';
             } else {
                 $invest['trade'] = 'Technology';
             }
