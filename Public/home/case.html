@@ -352,7 +352,9 @@
                 if (r.msg.web == null) {
                     $('#invest_web,#invest_web_en').parent().css('display', 'none');
                 } else {
-                    $('#invest_web,#invest_web_en').text(r.msg.web);
+                    var url=r.msg.web;
+                    url = url.split('/');
+                    $('#invest_web,#invest_web_en').text(url[2]);
                     $('#invest_web,#invest_web_en').attr('href',r.msg.web);
                 }
                 if (r.msg.reward == null) {
