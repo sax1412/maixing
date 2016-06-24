@@ -353,7 +353,7 @@
                     $('#invest_web,#invest_web_en').parent().css('display', 'none');
                 } else {
                     $('#invest_web,#invest_web_en').text(r.msg.web);
-                    $('#invest_web,#invest_web_en').attr('href', "https://" + r.msg.web);
+                    $('#invest_web,#invest_web_en').attr('href',r.msg.web);
                 }
                 if (r.msg.reward == null) {
                     $('#invest_reward,#invest_reward_en').parent().css('display', 'none');
