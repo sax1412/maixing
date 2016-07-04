@@ -37,11 +37,12 @@
         font-family: "Microsoft YaHei";
     }
 
-    #icp{
-        text-decoration: none;color: #fff;
+    #icp {
+        text-decoration: none;
+        color: #fff;
     }
 
-    pre{
+    pre {
         white-space: pre-wrap;
         white-space: -moz-pre-wrap;
         white-space: -o-pre-wrap;
@@ -51,15 +52,17 @@
 </style>
 <script>
     $(function () {
+        $('#law').next().children().first().height('50');
+        $('#law').next().children().first().width('40');
         var width = $(document).width();
         if (width > 1800) {
-           $('#city_img div').height('500px');
+            $('#city_img div').height('500px');
             $('#city_img div img').height('500px');
             //$('#city_imgs').css('display','block');
         }
         var aQuery = window.location.href;  //取得Get参数
         if (aQuery.indexOf("status") > 0) {
-            document.title='Maison Capital';
+            document.title = 'Maison Capital';
             $('#bottom').empty();
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
             "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
@@ -293,11 +296,15 @@
     <div class="row" id="bottom">
         <div class="col-lg-12"
              style="color: #ffffff;text-align: center;font-family: 'Microsoft YaHei';font-size: 12px;margin-top: 20px;margin-bottom: 20px;">
-            <span style="color: #f1f1f1">麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="http://www.miitbeian.gov.cn/" id="icp">粤ICP备案15079945号</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                href="law.html" style="text-decoration: none;color: #fff">法律说明</a>
+            <span style="color: #f1f1f1">麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a
+                href="http://www.miitbeian.gov.cn/" id="icp">粤ICP备案15079945号</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                href="law.html" id="law" style="text-decoration: none;color: #fff">法律说明&nbsp;&nbsp;&nbsp;
+            <script id="ebsgovicon"
+                    src="http://szcert.ebs.org.cn/govicon.js?id=275bbf0d-8be4-412d-afcd-75ce5c5de37a&width=75&height=105&type=1"
+                    type="text/javascript" charset="utf-8"></script>
+        </a>
         </div>
     </div>
 </div>
 </body>
-<script id="ebsgovicon" src="http://szcert.ebs.org.cn/govicon.js?id=275bbf0d-8be4-412d-afcd-75ce5c5de37a&width=75&height=105&type=1" type="text/javascript" charset="utf-8"></script>
 </html>
