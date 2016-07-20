@@ -84,7 +84,7 @@
                 success: function (r) {
                     var content = '<pre style="line-height: 34px; text-align: left;padding-left: 20px;">' + r.msg.content + '</pre>';
                     $('#content').html(content);
-                    if (r.msg.agent == 1) {
+                    if (r.msg.agent == 1) {alert(111);
                         $('#title').css('margin-left', '8.33333333%');
                         $('#title').css('width', '91.66666667%');
                         $('#contents').css('margin-left', '8.33333333%');
