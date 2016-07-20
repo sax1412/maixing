@@ -77,6 +77,9 @@
             },
             "dataType": 'json',
             success: function (r) {
+                if (r.msg.agent == 1) {
+                    $('#from1').css('margin-left', '0%');
+                }
                 var content1 = '<pre>' + r.msg.content1 + '</pre>';
                 var content2 = '<pre>' + r.msg.content2 + '</pre>';
                 var content3 = '<pre>' + r.msg.content3 + '</pre>';
@@ -215,7 +218,7 @@
     }
 
     #from1 {
-        margin-left: 0%
+        margin-left: 5%
     }
 
     #auth1 {
