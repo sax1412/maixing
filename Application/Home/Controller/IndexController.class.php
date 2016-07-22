@@ -79,11 +79,14 @@ class IndexController extends Controller
 
     public function news_detail()
     {
+        $str = $_SERVER['HTTP_USER_AGENT'];
         $id = I('id/d');
         if ($id) {
             $list = D('News')->where(['id' => $id])->find();
             $list['time'] = str_replace('T', ' ', $list['time']);
-            //$list['time'] = date('Y/m/d H:i:s', $list['time']);
+            if (strstr($str, 'Android') || strstr($str, 'iPhone')) {
+                $list['agent'] = 1;
+            }
             if ($list) {
                 json_out_msg($list);
             } else {
