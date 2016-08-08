@@ -25,12 +25,14 @@
         color: #9b761d
     }
 
-    #top div a{
+    #top div a {
         font-family: "Microsoft YaHei";
-        text-decoration: none;font-size:12px;color: #000;
+        text-decoration: none;
+        font-size: 12px;
+        color: #000;
     }
 
-    #bottom{
+    #bottom {
         font-size: 12px;
         font-family: "Microsoft YaHei";
     }
@@ -43,11 +45,11 @@
             $('#law_img div img').height('350px');
         }
         var aQuery = window.location.href;  //取得Get参数
-        if (aQuery.indexOf("status")>0) {
-            document.title='Maison Capital';
+        if (aQuery.indexOf("status") > 0) {
+            document.title = 'Maison Capital';
             $('#bottom').empty();
             $('#bottom').append("<div class='col-lg-12'style='color: #ffffff;text-align: center;margin-top: 20px;margin-bottom: 20px;'>" +
-            "Maison Capital&nbsp;&nbsp;&nbsp;&nbsp;Copy Right©&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html' style='text-decoration: none;color: #fff'>Legal explanation</a></div>");
+            "©&nbsp;Maison Capital  All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;<a href='law.html?status=1' style='text-decoration: none;color: #fff'>Terms of Use</a></div>");
             $('#top').empty();
             $('#top').append("<div style='text-align: right'><a href='law.html' style='text-decoration: none; color: #000'>中文</a>&nbsp;|&nbsp;<a href='law.html?status=1' style='text-decoration: none; color: #9b761d'>English</a>" +
             "</div><ul style='list-style: none;'><li><a href='contact.html?status=1' style='text-decoration: none;' id='contact'>CONTACTS</a></li>" +
@@ -55,14 +57,17 @@
             "<li><a href='case.html?status=1' style='text-decoration: none;'>INVESTMENTS</a></li>" +
             "<li><a href='team.html?status=1' style='text-decoration: none;' id='team'>TEAM</a></li>" +
             "<li><a href='abort.html?status=1' style='text-decoration: none;' id='abort'>ABOUT US</a></li></ul>");
+            $('#detail_en').css('display','block');
+        }else{
+            $('#detail').css('display','block');
         }
     })
-    function home(){
+    function home() {
         var aQuery = window.location.href;  //取得Get参
-        if(aQuery.indexOf("status")>0){
-            window.location.href='index.html?status=1';
-        }else{
-            window.location.href='index.html';
+        if (aQuery.indexOf("status") > 0) {
+            window.location.href = 'index.html?status=1';
+        } else {
+            window.location.href = 'index.html';
         }
     }
 </script>
@@ -71,11 +76,14 @@
         font-size: 12px;
         font-family: "Microsoft YaHei", sans-serif;
     }
-    #log:hover{
+
+    #log:hover {
         cursor: pointer;
     }
+
     .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {
-        float: left; position: relative;
+        float: left;
+        position: relative;
     }
 
     .col-lg-12 {
@@ -176,21 +184,21 @@
 </style>
 <body>
 <div class="container" style="margin-top: 10px;width: 100% !important;">
-        <div class="col-lg-3">
-            <img id="log" onclick="home()" style="padding-top: 5px;" src="/Public/home/images/logo.jpg">
-        </div>
-        <div class="col-lg-9" id="top">
-            <div style="text-align: right"><a href="abort.html"style="color: #9b761d">中文</a>&nbsp;|&nbsp;<a href="#">English</a>
-            </div>
-            <ul style="list-style: none;">
-                <li><a href="contact.html" style="text-decoration: none;" id="contact">联系我们</a></li>
-                <li><a href="news.html" style="text-decoration: none;" id="news">新闻动态</a></li>
-                <li><a href="case.html" style="text-decoration: none;">投资案例</a></li>
-                <li><a href="team.html" style="text-decoration: none;" id="team">投资团队</a></li>
-                <li><a href="abort.html" style="text-decoration: none;" id="abort">关于我们</a></li>
-            </ul>
-        </div>
+    <div class="col-lg-3">
+        <img id="log" onclick="home()" style="padding-top: 5px;" src="/Public/home/images/logo.jpg">
     </div>
+    <div class="col-lg-9" id="top">
+        <div style="text-align: right"><a href="abort.html" style="color: #9b761d">中文</a>&nbsp;|&nbsp;<a href="law.html?status=1">English</a>
+        </div>
+        <ul style="list-style: none;">
+            <li><a href="contact.html" style="text-decoration: none;" id="contact">联系我们</a></li>
+            <li><a href="news.html" style="text-decoration: none;" id="news">新闻动态</a></li>
+            <li><a href="case.html" style="text-decoration: none;">投资案例</a></li>
+            <li><a href="team.html" style="text-decoration: none;" id="team">投资团队</a></li>
+            <li><a href="abort.html" style="text-decoration: none;" id="abort">关于我们</a></li>
+        </ul>
+    </div>
+</div>
 </div>
 <div style="margin-top: 10px;width: 100%;padding: 0" id="law_img">
     <div style="width: 100%; height: 250px; overflow: hidden;padding: 0">
@@ -198,7 +206,7 @@
     </div>
 </div>
 <div class="container" style="margin-top: 20px;">
-    <div class="row" id="detail">
+    <div class="row" id="detail" style="display: none">
         <div class="col-lg-12"
              style="font-size: 24px; text-align: center; color:#525c75;font-weight: 600;font-family: 'Microsoft YaHei', sans-serif">
             法律声明
@@ -216,12 +224,140 @@
             无论是否在资料上明示，所有此等资料都是受到版权法的法律保护。浏览者没有获得或各自的版权所有者明确的书面同意下，不得分发、修改、散布、再使用、再传递或使用本网站的内容用于任何公众商业用途。
         </div>
     </div>
+    <div class="row" id="detail_en" style="display: none">
+        <div class="col-lg-12"
+             style="font-size: 24px; text-align: center; color:#525c75;font-weight: 600;font-family: 'Microsoft YaHei', sans-serif">
+            Maison Website Terms of Use and Disclosures
+        </div>
+        <div class="col-lg-10 col-lg-offset-1"
+             style="line-height:30px;margin-top:10px;font-size: 16px; font-family: 'Microsoft YaHei', sans-serif">
+            <span style="font-weight: 600;font-size: 20px;color:#525c75;">Disclaimer</span><br>
+            While Maison Capital, its subsidiaries and their respective directors, officers, employees, agents,
+            contractors and advisors (collectively, the "Maison Capital Group") use reasonable efforts to obtain
+            information from sources believed to be reliable, the Maison Capital Group does not make any representation
+            or warranty as to the truth, accuracy or completeness of the information (including statements of opinion or
+            expectation) provided on this website or as to the achievement or reasonableness of any future projections,
+            estimates, prospects or returns or any of the assumptions underlying them. The Maison Capital Group shall
+            not have any liability (whether arising from negligence or otherwise) for any representations (expressed or
+            implied) contained in, or for any omissions from, the information on this website. None of the information
+            provided on this website has been approved by any governmental or other authority in any jurisdiction.
+
+            The investments described in this website were selected to illustrate types of investments that the funds
+            sponsored by the Maison Capital Group may pursue. Therefore, these investments are not indicative of future
+            investments or the actual or anticipated performance of the funds, sponsored by the Maison Capital Group,
+            through which such investments were made, nor should such investments be viewed as representative of the
+            portfolio of investments held by such funds.
+
+            The content provided in this website is, unless otherwise specified, directed at residents of the People’s
+            Republic of China (the “PRC” or “China”) and not intended for distribution to, or use by, any person or
+            entity in any jurisdiction where such distribution or use would be contrary to law or regulation or which
+            would subject the Maison Capital Group to any registration or other requirement within such jurisdiction.
+            Access to this website may be limited with respect to any person, geographic region or jurisdiction, and the
+            information contained in this website is subject to change without notice.<br><br>
+
+            <span style="font-weight: 600;font-size: 20px;color:#525c75;">Terms of Use</span><br>
+            <span style="font-weight: 600;font-size: 16px;">No Warranty</span><br>
+            Maison Capital Group disclaims all warranties with respect to the site that the law allows it to disclaim.
+            The Site is provided "as is" and "as available." We disclaim all representations and warranties, express or
+            implied, of any kind with respect to the site including warranties of merchantability, fitness for a
+            particular purpose, and non-infringement of intellectual property and proprietary rights. Without limiting
+            our general disclaimer, we do not warrant the availability, accuracy, completeness, timeliness,
+            functionality, reliability, sequencing or speed of delivery of the Site or any part of the content,
+            including with regard to financial results, based on the use of the information in or other uses of the
+            Site. The use of the Site is at your own risk.
+
+            You are solely responsible for the security of your computer system, including using and maintaining
+            appropriate anti-virus, firewall and backup software. Maison Capital Group disclaims any responsibility or
+            liability for any problem with your computer systems, including any Virus (as defined below) that your
+            computer systems receive as a result of your use of the Site. As used herein, "Virus" means: (i) any program
+            code or programming instruction or set of instructions that disrupts, disables, harms, interferes with,
+            otherwise adversely affects or without authorization accesses or deletes computer programs, data files or
+            operations; or (ii) other code typically described as a virus or by similar terms, including a Trojan horse,
+            worm or backdoor.<br><br>
+
+            <span style="font-weight: 600;font-size: 16px;">Limitation of Liability; Indemnification</span><br>
+            Maison Capital Group's liability with respect to the Site is limited to the maximum extent permitted by law.
+            In no event will we, our affiliates or our affiliates' members, directors, officers, employees, contractors,
+            agents, advisers or consultants be liable for any indirect, incidental, special, punitive, or consequential
+            damages, however caused, arising out of these Terms of Use, the Site, or the inability to use the Site. Our
+            liability is limited even if we have been advised of the possibility of the damages that you suffer or if
+            any remedy you have is inadequate. This disclaimer of liability applies to any and all damages or injury,
+            including, without limitation, those caused by any failure of performance, error, omission, interruption,
+            deletion, defect, delay in operation or transmission, computer virus, communication line failure, theft,
+            destruction or unauthorized access to, alteration of or use of any asset, whether for breach of contract,
+            tortious behavior, negligence or under any other cause of action.
+
+            You agree to indemnify, defend and hold harmless Maison Capital Group and its affiliates, agents, employees
+            and third party sources from and against any and all suits, losses, claims, demands, liabilities, damages,
+            costs and expenses (including reasonable attorneys' fees) that arise from or relate to: your use of the
+            Site; your breach of these Terms of Use or any representation, warranty or covenant made by you in these
+            Terms of Use; your violation of any applicable law, statute, ordinance, regulation or of any third party's
+            rights; or any claims asserted by third parties which, if proven, would place you in breach of
+            representations, warranties, covenants or other provisions contained in these Terms of Use.<br><br>
+
+            <span style="font-weight: 600;font-size: 16px;">Links to Third-Party Websites</span><br>
+            Linked sites, "Hypertext links," and/or "hyperlinks," to or from other Internet sites may be included at
+            times as a convenience to the user. Maison Capital Group is not responsible for information on any third
+            party web site that is referred in, accessible, or connected by hyperlink to, the Site. If you access any
+            third party web site through the Site or otherwise, you do so at your own risk. Hyperlinks to or from the
+            Site do not constitute, and should not be viewed to reflect, a third party endorsement of, sponsorship by,
+            or affiliation with Maison Capital Group.<br><br>
+
+            <span style="font-weight: 600;font-size: 16px;">Unlawful or Prohibited Use and Monitoring</span><br>
+            As a condition of your use of this Site, you warrant to Maison Capital Group that you will not use this Site
+            for any purpose that is unlawful or prohibited by these Terms of Use. You will be responsible for any
+            liability to Maison Capital Group that arises out of your breach of these Terms of Use or your use of the
+            Site.
+
+            Maison Capital Group has the right, but not the obligation, to monitor and record activity on the Site and
+            respond as it deems appropriate. We may monitor and record activity on the Site for any reason or for no
+            reason. We may investigate any complaint or reported violation of our policies. We may report any activity
+            that we suspect may violate any law or regulation to regulators, law enforcement officials, or other persons
+            or entities that we deem appropriate. We may issue warnings, suspend or terminate use of the Site, deny
+            access to all or part of the Site, or take any other action that we deem appropriate.<br><br>
+
+            <span style="font-weight: 600;font-size: 16px;">Copyrights and Trademarks</span><br>
+            The Site is owned by Maison Capital Group and the contents and structure of the Site are copyright
+            protected. No information or data content contained on this Site, including any text (whether in full or in
+            part), pictures or graphics, may be reproduced, transmitted, displayed, distributed, published or otherwise
+            commercially exploited without the prior written consent of Maison Capital Group. “Maison" and "Maison
+            Capital" logos are registered trademarks with the PRC Patent and Trademark Office. Product and company names
+            mentioned herein may be the trademarks of their respective owners, and any commercial use or distribution,
+            publishing or exploitation of such products, company names or trademarks is strictly prohibited unless you
+            have received the prior written consent of the applicable rights holder. In the course of reproduction of
+            any materials from the Site, whether lawful or otherwise, you may not remove any copyright, trademark, or
+            other proprietary notice or legend contained on (or reproduced from) the Site. You may not decompose,
+            decompile, reverse engineer, disassemble or otherwise deconstruct all or any portion of the Site.
+
+            You agree not to link directly to any image, graphic, text or other content on the Site, such as using an
+            "in-line" linking method to cause the content to be displayed on another web site, or to download or use
+            images hosted on this Site for any purpose, including posting such images on another web site, unless in
+            each case you have received the prior written consent of Maison Capital Group. Maison Capital Group may
+            require that any link to the Site be discontinued, and/or revoke your right and ability to link to the Site
+            from any web site at any time.<br><br>
+
+            <span style="font-weight: 600;font-size: 16px;">Electronic Communication</span><br>
+            This Site permits you to communicate electronically by sending an e-mail message to Maison Capital Group and
+            its employees. Maison Capital Group shall not be liable for any actions taken or any omissions to act as a
+            result of any e-mail message you send to Maison Capital Group or its employees.<br><br>
+
+            <span style="font-weight: 600;font-size: 16px;">General</span><br>
+            Any dispute regarding these Terms of Use shall be governed by the laws of Hong Kong Special Administrative
+            Region of the People’s Republic of China, but not including the choice of law rules thereof. You hereby
+            consent to the exclusive jurisdiction and venue of the courts in Hong Kong Special Administrative Region of
+            the People’s Republic of China, in all disputes arising out of or relating to the use of this Site. Use of
+            this Site is unauthorized in any jurisdiction that does not give effect to all provisions of these Terms of
+            Use, including, without limitation, this paragraph.
+
+        </div>
+    </div>
 </div>
 <div class="container" style="margin-top: 50px;width:100%;background-color: #525c75;">
     <div class="row" id="bottom">
         <div class="col-lg-12"
              style="color: #ffffff;text-align: center;font-family: 'Microsoft YaHei';font-size: 12px;margin-top: 20px;margin-bottom: 20px;">
-            <span style="color: #f1f1f1">麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©</span>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="law.html" style="text-decoration: none;color: #fff">法律说明</a>
+            <span style="color: #f1f1f1">麦星投资&nbsp;&nbsp;&nbsp;&nbsp;版权所有©</span>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                href="law.html" style="text-decoration: none;color: #fff">法律说明</a>
         </div>
     </div>
 </div>
